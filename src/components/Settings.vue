@@ -20,6 +20,42 @@
           class="stack__toggler icon-cross"
           @click="$emit('close')"
         ></a>
+        <div class="form-group mb8">
+          <label
+            >TestNet API Key
+            <span
+              class="icon-info-circle"
+              title="Your API Key on testnet, with Order permissions (NOT Order Cancel)"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            type="string"
+            placeholder=""
+            class="form-control"
+            :value="apikey"
+            @change="localStorage.setItem('apikey', $event.target.value)"
+          />
+
+        </div>
+        <div class="form-group settings-pair mb8">
+          <label
+            >Pair
+            <span
+              class="icon-info-circle"
+              title="Your API Secret - note that your API Key and Secret are kept within your browser storage, and never sent to the server"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            type="string"
+            placeholder=""
+            class="form-control"
+            :value="apisecret"
+            @change="localStorage.setItem('apisecret', $event.target.value)"
+          />
+
+        </div>
         <div class="form-group settings-pair mb8">
           <label
             >Pair
@@ -739,6 +775,8 @@ export default {
   computed: {
     ...mapState([
       'pair',
+      'apikey',
+      'apisecret',
       'maxRows',
       'decimalPrecision',
       'showLogos',

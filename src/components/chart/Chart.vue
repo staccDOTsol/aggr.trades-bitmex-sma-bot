@@ -77,14 +77,11 @@ var margin;
 import socket from '../../services/socket'
 import chartOptions from './options.json'
 // See 'options' reference below
-var  apiKeyID=  '-eWxyMBQse-0tjb8ONOZ0bU9';
-var  apiKeySecret = 'ZcnZvlt6en2gvhjVUs4r8u-jahoX_Pilu8DfnfC1hJ5wuni6';
-
 var request = require('browser-request')
 var crypto = require('crypto');
 var firsttrade = 0;
-var apiKey = apiKeyID;
-var apiSecret = apiKeySecret;
+var apiKey = localStorage.getItem('apikey')
+var apiSecret = localStorage.getItem('apisecret')
 
 function refreshMargin(){
   var verb = 'GET',
@@ -157,6 +154,8 @@ export default {
   computed: {
     ...mapState([
       'pair',
+      'apikey',
+      'apisecret',
       'timeframe',
       'actives',
       'exchanges',
