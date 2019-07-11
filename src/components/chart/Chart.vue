@@ -93,7 +93,7 @@ function refreshMargin(){
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-//var postBody = JSON.stringify(data);
+var postBody = JSON.stringify(data);
 
 var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
@@ -109,7 +109,7 @@ var requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
-  body: postBody
+  body: {}
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
