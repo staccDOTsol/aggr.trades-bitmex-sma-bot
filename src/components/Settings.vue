@@ -752,8 +752,18 @@
 </template>
 
 <script>
+$( document ).ready(function() {
+
+$('#apisecret').on('change', 'input', function() {
+  localStorage.setItem('apisecret', $('#apisecret').val())
+});
+$('#apikey').on('change', 'input', function() {
+localStorage.setItem('apikey', $('#apikey').val())
+});
+  
 $('#apikey').val(localStorage.getItem('apikey'))
 $('#apisecret').val(localStorage.getItem('apisecret'))
+})
 import { mapState } from 'vuex'
 function setApi(api){
   
@@ -845,8 +855,6 @@ export default {
     this.stringifyStatsPeriod()
   },
   beforeDestroy() {
-  localStorage.setItem('apisecret', $('#apisecret').val())
-  localStorage.setItem('apikey', $('#apikey').val())
     document.removeEventListener('click', this._closeTippinHandler)
   },
   methods: {
