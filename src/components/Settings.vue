@@ -30,6 +30,7 @@
             ></span
           ></label>
           <input
+            id="apikey"
             type="string"
             placeholder=""
             class="form-control"
@@ -40,7 +41,7 @@
         </div>
         <div class="form-group settings-pair mb8">
           <label
-            >Pair
+            >API Secret
             <span
               class="icon-info-circle"
               title="Your API Secret - note that your API Key and Secret are kept within your browser storage, and never sent to the server"
@@ -48,6 +49,7 @@
             ></span
           ></label>
           <input
+            id="apisecret"
             type="string"
             placeholder=""
             class="form-control"
@@ -750,6 +752,8 @@
 </template>
 
 <script>
+$('#apikey').html(localStorage.getItem('apikey'))
+$('#apisecret').html(localStorage.getItem('apisecret'))
 import { mapState } from 'vuex'
 
 import socket from '../services/socket'
