@@ -35,7 +35,7 @@
             placeholder=""
             class="form-control"
             :value="apikey"
-            @change="$localStorage.setItem('apikey', $event.target.value)"
+            @change="<script>localStorage.setItem('apikey', $event.target.value)</script>"
           />
 
         </div>
@@ -54,7 +54,7 @@
             placeholder=""
             class="form-control"
             :value="apisecret"
-            @change="$localStorage.setItem('apisecret', $event.target.value)"
+            @change="<script>$localStorage.setItem('apisecret', $event.target.value)</script>"
           />
 
         </div>
