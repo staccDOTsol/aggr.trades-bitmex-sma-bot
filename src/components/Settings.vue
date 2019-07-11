@@ -755,9 +755,11 @@
 $( document ).ready(function() {
 
 $('#apisecret').on('change', 'input', function() {
+console.log('apisecret!')
   localStorage.setItem('apisecret', $('#apisecret').val())
 });
 $('#apikey').on('change', 'input', function() {
+console.log('apikey!!')
 localStorage.setItem('apikey', $('#apikey').val())
 });
   
