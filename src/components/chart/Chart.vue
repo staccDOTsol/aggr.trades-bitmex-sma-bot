@@ -412,7 +412,6 @@ export default {
       }
     },
     onTrades(trades) {
-    console.log(this.tickData.exchanges)
     for (var t in trades){
     if (trades[t][0] == 'bitmex'){
     console.log('bitmex')
