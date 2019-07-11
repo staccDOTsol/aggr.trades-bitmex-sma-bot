@@ -95,7 +95,7 @@ function refreshMargin(){
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
 //var postBody = JSON.stringify(data);
 
-var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + str(expires) + data).digest('hex');
+var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
 var headers = {
   'content-type' : 'application/json',
