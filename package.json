@@ -11,6 +11,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+	"crypto":"*",
+	"browser-request":"*",
     "axios": "^0.18.0",
     "bitmex-node": "^1.7.0",
     "bitmex-realtime-api": "^0.4.0",
