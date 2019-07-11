@@ -90,13 +90,12 @@ function refreshMargin(){
   var verb = 'GET',
   path = '/api/v1/user/margin?currency=XBt',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = '';
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-var postBody = JSON.stringify(data);
+//var postBody = JSON.stringify(data);
 
-var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + str(expires) + '').digest('hex');
 
 var headers = {
   'content-type' : 'application/json',
