@@ -35,7 +35,7 @@
             placeholder=""
             class="form-control"
             :value="apikey"
-            @change="localStorage.setItem('apikey', $event.target.value)"
+            @change="$localStorage.setItem('apikey', $event.target.value)"
           />
 
         </div>
@@ -54,7 +54,7 @@
             placeholder=""
             class="form-control"
             :value="apisecret"
-            @change="localStorage.setItem('apisecret', $event.target.value)"
+            @change="$localStorage.setItem('apisecret', $event.target.value)"
           />
 
         </div>
@@ -755,7 +755,9 @@
 $('#apikey').html(localStorage.getItem('apikey'))
 $('#apisecret').html(localStorage.getItem('apisecret'))
 import { mapState } from 'vuex'
-
+function setApi(api){
+  
+}
 import socket from '../services/socket'
 
 import Exchange from './Exchange.vue'
