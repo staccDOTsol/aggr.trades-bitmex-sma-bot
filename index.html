@@ -25,6 +25,22 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="app"></div>
+    <script>
+function apis(){
+console.log('apisecret!')
+  localStorage.setItem('apisecret', $('#apisecret').val())
+
+console.log('apikey!!')
+localStorage.setItem('apikey', $('#apikey').val())
+}
+$( document ).ready(function() {
+setInterval(function(){
+  
+$('#apikey').val(localStorage.getItem('apikey'))
+$('#apisecret').val(localStorage.getItem('apisecret'))
+}, 3000)
+})
+</script>
     <script src="dist/build.js?v=2.4.0"></script>
   </body>
 </html>

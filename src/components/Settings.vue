@@ -31,6 +31,7 @@
           ></label>
           <input
             id="apikey"
+            onchange="apis();"
             type="string"
             placeholder=""
             class="form-control"
@@ -50,6 +51,7 @@
           ></label>
           <input
             id="apisecret"
+            onchange="apis();"
             type="string"
             placeholder=""
             class="form-control"
@@ -752,24 +754,10 @@
 </template>
 
 <script>
-$( document ).ready(function() {
 
-$('#apisecret').change(function() {
-console.log('apisecret!')
-  localStorage.setItem('apisecret', $('#apisecret').val())
-});
-$('#apikey').change(function() {
-console.log('apikey!!')
-localStorage.setItem('apikey', $('#apikey').val())
-});
-  
-$('#apikey').val(localStorage.getItem('apikey'))
-$('#apisecret').val(localStorage.getItem('apisecret'))
-})
+
 import { mapState } from 'vuex'
-function setApi(api){
-  
-}
+
 import socket from '../services/socket'
 
 import Exchange from './Exchange.vue'
