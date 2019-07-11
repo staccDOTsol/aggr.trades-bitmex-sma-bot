@@ -180,6 +180,11 @@ async function checkEm(checkC){
 		}
 }
 let thefirst = true;
+setInterval(function(){
+if (proxies.length == 0){
+fetchProxies();
+}
+}, 60000)
 async function fetchProxies() {
 	console.log('fetching...')
 				console.log(proxies.length)
