@@ -7,17 +7,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --public your-host:80",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-	"crypto":"*",
-	"browser-request":"*",
+    "crypto": "*",
+    "browser-request": "^0.3.3",
     "axios": "^0.18.0",
     "bitmex-node": "^1.7.0",
     "bitmex-realtime-api": "^0.4.0",
     "bitmex-simple-rest": "0.0.11",
-    "browser-request": "^0.3.3",
     "cors": "^2.8.5",
     "eventemitter3": "^3.1.0",
     "fs": "0.0.1-security",
