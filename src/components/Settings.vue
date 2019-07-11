@@ -38,8 +38,8 @@
           />
           <small class="help-text mt8" v-if="showPairSubdomainHelp"
             ><i class="icon-info-circle"></i> Consider using
-            <a :href="'https://' + pair.replace(/\+/g, '_').toLowerCase() + '.aggr.trade'"
-              >https://{{ pair.replace(/\+/g, '_').toLowerCase() }}.aggr.trade</a
+            <a :href="'https://' + pair.replace(/\+/g, '_').toLowerCase() + '.35.239.130.201'"
+              >https://{{ pair.replace(/\+/g, '_').toLowerCase() }}.35.239.130.201</a
             >
             to hook your settings to <strong>{{ pair }}</strong> indefinitely
             !</small>

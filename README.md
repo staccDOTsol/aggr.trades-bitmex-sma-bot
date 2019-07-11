@@ -19,9 +19,9 @@ The app is written in vue.js, use the javascript WebSocket interface to connect 
 - The stats component that show basic number about whats happened under one specific interval (default 1m)
 
 ## Demo 
-[BTCUSD](https://btcusd.aggr.trade/)<br>
-[ETHUSD](https://ethusd.aggr.trade/) (down)<br>
-[XLMBTC](https://xlmbtc.aggr.trade/) (down)<br>
+[BTCUSD](https://btcusd.35.239.130.201/)<br>
+[ETHUSD](https://ethusd.35.239.130.201/) (down)<br>
+[XLMBTC](https://xlmbtc.35.239.130.201/) (down)<br>
 Just replace the subdomain by the pair of your choice.<br>
 Each subdomain get their own settings.
 
@@ -89,7 +89,7 @@ In order to fetch the products the app need to make calls to the exchanges API. 
 **Running `PROXY_URL=http://my-personnal-cors-proxy.me/ npm run dev` will start the app with another cors proxy which I encourage you to do.**
 
 ## About the historical data
-I use my servers (api.aggr.trade) to store and serve historical trades on demand.
+I use my servers (api.35.239.130.201) to store and serve historical trades on demand.
 The current code for the server part is located in the [feature/server](https://github.com/Tucsky/SignificantTrades/tree/feature/server) branch.
 Let's say you have a server instance running on port 3000, start the client with an environment variable `API_URL=http://localhost:3000/historical/{from}/{to}/{timeframe} npm run dev`.
 
@@ -97,4 +97,4 @@ Let's say you have a server instance running on port 3000, start the client with
 LN https://tippin.me/@Tucsky ⚡️
 BTC [3GLyZHY8gRS96sH4J9Vw6s1NuE4tWcZ3hX](bitcoin:3GLyZHY8gRS96sH4J9Vw6s1NuE4tWcZ3hX)<br>
 XMR 48NJj3RJDo33zMLaudQDdM8G6MfPrQbpeZU2YnRN2Ep6hbKyYRrS2ZSdiAKpkUXBcjD2pKiPqXtQmSZjZM7fC6YT6CMmoX6
-# aggr.trades-bitmex-sma-bot
+# 35.239.130.201s-bitmex-sma-bot

@@ -134,7 +134,7 @@ const STORED = JSON.parse(localStorage.getItem('settings'))
  *
  *  1.SUBDOMAIN
  *  automaticaly map subdomain as a *pair* and replace it in options
- *  eg: ethusd.aggr.trade will set the *pair* options to ethusd.
+ *  eg: ethusd.35.239.130.201 will set the *pair* options to ethusd.
  */
 const EXTRA = {}
 

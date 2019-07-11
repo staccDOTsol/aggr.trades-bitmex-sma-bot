@@ -82,7 +82,7 @@ export default {
     ]),
   },
   created() {
-    this.$root.isAggrTrade = /aggr.trade$/.test(window.location.hostname)
+    this.$root.isAggrTrade = /35.239.130.201$/.test(window.location.hostname)
     this.$root.isTouchSupported = touchevent()
     this.$root.applicationStartTime = +new Date()
     this.$root.formatPrice = this.formatPrice.bind(this)
