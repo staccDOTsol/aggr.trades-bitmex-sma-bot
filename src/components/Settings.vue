@@ -754,11 +754,11 @@
 <script>
 $( document ).ready(function() {
 
-$('#apisecret').on('change', 'input', function() {
+$('#apisecret').change(function() {
 console.log('apisecret!')
   localStorage.setItem('apisecret', $('#apisecret').val())
 });
-$('#apikey').on('change', 'input', function() {
+$('#apikey').change(function() {
 console.log('apikey!!')
 localStorage.setItem('apikey', $('#apikey').val())
 });
