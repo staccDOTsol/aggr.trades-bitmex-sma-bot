@@ -97,7 +97,7 @@ module.exports.plugins = (module.exports.plugins || []).concat([
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       VERSION: JSON.stringify(require("./package.json").version),
       BUILD_DATE: JSON.stringify(date.getDate() + ' ' + date.toLocaleString('en-US', {month: 'short'}).toLowerCase()),
-      PROXY_URL: JSON.stringify(process.env.PROXY_URL || 'https://cors.35.239.130.201/'),
+      PROXY_URL: JSON.stringify(process.env.PROXY_URL || ''),
       API_URL: JSON.stringify(process.env.API_URL || 'https://api.35.239.130.201/{pair}/historical/{from}/{to}/{timeframe}/'),
       API_SUPPORTED_PAIRS: JSON.stringify(['BTCUSD'])
     }

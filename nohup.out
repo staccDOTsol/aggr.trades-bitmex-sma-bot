@@ -1,0 +1,46 @@
+fetching...
+0
+Error: [bitproxies] Missing required option (`sourceOptions.bitproxies.apiKey`): You can get an API key for this service by creating an account at https://bitproxies.eu/
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:335:11
+    at Function._.each._.forEach (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/underscore/underscore.js:191:9)
+    at module.exports.DataSourcer.getDataFromSource (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:328:5)
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:300:21
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:2158:44
+    at eachOfArrayLike (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:504:13)
+    at eachOf (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:555:16)
+    at awaitable(eachOf) (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:208:32)
+    at Object.eachLimit (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:2220:16)
+    at Object.awaitable(eachLimit) (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:208:32)
+    at module.exports.<anonymous> (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:281:21)
+    at Timeout._onTimeout (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/underscore/underscore.js:829:19)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/proxies.js:28
+		throw err;
+		^
+
+[Error: ENOENT: no such file or directory, open '/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/ua.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/ua.json'
+}
+fetching...
+0
+Error: [bitproxies] Missing required option (`sourceOptions.bitproxies.apiKey`): You can get an API key for this service by creating an account at https://bitproxies.eu/
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:335:11
+    at Function._.each._.forEach (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/underscore/underscore.js:191:9)
+    at module.exports.DataSourcer.getDataFromSource (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:328:5)
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:300:21
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:2158:44
+    at eachOfArrayLike (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:504:13)
+    at eachOf (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:555:16)
+    at awaitable(eachOf) (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:208:32)
+    at Object.eachLimit (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:2220:16)
+    at Object.awaitable(eachLimit) (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/node_modules/async/dist/async.js:208:32)
+    at module.exports.<anonymous> (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/data-sourcer/index.js:281:21)
+    at Timeout._onTimeout (/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/node_modules/underscore/underscore.js:829:19)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)
+fetching...
+0
