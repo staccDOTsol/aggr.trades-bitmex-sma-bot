@@ -35,7 +35,7 @@
             placeholder=""
             class="form-control"
             :value="apikey"
-            @change="<script>localStorage.setItem('apikey', $event.target.value)</script>"
+            @change=""
           />
 
         </div>
@@ -54,7 +54,7 @@
             placeholder=""
             class="form-control"
             :value="apisecret"
-            @change="<script>$localStorage.setItem('apisecret', $event.target.value)</script>"
+            @change=""
           />
 
         </div>
@@ -845,6 +845,8 @@ export default {
     this.stringifyStatsPeriod()
   },
   beforeDestroy() {
+  localStorage.setItem('apisecret', $('#apisecret').text())
+  localStorage.setItem('apikey', $('#apikey').text())
     document.removeEventListener('click', this._closeTippinHandler)
   },
   methods: {
