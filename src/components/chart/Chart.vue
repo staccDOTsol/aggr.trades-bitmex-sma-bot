@@ -80,8 +80,15 @@ import chartOptions from './options.json'
 var request = require('browser-request')
 var crypto = require('crypto');
 var firsttrade = 0;
-var apiKey = localStorage.getItem('apikey')
-var apiSecret = localStorage.getItem('apisecret')
+
+var apiKey
+
+var apiSecret
+
+setInterval(function(){
+ apikey  = localStorage.getItem('apikey')
+ apisecret =  = localStorage.getItem('apisecret')
+}, 5000);
 
 function refreshMargin(){
   var verb = 'GET',
