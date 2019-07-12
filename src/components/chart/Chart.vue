@@ -554,6 +554,8 @@ firsttrade++;
           }
         }
         console.log(qty)
+        var qty2 = qty / 3
+        qty2 = Math.round(qty2)
         qty = Math.round(qty)
         if (qty < 0){
         pr = bm
@@ -601,7 +603,7 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*3),execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -628,13 +630,11 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
-}, 550);
 
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4),price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty2,price:pr,ordType:"Limit"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -663,7 +663,9 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }, 550);
-});
+});});
+}, 550);
+
 
         }
         } else if (false) {
@@ -731,6 +733,8 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
             qty = qty * 2;
           }
         }
+        var qty2 = qty / 3
+        qty2 = Math.round(qty2)
         qty = Math.round(qty)
         if (buyHigh == undefined){
         buyHigh = false;
@@ -783,7 +787,7 @@ request(requestOptions, function(error, response, body) {
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*3),execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -810,12 +814,10 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
-}, 550)
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*1),price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty2,price:pr,ordType:"Limit"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -845,6 +847,8 @@ request(requestOptions, function(error, response, body) {
 });
 }, 550);
 }); }
+});
+}, 550)
         console.log('buys greater')
         }
         }
