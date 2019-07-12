@@ -87,7 +87,7 @@ var apiSecret
 
 setInterval(function(){
  apikey  = localStorage.getItem('apikey')
- apisecret =  = localStorage.getItem('apisecret')
+ apisecret = localStorage.getItem('apisecret')
 }, 5000);
 
 function refreshMargin(){
