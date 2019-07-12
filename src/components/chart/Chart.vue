@@ -846,9 +846,9 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }, 550);
-}); }
+}); 
 });
-}, 550)
+}, 550)}
         console.log('buys greater')
         }
         }
