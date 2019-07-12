@@ -633,11 +633,20 @@ firsttrade++;
         }
         qty2 = Math.round(qty2)
         qty = Math.round(qty)
+        if (this.pair == 'BTCUSD'){
         if (qty < 0){
-        pr = bm
+        pr = bm + 0.5
         }
         else {
-        pr = bm
+        pr = bm - 0.5
+        }
+        } else {
+        if (qty < 0){
+        pr = bm + 0.15
+        }
+        else {
+        pr = bm - 0.15
+        }
         }
 
         if (this.pair == 'BTCUSD'){
@@ -834,11 +843,20 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         if (buyHigh == false){
         buyHigh = true;
         var pr = 0;
+       if (this.pair == 'BTCUSD'){
         if (qty < 0){
-        pr = bm
+        pr = bm + 0.5
         }
         else {
-        pr = bm
+        pr = bm - 0.5
+        }
+        } else {
+        if (qty < 0){
+        pr = bm + 0.15
+        }
+        else {
+        pr = bm - 0.15
+        }
         }
         if (this.pair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
