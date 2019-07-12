@@ -93,7 +93,7 @@ setInterval(function(){
 
 function refreshMargin(){
 verb = 'GET',
-  path = '/api/v1/order?symbol=XBTUSD&filter=%7B%22ordStatus%22%3A%20%22New%22%7D',
+  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22XBTUSD%22%7D',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
@@ -119,18 +119,14 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   if (JSON.parse(body)[0] != undefined){
-  positionXbt = JSON.parse(body)[0].orderQty;
-  var side = JSON.parse(body)[0].Side;
-  if (side == 'Sell'){
-  positionXbt = positionXbt * -1
-  }
+  positionXbt = JSON.parse(body)[0].execQty;
   }
   else {
   positionXbt = 0;
   }
 });
 verb = 'GET',
-  path = '/api/v1/order?symbol=ETHUSD&filter=%7B%22ordStatus%22%3A%20%22New%22%7D',
+  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22ETHUSD%22%7D',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
@@ -156,11 +152,7 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   if (JSON.parse(body)[0] != undefined){
-  positionEth = JSON.parse(body)[0].orderQty;
-  var side = JSON.parse(body)[0].Side;
-  if (side == 'Sell'){
-  positionEth = positionEth * -1
-  }
+  positionEth = JSON.parse(body)[0].execQty;
   }
   else{
   positionEth = 0;
