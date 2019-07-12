@@ -72,7 +72,9 @@
 import { mapState } from 'vuex'
 let buyHigh;
 var bm;
-var margin;
+var margin222;
+var margin333
+var marginperc
 var positionXbt;
 var positionEth;
 import socket from '../../services/socket'
@@ -184,8 +186,9 @@ var requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  margin = JSON.parse(body).availableMargin/100000000;
-
+  margin222 = JSON.parse(body).availableMargin/100000000;
+  margin333 = JSON.parse(body).marginBalance/100000000;
+  marginperc = margin222 / margin333
 });
 }
 setTimeout(function(){
@@ -555,7 +558,7 @@ this.chart.series[7].data[0].remove();
     if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
     
     console.log(this.tickData.exchanges[trades[trades.length-1][0]])
-    var test =((0.01*((0.01*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2)
+    var test =((margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2)
     console.log(test)
     test = test *2;
         test = test * 10 * 10
@@ -583,16 +586,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(0.01*((0.009*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
-        qty = -1*(0.01*((0.01*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         }
         }
         else {
         firsttrade++;
-        qty = -1*(0.01*((0.009*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
-        qty = -1*(0.01*((0.01*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         }
         qty = qty *2;
         }
@@ -602,13 +605,16 @@ firsttrade++;
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt > 0){
-            qty = qty * 2;
+            qty = qty * 3;
           }
         }
         else {
           if (positionEth > 0){
-            qty = qty * 2
+            qty = qty * 3
           }
+        }
+        if (marginperc < 0.25){
+        qty = qty * 3
         }
         console.log(qty)
         var qty2 = qty / 3
@@ -763,16 +769,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (0.01*((0.009*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
 if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
-        qty = (0.01*((0.01*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         }
         }
         else{
         firsttrade++
-        qty = (0.01*((0.009*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
-        qty = (0.01*((0.01*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
         }
         qty = qty *2;
         }
@@ -782,13 +788,17 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt < 0){
-            qty = qty * 2;
+            qty = qty * 3;
           }
         }
         else {
           if (positionEth < 0){
-            qty = qty * 2;
+            qty = qty * 3;
           }
+        }
+        
+        if (marginperc < 0.25){
+        qty = qty * 3
         }
         var qty2 = qty / 3
         qty2 = Math.round(qty2)
