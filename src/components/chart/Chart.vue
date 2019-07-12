@@ -553,12 +553,12 @@ firsttrade++;
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt > 0){
-            qty = qty * 1;
+            qty = qty * 2;
           }
         }
         else {
           if (positionEth > 0){
-            qty = qty * 1
+            qty = qty * 2
           }
         }
         console.log(qty)
@@ -641,7 +641,7 @@ request(requestOptions, function(error, response, body) {
 });
 
         }
-        } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <= 1.00 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY ){
+        } else if (false) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -698,12 +698,12 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt < 0){
-            qty = qty * 1;
+            qty = qty * 2;
           }
         }
         else {
           if (positionEth < 0){
-            qty = qty * 1;
+            qty = qty * 2;
           }
         }
         qty = Math.round(qty)
