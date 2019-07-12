@@ -93,7 +93,7 @@ setInterval(function(){
 
 function refreshMargin(){
 verb = 'GET',
-  path = '/api/v1/order?symbol=XBTUSD',
+  path = '/api/v1/order?symbol=XBTUSD&filter=%7B%22ordStatus%22%3A%20%22New%22%7D',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
@@ -130,7 +130,7 @@ request(requestOptions, function(error, response, body) {
   }
 });
 verb = 'GET',
-  path = '/api/v1/order?symbol=ETHUSD',
+  path = '/api/v1/order?symbol=ETHUSD&filter=%7B%22ordStatus%22%3A%20%22New%22%7D',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
