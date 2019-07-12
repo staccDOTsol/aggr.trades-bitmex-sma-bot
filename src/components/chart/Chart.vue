@@ -601,7 +601,40 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*3),execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+ headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+
+ requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+setTimeout(function(){
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+});
+}, 550);
+
+verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*1),ordType:"Market"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -750,7 +783,7 @@ request(requestOptions, function(error, response, body) {
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*3),execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -779,6 +812,38 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }, 550)
+verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:Math.round(qty/4*3),ordType:"Market"};
+
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+ headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+
+ requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+setTimeout(function(){
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+});
+}, 550);
 }); }
         console.log('buys greater')
         }
