@@ -73,7 +73,8 @@ import { mapState } from 'vuex'
 let buyHigh;
 var bm;
 var margin;
-
+var positionXbt;
+var positionEth;
 import socket from '../../services/socket'
 import chartOptions from './options.json'
 // See 'options' reference below
