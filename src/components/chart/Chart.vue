@@ -91,6 +91,70 @@ setInterval(function(){
 }, 5000);
 
 function refreshMargin(){
+verb = 'GET',
+  path = '/api/v1/order?symbol=XBTUSD',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  positionXbt = JSON.parse(body)[0].orderQty;
+  var side = JSON.parse(body)[0].Side;
+  if (side == 'Sell'){
+  positionXbt = positionXbt * -1
+  }
+});
+verb = 'GET',
+  path = '/api/v1/order?symbol=ETHUSD',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  positionEth = JSON.parse(body)[0].orderQty;
+  var side = JSON.parse(body)[0].Side;
+  if (side == 'Sell'){
+  positionEth = positionEth * -1
+  }
+});
   var verb = 'GET',
   path = '/api/v1/user/margin?currency=XBt',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -475,6 +539,16 @@ firsttrade++;
         if (this.pair == 'ETHUSD'){
         qty = qty * 8 * 1.5;
         }
+        if (this.pair == 'BTCUSD'){
+          if (positionXbt > 0){
+            qty = qty * 2;
+          }
+        }
+        else {
+          if (positionEth > 0){
+            qty = qty * 2;
+          }
+        }
         console.log(qty)
         qty = Math.round(qty)
         if (qty < 0){
@@ -521,70 +595,7 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 });
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:this.pair.replace('BTC','XBT'),orderQty:-100,execInst:"ParticipateDoNotInitiate,ReduceOnly",price:pr,ordType:"Limit"};
 
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-
- requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: postBody
-};
-setTimeout(function(){
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  console.log(body);
-});
-}, 550);
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:this.pair.replace('BTC','XBT'),orderQty:100,execInst:"ParticipateDoNotInitiate,ReduceOnly",price:pr,ordType:"Limit"};
-
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-
- requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: postBody
-};
-setTimeout(function(){
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  console.log(body);
-});
-}, 550);
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -673,6 +684,16 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         if (this.pair == 'ETHUSD'){
         qty = qty * 8 * 1.5;
         }
+        if (this.pair == 'BTCUSD'){
+          if (positionXbt < 0){
+            qty = qty * 2;
+          }
+        }
+        else {
+          if (positionEth < 0){
+            qty = qty * 2;
+          }
+        }
         qty = Math.round(qty)
         if (buyHigh == undefined){
         buyHigh = false;
@@ -723,70 +744,6 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 });
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:this.pair.replace('BTC','XBT'),orderQty:-100,execInst:"ParticipateDoNotInitiate,ReduceOnly",price:pr,ordType:"Limit"};
-
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-
- requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: postBody
-};
-setTimeout(function(){
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  console.log(body);
-});
-}, 550);
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:this.pair.replace('BTC','XBT'),orderQty:100,execInst:"ParticipateDoNotInitiate,ReduceOnly",price:pr,ordType:"Limit"};
-
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-
- requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: postBody
-};
-setTimeout(function(){
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  console.log(body);
-});
-}, 550);
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
