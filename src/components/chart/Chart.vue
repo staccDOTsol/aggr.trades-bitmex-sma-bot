@@ -515,7 +515,7 @@ export default {
     }
     if(this.chart.series[5].data[this.chart.series[5].data.length-1] != undefined){
 
-        if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <=  1 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <=  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
         console.log('sells greater')
         if (buyHigh == undefined){
         buyHigh = true;
@@ -668,7 +668,7 @@ request(requestOptions, function(error, response, body) {
 
 
         }
-        } else if (false) {
+        } else if ((this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -700,7 +700,7 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }
-        else {
+        else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
         if (firsttrade <2 ){
         firsttrade++;
         }
