@@ -487,53 +487,53 @@ export default {
     onTrades(trades) {
     console.log('data')
     if (this.chart.series[0 ] != undefined){
-    if (this.chart.series[0].yData.length > 42 * 2){
+    if (this.chart.series[0].yData.length > 20 * 2){
 this.chart.series[0].yData.shift()
       this.chart.series[0].xData.shift()
           }
           }
     if (this.chart.series[1] != undefined){
-    if (this.chart.series[1].yData.length > 42 * 2){
+    if (this.chart.series[1].yData.length > 20 * 2){
 this.chart.series[1].yData.shift()
       this.chart.series[1].xData.shift()
           }
     }
 
     if (this.chart.series[2] != undefined){
-    if (this.chart.series[2].yData.length > 42 * 2){
+    if (this.chart.series[2].yData.length > 20 * 2){
 this.chart.series[2].yData.shift()
       this.chart.series[2].xData.shift()
           }
 
     }
     if (this.chart.series[3] != undefined){
-    if (this.chart.series[3].yData.length > 42 * 2){
+    if (this.chart.series[3].yData.length > 20 * 2){
 this.chart.series[3].yData.shift()
       this.chart.series[3].xData.shift()
           }
     }
 
     if (this.chart.series[4] != undefined){
-    if (this.chart.series[4].yData.length > 42){
+    if (this.chart.series[4].yData.length > 20){
 this.chart.series[4].yData.shift()
       this.chart.series[4].xData.shift()
     }
 
     }
     if (this.chart.series[5] != undefined){
-    if (this.chart.series[5].yData.length > 42){
+    if (this.chart.series[5].yData.length > 20){
 this.chart.series[5].yData.shift()
       this.chart.series[5].xData.shift()    }
     }
     if (this.chart.series[6] != undefined){
-    if (this.chart.series[6].yData.length > 42){
+    if (this.chart.series[6].yData.length > 20){
 this.chart.series[6].yData.shift()
       this.chart.series[6].xData.shift()
           }
 
     }
     if (this.chart.series[7] != undefined){
-    if (this.chart.series[7].yData.length > 42){
+    if (this.chart.series[7].yData.length > 20){
 this.chart.series[7].yData.shift()
       this.chart.series[7].xData.shift()
           }
