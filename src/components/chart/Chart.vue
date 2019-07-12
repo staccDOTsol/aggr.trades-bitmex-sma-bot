@@ -118,10 +118,15 @@ requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
+  if (JSON.parse(body)[0] != undefined){
   positionXbt = JSON.parse(body)[0].orderQty;
   var side = JSON.parse(body)[0].Side;
   if (side == 'Sell'){
   positionXbt = positionXbt * -1
+  }
+  }
+  else {
+  positionXbt = 0;
   }
 });
 verb = 'GET',
@@ -150,10 +155,15 @@ requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
+  if (JSON.parse(body)[0] != undefined){
   positionEth = JSON.parse(body)[0].orderQty;
   var side = JSON.parse(body)[0].Side;
   if (side == 'Sell'){
   positionEth = positionEth * -1
+  }
+  }
+  else{
+  positionEth = 0;
   }
 });
   var verb = 'GET',
