@@ -595,8 +595,6 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
-
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -629,6 +627,8 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }, 550);
+});
+
         }
         } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <= 1.00 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY ){
 
@@ -744,7 +744,6 @@ var requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -777,6 +776,7 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }, 550)}
+});
         console.log('buys greater')
         }
         }
