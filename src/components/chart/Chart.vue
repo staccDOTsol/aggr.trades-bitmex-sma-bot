@@ -775,7 +775,7 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 });
-}, 550)}
+}, 550)
 });
         console.log('buys greater')
         }
