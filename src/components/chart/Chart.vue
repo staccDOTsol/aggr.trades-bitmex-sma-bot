@@ -668,7 +668,7 @@ request(requestOptions, function(error, response, body) {
 
 
         }
-        } else if ((this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
+        } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
