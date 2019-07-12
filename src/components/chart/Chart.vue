@@ -488,54 +488,55 @@ export default {
     console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 20 * 2){
-this.chart.series[0].yData.shift()
-      this.chart.series[0].xData.shift()
+this.chart.series[0].data[0].remove();
+
           }
           }
     if (this.chart.series[1] != undefined){
     if (this.chart.series[1].yData.length > 20 * 2){
-this.chart.series[1].yData.shift()
-      this.chart.series[1].xData.shift()
+this.chart.series[1].data[0].remove();
+
           }
     }
 
     if (this.chart.series[2] != undefined){
     if (this.chart.series[2].yData.length > 20 * 2){
-this.chart.series[2].yData.shift()
-      this.chart.series[2].xData.shift()
+this.chart.series[2].data[0].remove();
+
           }
 
     }
     if (this.chart.series[3] != undefined){
     if (this.chart.series[3].yData.length > 20 * 2){
-this.chart.series[3].yData.shift()
-      this.chart.series[3].xData.shift()
+this.chart.series[3].data[0].remove();
+
           }
     }
 
     if (this.chart.series[4] != undefined){
     if (this.chart.series[4].yData.length > 20){
-this.chart.series[4].yData.shift()
-      this.chart.series[4].xData.shift()
+this.chart.series[4].data[0].remove();
+
     }
 
     }
     if (this.chart.series[5] != undefined){
     if (this.chart.series[5].yData.length > 20){
-this.chart.series[5].yData.shift()
-      this.chart.series[5].xData.shift()    }
+this.chart.series[5].data[0].remove();
+
+    }
     }
     if (this.chart.series[6] != undefined){
     if (this.chart.series[6].yData.length > 20){
-this.chart.series[6].yData.shift()
-      this.chart.series[6].xData.shift()
+this.chart.series[6].data[0].remove();
+
           }
 
     }
     if (this.chart.series[7] != undefined){
     if (this.chart.series[7].yData.length > 20){
-this.chart.series[7].yData.shift()
-      this.chart.series[7].xData.shift()
+this.chart.series[7].data[0].remove();
+
           }
     }
           this.chart.redraw()
