@@ -74,7 +74,7 @@
             placeholder="BTCUSD"
             class="form-control"
             :value="pair"
-            @change="$store.commit('setPair', $event.target.value)"
+            @change="$store.commit('setPair', '$event.target.value')"
           />
           <small class="help-text mt8" v-if="showPairSubdomainHelp"
             ><i class="icon-info-circle"></i> Consider using
