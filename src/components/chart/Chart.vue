@@ -734,10 +734,10 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   body: postBody
 };
 setTimeout(function(){
-request(requestOptions, function(error, response, body) {
+/*request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
+});*/
 }, 550);
 });});
 }, 550);
@@ -932,10 +932,10 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   body: postBody
 };
 setTimeout(function(){
-request(requestOptions, function(error, response, body) {
+/*request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-});
+});*/
 }, 550);
 }); 
 });
