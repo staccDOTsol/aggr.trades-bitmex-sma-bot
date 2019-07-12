@@ -543,12 +543,12 @@ firsttrade++;
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt > 0){
-            qty = qty * 3;
+            qty = qty * 1;
           }
         }
         else {
           if (positionEth > 0){
-            qty = qty * 3;
+            qty = qty * 1
           }
         }
         console.log(qty)
@@ -688,12 +688,12 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         }
         if (this.pair == 'BTCUSD'){
           if (positionXbt < 0){
-            qty = qty * 3;
+            qty = qty * 1;
           }
         }
         else {
           if (positionEth < 0){
-            qty = qty * 3;
+            qty = qty * 1;
           }
         }
         qty = Math.round(qty)
