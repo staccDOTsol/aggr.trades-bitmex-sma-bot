@@ -487,46 +487,46 @@ export default {
     onTrades(trades) {
     console.log('data')
     if (this.chart.series[0].data.length > 42 * 2){
-       this.chart.series[0].data = this.chart.series[0].data.shift()
+       this.chart.series[0].data[0].remove(true)
     }
     if (this.chart.series[1] != undefined){
     if (this.chart.series[1].data.length > 42 * 2){
-     this.chart.series[1].data =   this.chart.series[1].data.shift()
+     this.chart.series[1].data[0].remove(true)
     }
     }
 
     if (this.chart.series[2] != undefined){
     if (this.chart.series[2].data.length > 42 * 2){
-      this.chart.series[2].data =  this.chart.series[2].data.shift()
+      this.chart.series[2].data[0].remove(true)
     }
 
     }
     if (this.chart.series[3] != undefined){
     if (this.chart.series[3].data.length > 42 * 2){
-        this.chart.series[3].data =this.chart.series[3].data.shift()
+        this.chart.series[3].data[0].remove(true)
     }
     }
 
     if (this.chart.series[4] != undefined){
     if (this.chart.series[4].data.length > 42){
-      this.chart.series[4].data =  this.chart.series[4].data.shift()
+      this.chart.series[4].data[0].remove(true)
     }
 
     }
     if (this.chart.series[5] != undefined){
     if (this.chart.series[5].data.length > 42){
-        this.chart.series[5].data =this.chart.series[5].data.shift()
+        this.chart.series[5].data[0].remove(true)
     }
     }
     if (this.chart.series[6] != undefined){
     if (this.chart.series[6].data.length > 42){
-       this.chart.series[6].data = this.chart.series[6].data.shift()
+       this.chart.series[6].data[0].remove(true)[0].remove(true)
     }
 
     }
     if (this.chart.series[7] != undefined){
     if (this.chart.series[7].data.length > 42){
-       this.chart.series[7].data =  this.chart.series[7].data.shift()
+       this.chart.series[7].data[0].remove(true)
     }
     }
     console.log(this.chart.series[0].data)
