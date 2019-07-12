@@ -485,6 +485,51 @@ export default {
       }
     },
     onTrades(trades) {
+    console.log('data')
+    if (this.chart.series[0].data.length > 42 * 2){
+        this.chart.series[0].data.shift()
+    }
+    if (this.chart.series[1] != undefined){
+    if (this.chart.series[1].data.length > 42 * 2){
+        this.chart.series[1].data.shift()
+    }
+    }
+
+    if (this.chart.series[2] != undefined){
+    if (this.chart.series[2].data.length > 42 * 2){
+        this.chart.series[2].data.shift()
+    }
+
+    }
+    if (this.chart.series[3] != undefined){
+    if (this.chart.series[3].data.length > 42 * 2){
+        this.chart.series[3].data.shift()
+    }
+    }
+
+    if (this.chart.series[4] != undefined){
+    if (this.chart.series[4].data.length > 42){
+        this.chart.series[4].data.shift()
+    }
+
+    }
+    if (this.chart.series[5] != undefined){
+    if (this.chart.series[5].data.length > 42){
+        this.chart.series[5].data.shift()
+    }
+    }
+    if (this.chart.series[6] != undefined){
+    if (this.chart.series[6].data.length > 42){
+        this.chart.series[6].data.shift()
+    }
+
+    }
+    if (this.chart.series[7] != undefined){
+    if (this.chart.series[7].data.length > 42){
+        this.chart.series[7].data.shift()
+    }
+    }
+    console.log(this.chart.series[0].data)
     var thepair = this.pair
     for (var t in trades){
     if (trades[t][0] == 'bitmex'){
@@ -515,7 +560,7 @@ export default {
     }
     if(this.chart.series[5].data[this.chart.series[5].data.length-1] != undefined){
 
-        if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <=  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <=  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
         console.log('sells greater')
         if (buyHigh == undefined){
         buyHigh = true;
@@ -668,7 +713,7 @@ request(requestOptions, function(error, response, body) {
 
 
         }
-        } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.98 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
+        } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.01 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -700,7 +745,7 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }
-        else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  1.02 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  1.01 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
         if (firsttrade <2 ){
         firsttrade++;
         }
@@ -852,6 +897,16 @@ request(requestOptions, function(error, response, body) {
         console.log('buys greater')
         }
         }
+        var t = new Date().getTime() - 1000 * 420;
+        var tt = [];
+        for (var aa in trades){
+          if (trades[aa][1] > t){
+            tt.push(trades[aa])
+          }
+        }
+        trades = tt;
+        console.log('trades')
+        console.log(trades)
       this.tickTrades(trades, true)
 
       this.updateChartedCount()
