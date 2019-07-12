@@ -547,7 +547,7 @@ firsttrade++;
         }
         qty = qty *2;
         }
-        qty = qty * 10 * 5
+        qty = qty * 10 * 10
         if (this.pair == 'ETHUSD'){
         qty = qty * 8 * 1.5;
         }
@@ -692,7 +692,7 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         }
         qty = qty *2;
         }
-        qty = qty * 10 * 5
+        qty = qty * 10 * 10
         if (this.pair == 'ETHUSD'){
         qty = qty * 8 * 1.5;
         }
