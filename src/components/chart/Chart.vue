@@ -634,6 +634,11 @@ firsttrade++;
         if (this.pair == 'ETHUSD'){
         qty = qty * 8 * 1.5;
         }
+        console.log('marginperc')
+        console.log(marginperc)
+        console.log(this.pair)
+        console.log(positionXbt)
+        console.log(positionEth)
         if (this.pair == 'BTCUSD'){
           if (positionXbt > 0){
             qty = qty * 3;
