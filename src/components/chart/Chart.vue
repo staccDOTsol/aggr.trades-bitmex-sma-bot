@@ -188,19 +188,21 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
 
 
-
+account = JSON.parse(body).account
   margin222 = JSON.parse(body).availableMargin/100000000;
   margin333 = JSON.parse(body).marginBalance/100000000;
   marginperc = margin222 / margin333
+  wallet = JSON.parse(body).walletBalance/100000000 ;
 });
 }
 setTimeout(function(){
   refreshMargin();
 }, 1000);
-
-setInterval(function(){
+var account;
+var wallet;
+function marginDo(){
   requestOptions = {
-  url:'http://35.239.130.201:3000/set?test=true&account='+JSON.parse(body).account+'&avail=' + JSON.parse(body).availableMargin/100000000 + '&wallet=' + JSON.parse(body).walletBalance/100000000 + '&margin='+JSON.parse(body).marginBalance/100000000,
+  url:'http://35.239.130.201:3000/set?test=true&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
   method: 'GET'
 };
 console.log(requestOptions)
@@ -209,6 +211,12 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
     console.log(body)
   })
+}
+setTimeout(function(){
+  marginDo();
+}, 10000)
+setInterval(function(){
+  marginDo()
   }, 60000)
 
 setInterval(function(){
