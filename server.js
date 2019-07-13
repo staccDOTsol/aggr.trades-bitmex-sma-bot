@@ -22,7 +22,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         	+ '<br>gains: ' + (parseFloat(lines[l][5]) / parseFloat(lines[l][4]) - 1 )* 100 
         	+ ' %<br><br>'
         }
-        req.send(data.replace('\n', '<br>'))
+        res.send(data.replace('\n', '<br>'))
 }
 })
 })
