@@ -121,7 +121,7 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   if (JSON.parse(body)[0] != undefined){
-  positionXbt = JSON.parse(body)[0].execQty;
+  positionXbt = JSON.parse(body)[0].currentQty;
   }
   else {
   positionXbt = 0;
@@ -154,7 +154,7 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   if (JSON.parse(body)[0] != undefined){
-  positionEth = JSON.parse(body)[0].execQty;
+  positionEth = JSON.parse(body)[0].currentQty;
   }
   else{
   positionEth = 0;
