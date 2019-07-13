@@ -85,7 +85,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         + margin + ',' 
         + beginBal + ','
         + starttime.toString() + ','
-        + nowtime.toString() '\n'
+        + nowtime.toString() +  '\n'
         }
         else {
         lines[line] = account + ',' 
@@ -93,7 +93,9 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         + avail + ','
         + wallet + ','
         + margin + ',' 
-        + beginBal + '\n'
+        + beginBal + ','
+        + starttime.toString() + ','
+        + nowtime.toString() +  '\n'
     }
     var ll = ""
     for (var l in lines){
