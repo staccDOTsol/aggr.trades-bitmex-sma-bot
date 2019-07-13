@@ -25,6 +25,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         req.send(data.replace('\n', '<br>'))
 }
 })
+})
 app.get('/set', (req, res) => {
 var test = req.query.test;
 var account = req.query.account;
