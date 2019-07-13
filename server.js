@@ -14,7 +14,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
         var send = "";
         for (var l in lines){
-
+        	if (lines[l].split(',')[1] != undefined){
         	send += 'testnet: ' + lines[l].split(',')[1]
         	+ '<br>account: ' + lines[l].split(',')[0]
         	+ '<br>avail: ' + lines[l].split(',')[2]
@@ -23,6 +23,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         	+ '<br>beginBal: ' + lines[l].split(',')[5] //1.05
         	+ '<br>gains: ' + (parseFloat(lines[l].split(',')[5]) / parseFloat(lines[l].split(',')[4]) - 1 )* 100 
         	+ ' %<br><br>'
+        }
         }
         res.send(send.replace('\n', '<br>'))
 }
