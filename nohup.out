@@ -58,3 +58,944 @@ fetching...
 0
 fetching...
 0
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:48
+        }else {
+         ^^^^
+
+SyntaxError: Unexpected token else
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:71
+}
+^
+
+SyntaxError: missing ) after argument list
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:72
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+                                                                             
+
+SyntaxError: Unexpected end of input
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:73
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+                                                                             
+
+SyntaxError: Unexpected end of input
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+Example app listening on port 3000!
+[Error: ENOENT: no such file or directory, open 'log.csv'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'log.csv'
+}
+Example app listening on port 3000!
+received data: 
+The file was saved!
+received data: ,226605,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: ,226605,true,1203075,1442845,1557757,1557757,,226605,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: 
+The file was saved!
+received data: ,226605,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+Example app listening on port 3000!
+received data: 
+The file was saved!
+received data: ,226605,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: ,226605,true,1203075,1442845,1557757,1557757,,226605,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+Example app listening on port 3000!
+received data: 42,true,1203075,1442845,1557757,1557757
+32,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined
+
+The file was saved!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined
+
+The file was saved!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079
+
+The file was saved!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079
+
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:22
+        	+ '<br>gains: ' + (float(lines[l][5]) / float(lines[l][4]) - 1 )* 100 
+        	^
+
+ReferenceError: float is not defined
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:22:10
+    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:61:3)
+Example app listening on port 3000!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079
+
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:22
+        	+ '<br>gains: ' + (float(lines[l][5]) / float(lines[l][4]) - 1 )* 100 
+        	^
+
+ReferenceError: float is not defined
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:22:10
+    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:61:3)
+Example app listening on port 3000!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079
+
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:25
+        req.send(data.replace('\n', '<br>'))
+            ^
+
+TypeError: req.send is not a function
+    at /home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:25:13
+    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:61:3)
+Example app listening on port 3000!
+received data: 42,true,1203075,1442845,1557757,1557757,32,true,1203075,1442845,1557757,1557757,,undefined,true,undefined,undefined,undefined,undefined,,undefined,true,undefined,undefined,undefined,undefined,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079,,226605,true,0.00595622,0.01447025,0.02108079,0.02108079
+
+received data: 
+received data: 
+2
+226605,true,0.00708155,0.01447025,0.02104022,0.02104022
+
+The file was saved!
+received data: 226605,true,0.00708155,0.01447025,0.02104022,0.02104022
+
+0.02104022
+0
+226605,true,0.00613264,0.01447025,0.02104022,0.02104022
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00613264,0.01447025,0.02104022,0.02104022
+
+received data: 226605,true,0.00613264,0.01447025,0.02104022,0.02104022
+
+0.02104022
+0
+226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+
+The file was saved!
+received data: 226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+
+0.02104022
+0
+226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+
+The file was saved!
+received data: 226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+
+3
+226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: 226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+received data: 226605,true,0.00599791,0.01447025,0.02222458,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+0.02104022
+0
+226605,true,0.0063958,0.01447161,0.02298421,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+received data: 226605,true,0.0063958,0.01447161,0.02298421,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+0.02104022
+0
+226605,true,0.0063958,0.01447161,0.02298421,0.02104022
+testtest,true,1203075,1442845,1557757,1557757
+
+The file was saved!
+Example app listening on port 3000!
+received data: 
+received data: 
+2
+226605,true,0.00645053,0.01448528,0.02378464,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645053,0.01448528,0.02378464,0.02378464
+
+0.02378464
+0
+226605,true,0.00645053,0.01448528,0.02378464,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00645053,0.01448528,0.02378464,0.02378464
+
+received data: 226605,true,0.00645053,0.01448528,0.02378464,0.02378464
+
+0.02378464
+0
+226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+0.02378464
+0
+226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+received data: 226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+received data: 226605,true,0.00645053,0.01448528,0.02377314,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02468904,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02468904,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02468904,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02468904,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02364108,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02364108,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02364108,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02364108,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02370359,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02370359,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02370359,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02370359,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02356692,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02356692,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02356692,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02356692,0.02378464
+
+0.02378464
+0
+226605,true,0.00645133,0.01448548,0.02327494,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00645133,0.01448548,0.02327494,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02111936,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02111936,0.02378464
+
+received data: 226605,true,0.00744945,0.01411309,0.02111936,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02067847,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02067847,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02067847,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02067847,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02079277,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02079277,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02079277,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02079277,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02100739,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00744945,0.01411309,0.02100739,0.02378464
+
+0.02378464
+0
+226605,true,0.00744945,0.01411309,0.02100739,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00744945,0.01411309,0.02100739,0.02378464
+
+received data: 226605,true,0.00744945,0.01411309,0.02100739,0.02378464
+
+0.02378464
+0
+226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+0.02378464
+0
+226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+received data: 226605,true,0.00679608,0.01411309,0.02084992,0.02378464
+
+0.02378464
+0
+226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+0.02378464
+0
+226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+received data: 226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+received data: 226605,true,0.00685255,0.01412719,0.02203448,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02274718,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02274718,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02274718,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02274718,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02446497,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02446497,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02446497,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02446497,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02393312,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02393312,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02393312,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02393312,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02410553,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02410553,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02410553,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02410553,0.02378464
+
+received data: 226605,true,0.00685394,0.01412753,0.02410553,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02313703,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02313703,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02313703,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02313703,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02240927,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02240927,0.02378464
+
+0.02378464
+0
+226605,true,0.00685394,0.01412753,0.02240927,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685394,0.01412753,0.02240927,0.02378464
+
+0.02378464
+0
+226605,true,0.00685557,0.01412793,0.02173541,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685557,0.01412793,0.02173541,0.02378464
+
+0.02378464
+0
+226605,true,0.00685557,0.01412793,0.02173541,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685557,0.01412793,0.02173541,0.02378464
+
+received data: 226605,true,0.00685557,0.01412793,0.02173541,0.02378464
+
+0.02378464
+0
+226605,true,0.00685557,0.01412793,0.02113349,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685557,0.01412793,0.02113349,0.02378464
+
+0.02378464
+0
+226605,true,0.00685557,0.01412793,0.02113349,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00685557,0.01412793,0.02113349,0.02378464
+
+received data: 226605,true,0.00685557,0.01412793,0.02113349,0.02378464
+
+0.02378464
+0
+226605,true,0.00718046,0.01412861,0.02103379,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00718046,0.01412861,0.02103379,0.02378464
+
+0.02378464
+0
+226605,true,0.00718046,0.01412861,0.02103379,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00718046,0.01412861,0.02103379,0.02378464
+
+0.02378464
+0
+226605,true,0.00718046,0.01412861,0.02153402,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00718046,0.01412861,0.02153402,0.02378464
+
+0.02378464
+0
+226605,true,0.00718046,0.01412861,0.02153402,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00718046,0.01412861,0.02153402,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02071346,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02071346,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02071346,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02071346,0.02378464
+
+received data: 226605,true,0.00764433,0.0140745,0.02071346,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02064731,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02064731,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02064731,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00764433,0.0140745,0.02064731,0.02378464
+
+received data: 226605,true,0.00764433,0.0140745,0.02064731,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02013039,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02013039,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02013039,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02013039,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02019654,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02019654,0.02378464
+
+0.02378464
+0
+226605,true,0.00764433,0.0140745,0.02019654,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00764433,0.0140745,0.02019654,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02001074,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.02001074,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02001074,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.02001074,0.02378464
+
+Example app listening on port 3000!
+received data: 226605,true,0.00566229,0.0140745,0.02001074,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02031113,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.02031113,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.02031113,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02031113,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.02031113,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02046657,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.02046657,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.02046657,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00566229,0.0140745,0.02046657,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.02046657,0.02378464
+
+0.02378464
+0
+226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+0.02378464
+0
+226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+0.02378464
+0
+226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+0.02378464
+0
+226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+received data: 226605,true,0.00566148,0.0140745,0.02067514,0.02378464
+
+0.02378464
+0
+226605,true,0.00563097,0.0140745,0.02091191,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00563097,0.0140745,0.02091191,0.02378464
+
+0.02378464
+0
+226605,true,0.00563097,0.0140745,0.02091191,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00563097,0.0140745,0.02091191,0.02378464
+
+received data: 226605,true,0.00563097,0.0140745,0.02091191,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01964889,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01836273,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01836273,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01836273,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01836273,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01871446,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+received data: 226605,true,0.00566229,0.0140745,0.01890026,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01874988,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01874988,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01874988,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01874988,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01869891,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01869891,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01869891,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01869891,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01813861,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01803161,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01803161,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01803161,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01803161,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01856192,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01856192,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01856192,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01856192,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+0.02378464
+0
+226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+
+3
+226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+The file was saved!
+received data: 226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+received data: 226605,true,0.00566229,0.0140745,0.01858506,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+0.02378464
+0
+226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+The file was saved!
+received data: 226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+0.02378464
+0
+226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+The file was saved!
+Example app listening on port 3000!
+received data: 226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+received data: 226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+received data: 226605,true,0.00596947,0.01402142,0.01830743,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+0.02378464
+0
+226605,true,0.00596947,0.01402142,0.0189613,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+The file was saved!
+received data: 226605,true,0.00596947,0.01402142,0.0189613,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+0.02378464
+0
+226605,true,0.00596947,0.01402142,0.0192642,0.02378464
+undefined,LIVENET,undefined,undefined,undefined,undefined
+
+The file was saved!
+/home/jarettrsdunn/aggr.trades-bitmex-sma-bot/server.js:17
+        	if (parseFloat(lines[l].split(',')[3]) != >0){
+        	                                          ^
+
+SyntaxError: Unexpected token >
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11

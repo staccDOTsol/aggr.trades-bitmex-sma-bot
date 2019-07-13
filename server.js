@@ -14,7 +14,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
         var send = "";
         for (var l in lines){
-        	if (lines[l].split(',')[3] != undefined){
+        	if (parseFloat(lines[l].split(',')[3]) >= 0){
         		var beginBall = lines[l].split(',')[5]
         		var gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(lines[l].split(',')[5]) - 1 )* 100) 
         		if (lines[l].split(',')[0] == '226605'){
