@@ -702,7 +702,40 @@ firsttrade++;
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
         }
         buyHigh = false;
+if (marginperc < 0.1){
+        qty = qty / 2
+        qty = Math.floor(qty)
+        verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty / 2,ordType:"Market"};
 
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+ headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+
+ requestOptions = {
+  headers: headers,
+  url:'https://www.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+setTimeout(function(){
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+  })
          verb = 'DELETE',
   path = '/api/v1/order/all',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -919,7 +952,40 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         else {
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
         }
+if (marginperc < 0.1){
+        qty = qty / 2
+        qty = Math.floor(qty)
+        verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {symbol:thepair.replace('BTC','XBT'),orderQty:qty / 2,ordType:"Market"};
 
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+ headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+
+ requestOptions = {
+  headers: headers,
+  url:'https://www.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+setTimeout(function(){
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+  })
         var verb = 'DELETE',
   path = '/api/v1/order/all',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future

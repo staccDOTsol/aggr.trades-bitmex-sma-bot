@@ -20,7 +20,6 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         		var starttime = parseFloat(lines[l].split(',')[6])
                 if (lines[l].split(',')[0] == '226605'){
         			beginBall = "0.01"
-                    starttime = starttime - 1000 * 60 * 60 * 24
         			gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(0.01) - 1 )* 100) 
         		
                 }
