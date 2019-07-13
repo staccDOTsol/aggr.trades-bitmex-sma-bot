@@ -39,27 +39,50 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
         var lines = data.split('\n')
         var match = false;
-        var line = lines.length;
+        var line = lines.length + 1;
         var beginBal;
         for (var l in lines){
-        	if (lines[l].split(',')[1] == account){
+        	if (lines[l].includes(account)){
         		match = true;
         		line = l
+        		beginBal = lines[l].split(',')[6]
+        		if (beginBal == undefined){
+
         		beginBal = lines[l].split(',')[5]
+        		}
+        		console.log(beginBal)
         	}
+        	lines[l]+='\n'
         }
         if (!match){
         	beginBal = margin;
         }
+        console.log(line)
+        if (line == -1){
+        	lines[lines.length+1] = account + ',' 
+        + test + ','
+        + avail + ','
+        + wallet + ','
+        + margin + ',' 
+        + beginBal + '\n'
+        }
+        else {
         lines[line] = account + ',' 
         + test + ','
         + avail + ','
         + wallet + ','
         + margin + ',' 
         + beginBal + '\n'
+    }
+    var ll = ""
+    for (var l in lines){
+    	if (lines[l].length>4){
+    	ll+=lines[l]
+    }
+    }
+     console.log(ll)
 
-
-		fs.writeFile("log.csv", lines, function(err) {
+		fs.writeFile("log.csv", ll, function(err) {
 		    if(err) {
 		    	res.send('')
 		        return console.log(err);
