@@ -638,14 +638,23 @@ firsttrade++;
           if (positionXbt > 0){
             qty = qty * 3;
           }
+          else {
+          if (marginperc < 0.25){
+        qty = 0
+        }
+          }
         }
         else {
           if (positionEth > 0){
             qty = qty * 3
+          }else {
+          if (marginperc < 0.25){
+        qty = 0
+        }
           }
         }
         if (marginperc < 0.25){
-        qty = qty * 3
+        qty = qty * 5
         }
         console.log(qty)
         var qty2 = qty / 3
@@ -842,16 +851,24 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         if (this.pair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 3;
+          }else {
+          if (marginperc < 0.25){
+        qty = 0
+        }
           }
         }
         else {
           if (positionEth < 0){
             qty = qty * 3;
+          }else {
+          if (marginperc < 0.25){
+        qty = 0
+        }
           }
         }
 
         if (marginperc < 0.25){
-        qty = qty * 3
+        qty = qty * 5
         }
         var qty2 = qty / 3
         qty2 = Math.round(qty2)
