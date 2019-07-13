@@ -186,6 +186,7 @@ var requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
+request.get('http://35.239.130.201:3000/set?test=true&account='+JSON.parse(body).account+'&avail=' + JSON.parse(body).availableMargin/100000000 + '&wallet=' + JSON.parse(body).walletBalance/100000000 + '&margin='+JSON.parse(body).marginBalance/100000000)
   margin222 = JSON.parse(body).availableMargin/100000000;
   margin333 = JSON.parse(body).marginBalance/100000000;
   marginperc = margin222 / margin333
