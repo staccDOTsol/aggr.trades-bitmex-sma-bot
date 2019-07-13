@@ -15,13 +15,17 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         var send = "";
         for (var l in lines){
         	if (lines[l].split(',')[1] != undefined){
+        		var gains = -1 * ((parseFloat(lines[l].split(',')[5]) / parseFloat(lines[l].split(',')[4]) - 1 )* 100) 
+        		if (lines[l].split(',')[0] == '226605'){
+        			gains =  -1 * ((parseFloat(0.01) / parseFloat(lines[l].split(',')[4]) - 1 )* 100) 
+        		}
         	send += 'testnet: ' + lines[l].split(',')[1]
         	+ '<br>account: ' + lines[l].split(',')[0]
         	+ '<br>avail: ' + lines[l].split(',')[2]
         	+ '<br>wallet: ' + lines[l].split(',')[3]
         	+ '<br>margin: ' + lines[l].split(',')[4] // 1.00
         	+ '<br>beginBal: ' + lines[l].split(',')[5] //1.05
-        	+ '<br>gains: ' + (parseFloat(lines[l].split(',')[5]) / parseFloat(lines[l].split(',')[4]) - 1 )* 100 
+        	+ '<br>gains: ' + gains
         	+ ' %<br><br>'
         }
         }
