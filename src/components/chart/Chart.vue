@@ -74,6 +74,7 @@ let buyHigh;
 var bm;
 var margin222;
 var margin333
+var removed = false;
 var marginperc
 var positionXbt;
 var positionEth;
@@ -546,6 +547,7 @@ this.chart.series[3].data[a].remove();
     if (this.chart.series[4] != undefined){
     if (this.chart.series[4].yData.length > 20){
 for (var a = 0; a <=  this.chart.series[4].yData.length - 20 * 2; a++){
+removed = true;
 this.chart.series[4].data[a].remove();
 }
     }
@@ -601,13 +603,13 @@ this.chart.series[7].data[a].remove();
     }
 
     if (
-    this.chart.series[1].data[this.chart.series[5].data.length-1] != undefined){
-    console.log(this.chart.series[4].data[this.chart.series[4].data.length-1].plotY)
-    console.log(this.chart.series[5].data[this.chart.series[5].data.length-1].plotY)
+    this.chart.series[1].data[40] != undefined){
+    console.log(this.chart.series[4].data[40].plotY)
+    console.log(this.chart.series[5].data[40].plotY)
     }
-    if(this.chart.series[5].data[this.chart.series[5].data.length-1] != undefined){
+    if(this.chart.series[5].data[40] != undefined){
 
-        if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <=  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        if (this.chart.series[4].data[40].plotY <=  0.99 * this.chart.series[5].data[40].plotY){
         console.log('sells greater')
         if (buyHigh == undefined){
         buyHigh = true;
@@ -799,7 +801,7 @@ setTimeout(function(){
 
 
         }
-        } else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >  0.99 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY && this.chart.series[4].data[this.chart.series[4].data.length-1].plotY <  1.01 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY) {
+        } else if (this.chart.series[4].data[40].plotY >  0.99 * this.chart.series[5].data[40].plotY && this.chart.series[4].data[40].plotY <  1.01 * this.chart.series[5].data[40].plotY) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -831,7 +833,7 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }
-        else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  1.01 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        else if (this.chart.series[4].data[40].plotY >=  1.01 * this.chart.series[5].data[40].plotY){
         console.log('buys greater')
         if (firsttrade <2 ){
         firsttrade++;
