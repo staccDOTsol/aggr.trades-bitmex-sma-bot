@@ -11,15 +11,17 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
 
         var lines = data.split('\n')
+
         var send = "";
         for (var l in lines){
-        	send += 'testnet: ' + lines[l][1]
-        	+ '<br>account: ' + lines[l][0]
-        	+ '<br>avail: ' + lines[l][2]
-        	+ '<br>wallet: ' + lines[l][3]
-        	+ '<br>margin: ' + lines[l][4] // 1.00
-        	+ '<br>beginBal: ' + lines[l][5] //1.05
-        	+ '<br>gains: ' + (parseFloat(lines[l][5]) / parseFloat(lines[l][4]) - 1 )* 100 
+
+        	send += 'testnet: ' + lines[l].split(',')[1]
+        	+ '<br>account: ' + lines[l].split(',')[0]
+        	+ '<br>avail: ' + lines[l].split(',')[2]
+        	+ '<br>wallet: ' + lines[l].split(',')[3]
+        	+ '<br>margin: ' + lines[l].split(',')[4] // 1.00
+        	+ '<br>beginBal: ' + lines[l].split(',')[5] //1.05
+        	+ '<br>gains: ' + (parseFloat(lines[l].split(',')[5]) / parseFloat(lines[l].split(',')[4]) - 1 )* 100 
         	+ ' %<br><br>'
         }
         res.send(send.replace('\n', '<br>'))
