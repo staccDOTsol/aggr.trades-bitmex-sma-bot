@@ -201,7 +201,7 @@ setTimeout(function(){
 var account;
 var wallet;
 function marginDo(){
-  requestOptions = {
+  var requestOptions = {
   url:'http://35.239.130.201:3000/set?test=true&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
   method: 'GET'
 };
