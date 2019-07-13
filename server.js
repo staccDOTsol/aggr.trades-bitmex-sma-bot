@@ -37,7 +37,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
             + '<br>first seen: ' + new Date(starttime)
             + '<br>last seen: ' + new Date(parseFloat(lines[l].split(',')[7]))
             + '<br>days: ' + diff.toPrecision(3)
-            + '<br>APR: ' + apr.toPrecision(3)
+            + '<br>APR: ' + apr
         	+ ' %<br><br>'
         }
         }
