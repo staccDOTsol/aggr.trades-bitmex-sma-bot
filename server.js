@@ -61,12 +61,15 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
 		fs.writeFile("log.csv", lines, function(err) {
 		    if(err) {
+		    	res.send('')
 		        return console.log(err);
 		    }
 
 		    console.log("The file was saved!");
+		    	res.send('')
 		}); 
     } else {
+		    	res.send('')
         console.log(err);
     }
 });
