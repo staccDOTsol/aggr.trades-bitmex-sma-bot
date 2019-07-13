@@ -601,8 +601,9 @@ this.chart.series[7].data[a].remove();
     }
 
     if (
-    this.chart.series[1].data[this.chart.series[1].data.length-1] != undefined){
-    console.log(this.chart.series[1].data[this.chart.series[1].data.length-1].plotY)
+    this.chart.series[1].data[this.chart.series[5].data.length-1] != undefined){
+    console.log(this.chart.series[5].data[this.chart.series[4].data.length-1].plotY)
+    console.log(this.chart.series[5].data[this.chart.series[5].data.length-1].plotY)
     }
     if(this.chart.series[5].data[this.chart.series[5].data.length-1] != undefined){
 
