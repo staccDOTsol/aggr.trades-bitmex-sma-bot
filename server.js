@@ -45,7 +45,8 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         		line = l
         		beginBal = lines[l].split(',')[5]
         	}
-        }else {
+        }
+        if (!match){
         	beginBal = margin;
         }
         lines[line] = account + ',' 
