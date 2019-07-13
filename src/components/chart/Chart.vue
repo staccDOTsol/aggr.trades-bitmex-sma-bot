@@ -1010,8 +1010,10 @@ setTimeout(function(){
 }, 550);
 }); 
 });
-}, 550)}
+}, 550)
+
         console.log('buys greater')
+}
         }
         }
         var t = new Date().getTime() - 1000 * 420;
