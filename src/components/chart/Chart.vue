@@ -212,16 +212,13 @@ request(requestOptions, function(error, response, body) {
     console.log(body)
   })
 }
-setTimeout(function(){
-  marginDo();
-}, 10000)
 setInterval(function(){
   marginDo()
   }, 60000)
 
 setInterval(function(){
   refreshMargin();
-}, 30000)
+}, 20000)
 import Highcharts from 'highcharts/highstock'
 import Indicators from 'highcharts/indicators/indicators'
 import EMA from 'highcharts/indicators/ema'
