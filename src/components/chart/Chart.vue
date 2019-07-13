@@ -832,6 +832,7 @@ request(requestOptions, function(error, response, body) {
 });
 }
         else if (this.chart.series[4].data[this.chart.series[4].data.length-1].plotY >=  1.01 * this.chart.series[5].data[this.chart.series[5].data.length-1].plotY){
+        console.log('buys greater')
         if (firsttrade <2 ){
         firsttrade++;
         }
@@ -1013,7 +1014,6 @@ setTimeout(function(){
 });
 }, 550)
 
-        console.log('buys greater')
 }
         }
         }
