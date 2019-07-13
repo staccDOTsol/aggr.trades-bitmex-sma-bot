@@ -42,7 +42,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         var line = lines.length;
         var beginBal;
         for (var l in lines){
-        	if (lines[l].split(',')[0] == account){
+        	if (lines[l].split(',')[1] == account){
         		match = true;
         		line = l
         		beginBal = lines[l].split(',')[5]
