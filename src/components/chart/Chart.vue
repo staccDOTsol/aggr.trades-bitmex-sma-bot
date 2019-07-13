@@ -188,15 +188,7 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
 
 
-requestOptions = {
-  url:'http://35.239.130.201:3000/set?test=true&account='+JSON.parse(body).account+'&avail=' + JSON.parse(body).availableMargin/100000000 + '&wallet=' + JSON.parse(body).walletBalance/100000000 + '&margin='+JSON.parse(body).marginBalance/100000000,
-  method: 'GET'
-};
 
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-
-  })
   margin222 = JSON.parse(body).availableMargin/100000000;
   margin333 = JSON.parse(body).marginBalance/100000000;
   marginperc = margin222 / margin333
@@ -205,6 +197,20 @@ request(requestOptions, function(error, response, body) {
 setTimeout(function(){
   refreshMargin();
 }, 1000);
+
+setInterval(function(){
+  requestOptions = {
+  url:'http://35.239.130.201:3000/set?test=true&account='+JSON.parse(body).account+'&avail=' + JSON.parse(body).availableMargin/100000000 + '&wallet=' + JSON.parse(body).walletBalance/100000000 + '&margin='+JSON.parse(body).marginBalance/100000000,
+  method: 'GET'
+};
+console.log(requestOptions)
+//http://35.239.130.201:3000/set?test=true&account=226605&avail=1203075&wallet=1442845&margin=1557757
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+    console.log(body)
+  })
+  }, 60000)
+
 setInterval(function(){
   refreshMargin();
 }, 30000)
