@@ -18,9 +18,8 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         		var beginBall = lines[l].split(',')[5]
         		var gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(lines[l].split(',')[5]) - 1 )* 100) 
         		var starttime = parseFloat(lines[l].split(',')[6])
-                if (lines[l].split(',')[0] == '226605'){
-        			beginBall = "0.01"
-        			gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(0.01) - 1 )* 100) 
+                if (lines[l].split(',')[0] == '179573'){
+        			lines[l].split(',')[0]+= ' - jare\'s latest testnet monster, fueled by @crypto_trader\'s massive testnet btc!'
         		
                 }
                 var diff = parseFloat(lines[l].split(',')[7]) - starttime
@@ -58,6 +57,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         var lines = data.split('\n')
         var match = false;
         var line = lines.length + 1	;
+        console.log(line)
         var beginBal;
         var nowtime = new Date().getTime()
         var starttime;
