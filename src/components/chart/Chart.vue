@@ -629,7 +629,7 @@ this.chart.series[7].data[a].remove();
     console.log(this.chart.series[5].yData[26])
     }
     if(this.chart.series[5].yData[0] != undefined){
-        var num = this.chart.series[4].yData.length
+        var num = this.chart.series[4].yData.length - 1
         if (num == 27){
         num = 26
         }
