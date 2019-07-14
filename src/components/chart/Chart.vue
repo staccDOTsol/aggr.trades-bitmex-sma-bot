@@ -1000,16 +1000,16 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         buyHigh = true;
         var pr = 0;
         verb = 'GET',
- var path = '/api/v1/instrument/active',
+  path = '/api/v1/instrument/active',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-var postBody = JSON.stringify(data);
+postBody = JSON.stringify(data);
 
-var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
-var headers = {
+ headers = {
   'content-type' : 'application/json',
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -1017,7 +1017,7 @@ var headers = {
   'api-key': apiKey,
   'api-signature': signature
 };
-var requestOptions = {
+requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
