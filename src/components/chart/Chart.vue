@@ -510,6 +510,7 @@ export default {
       }
     },
     onTrades(trades) {
+    console.error(-1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12)
     console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 20 * 2){
