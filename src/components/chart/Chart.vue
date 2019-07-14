@@ -749,7 +749,7 @@ if (js[j].symbol == 'ETHUSD'){
         pr = btcbid
         }
         } else {
-        if (qty <= 0){
+        if (qty < 0){
         pr = ethask
         }
         else {
@@ -1045,7 +1045,7 @@ if (js[j].symbol == 'ETHUSD'){
         pr = btcbid
         }
         } else {
-        if (qty <= 0){
+        if (qty < 0){
         pr = ethask
         }
         else {
