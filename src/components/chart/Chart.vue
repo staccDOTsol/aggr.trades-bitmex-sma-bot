@@ -659,6 +659,13 @@ firsttrade++;
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
+        if (marginperc < 0.3){
+        qty = qty /6
+        }
+        if (marginperc < 0.4){
+        qty = qty / 3
+        }
+
         if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
         }
@@ -954,6 +961,13 @@ if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
+        }
+        
+        if (marginperc < 0.3){
+        qty = qty /6
+        }
+        if (marginperc < 0.4){
+        qty = qty / 3
         }
         if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
