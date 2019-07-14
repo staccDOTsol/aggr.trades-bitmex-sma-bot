@@ -661,7 +661,7 @@ firsttrade++;
         console.log(this.pair)
         console.log(positionXbt)
         console.log(positionEth)
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
           if (positionXbt > 0){
             qty = qty * 2;
           }
@@ -685,7 +685,7 @@ firsttrade++;
         }
         console.log(qty)
         var qty2 = qty / 3
-         if (this.pair == 'BTCUSD'){
+         if (thepair == 'BTCUSD'){
           if (positionXbt > 0){
             qty2 = qty2 * 2;
           }
@@ -741,7 +741,7 @@ else if (js[j].symbol == 'ETHUSD'){
     ethask = js[j].askPrice
   }
   }
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
         if (qty <= 0){
         pr = btcask
         }
@@ -757,7 +757,7 @@ else if (js[j].symbol == 'ETHUSD'){
         }
         }
 
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         }
         else {
@@ -977,7 +977,7 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         qty = qty * 10
         }
         qty2 = Math.round(qty2)
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty2 = qty2 * 2;
           }
@@ -1037,7 +1037,7 @@ else if (js[j].symbol == 'ETHUSD'){
     ethask = js[j].askPrice
   }
   }
-       if (this.pair == 'BTCUSD'){
+       if (thepair == 'BTCUSD'){
         if (qty <= 0){
         pr = btcask
         }
@@ -1052,7 +1052,7 @@ else if (js[j].symbol == 'ETHUSD'){
         pr = ethbid
         }
         }
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         }
         else {
