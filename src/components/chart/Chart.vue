@@ -641,16 +641,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (-1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         }
         }
         else {
         firsttrade++;
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         }
         }
         if (this.pair == 'ETHUSD'){
@@ -937,16 +937,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
 if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         }
         }
         else{
         firsttrade++
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         }
         }
         if (this.pair == 'ETHUSD'){
