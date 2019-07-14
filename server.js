@@ -76,6 +76,8 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         	beginBal = margin;
         }
         console.log(line)
+        console.log(starttime)
+        console.log(nowtime)
         if (line == -1){
         	lines[lines.length+1] = account + ',' 
         + test + ','
