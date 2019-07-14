@@ -616,7 +616,7 @@ this.chart.series[7].data[a].remove();
     console.log(test)
     test = test *2;
         test = test * 10 * 10
-        if (this.pair == 'ETHUSD'){
+        if (thepair == 'ETHUSD'){
        // test = test * 3
         }
         //console.log(test)
@@ -645,23 +645,23 @@ firsttrade++;
         if (firsttrade == 2){
         firsttrade++;
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
-        if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
+        if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
         }
         }
         else {
         firsttrade++;
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
-        if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
+        if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
         }
         }
-        if (this.pair == 'ETHUSD'){
+        if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
         }
         console.log('marginperc')
         console.log(marginperc)
-        console.log(this.pair)
+        console.log(thepair)
         console.log(positionXbt)
         console.log(positionEth)
         if (thepair == 'BTCUSD'){
@@ -941,21 +941,21 @@ request(requestOptions, function(error, response, body) {
         else if (firsttrade == 2){
         firsttrade++;
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
-if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
+if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
         }
         }
         else{
         firsttrade++
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
-        if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
+        if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*6
         }
         }
-        if (this.pair == 'ETHUSD'){
+        if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
         }
-        if (this.pair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 2;
           }else {
