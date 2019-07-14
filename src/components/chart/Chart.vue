@@ -742,14 +742,14 @@ if (js[j].symbol == 'ETHUSD'){
   }
   }
         if (this.pair == 'BTCUSD'){
-        if (qty < 0){
+        if (qty <= 0){
         pr = btcask
         }
         else {
         pr = btcbid
         }
         } else {
-        if (qty < 0){
+        if (qty <= 0){
         pr = ethask
         }
         else {
@@ -1027,7 +1027,7 @@ request(requestOptions, function(error, response, body) {
   var btcask;
   var ethbid;
   var ethask;
-  for (var j in js){
+  for (var j in js){  
   if (js[j].symbol == 'XBTUSD'){
     btcbid = js[j].bidPrice
     btcask = js[j].askPrice
@@ -1038,14 +1038,14 @@ if (js[j].symbol == 'ETHUSD'){
   }
   }
        if (this.pair == 'BTCUSD'){
-        if (qty < 0){
+        if (qty <= 0){
         pr = btcask
         }
         else {
         pr = btcbid
         }
         } else {
-        if (qty < 0){
+        if (qty <= 0){
         pr = ethask
         }
         else {
