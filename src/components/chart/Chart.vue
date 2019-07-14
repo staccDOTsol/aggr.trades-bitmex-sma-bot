@@ -633,7 +633,7 @@ this.chart.series[7].data[a].remove();
         if (num == 27){
         num = 26
         }
-        if (this.chart.series[4].yData[num]<=  0.99 * this.chart.series[5].yData[num]){
+        if (ththis.chart.series[5].yData[num]<=  0.99 * ththis.chart.series[4].yData[num]){
         console.log('sells greater')
         if (buyHigh == undefined){
         buyHigh = true;
@@ -901,7 +901,7 @@ setTimeout(function(){
 });
 
         }
-        } else if (this.chart.series[4].yData[num]>  0.99 * this.chart.series[5].yData[num]&& this.chart.series[4].yData[num]<  1.01 * this.chart.series[5].yData[num]) {
+        } else if (ththis.chart.series[5].yData[num]>  0.99 * ththis.chart.series[4].yData[num]&& ththis.chart.series[5].yData[num]<  1.01 * ththis.chart.series[4].yData[num]) {
 
           verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -933,7 +933,7 @@ request(requestOptions, function(error, response, body) {
   console.log(body);
 });
 }
-        else if (this.chart.series[4].yData[num]>=  1.01 * this.chart.series[5].yData[num]){
+        else if (ththis.chart.series[5].yData[num]>=  1.01 * ththis.chart.series[4].yData[num]){
         console.log('buys greater')
         if (firsttrade <2 ){
         firsttrade++;
