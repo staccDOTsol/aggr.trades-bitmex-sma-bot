@@ -669,7 +669,7 @@ firsttrade++;
             qty = qty * 2;
           }
           else {
-          if (marginperc < 0.25){
+          if (marginperc < 0.33){
         qty = 0
         }
           }
@@ -678,12 +678,12 @@ firsttrade++;
           if (positionEth > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.25){
+          if (marginperc < 0.33){
         qty = 0
         }
           }
         }
-        if (marginperc < 0.25){
+        if (marginperc < 0.33){
         qty = qty * 10
         }
         console.log(qty)
@@ -698,7 +698,7 @@ firsttrade++;
             qty2 = qty2 * 2
           }
         }
-        if (marginperc < 0.25){
+        if (marginperc < 0.33){
         qty2 = qty2 * 3
         }
         qty2 = Math.round(qty2)
@@ -767,7 +767,7 @@ else if (js[j].symbol == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
         }
         buyHigh = false;
-if (marginperc < 0.1){
+if (marginperc < 0.15){
         qty = qty / 2
         qty = Math.floor(qty)
         verb = 'POST',
@@ -959,7 +959,7 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
           if (positionXbt < 0){
             qty = qty * 2;
           }else {
-          if (marginperc < 0.25){
+          if (marginperc < 0.33){
         qty = 0
         }
           }
@@ -968,14 +968,14 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
           if (positionEth < 0){
             qty = qty * 2;
           }else {
-          if (marginperc < 0.25){
+          if (marginperc < 0.33){
         qty = 0
         }
           }
         }
 
         var qty2 = qty / 3
-        if (marginperc < 0.25){
+        if (marginperc < 0.33){
         qty2 = qty2 * 5
         qty = qty * 10
         }
@@ -1061,7 +1061,7 @@ else if (js[j].symbol == 'ETHUSD'){
         else {
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
         }
-if (marginperc < 0.1){
+if (marginperc < 0.15){
         qty = qty / 2
         qty = Math.floor(qty)
         verb = 'POST',
