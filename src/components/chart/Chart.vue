@@ -736,7 +736,7 @@ request(requestOptions, function(error, response, body) {
     btcbid = js[j].bidPrice
     btcask = js[j].askPrice
   }
-if (js[j].symbol == 'ETHUSD'){
+else if (js[j].symbol == 'ETHUSD'){
     ethbid = js[j].bidPrice
     ethask = js[j].askPrice
   }
@@ -1032,7 +1032,7 @@ request(requestOptions, function(error, response, body) {
     btcbid = js[j].bidPrice
     btcask = js[j].askPrice
   }
-if (js[j].symbol == 'ETHUSD'){
+else if (js[j].symbol == 'ETHUSD'){
     ethbid = js[j].bidPrice
     ethask = js[j].askPrice
   }
