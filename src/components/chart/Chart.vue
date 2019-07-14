@@ -698,23 +698,64 @@ firsttrade++;
           }
         }
         if (marginperc < 0.25){
-        qty = qty * 3
+        qty2 = qty2 * 3
         }
         qty2 = Math.round(qty2)
         qty = Math.round(qty)
+        verb = 'GET',
+  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22XBTUSD%22%7D',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  var js = JSON.parse(body)
+  var btcbid;
+  var btcask;
+  var ethbid;
+  var ethask;
+  for (var j in js){
+  if (js[j].symbol == 'XBTUSD'){
+    btcbid = js[j].bidPrice
+    btcask = js[j].askPrice
+  }
+else if (js[j].symbol == 'ETHUSD'){
+    ethbid = js[j].bidPrice
+    ethask = js[j].askPrice
+  }
+  }
         if (this.pair == 'BTCUSD'){
         if (qty < 0){
-        pr = bm + 0.5
+        pr = btcask
         }
         else {
-        pr = bm - 0.5
+        pr = btcbid
         }
         } else {
         if (qty < 0){
-        pr = bm + 0.15
+        pr = ethask
         }
         else {
-        pr = bm - 0.15
+        pr = ethbid
         }
         }
 
@@ -856,6 +897,7 @@ setTimeout(function(){
 });});
 }, 550);
 
+});
 
         }
         } else if (this.chart.series[4].yData[26]>  0.99 * this.chart.series[5].yData[26]&& this.chart.series[4].yData[26]<  1.01 * this.chart.series[5].yData[26]) {
@@ -933,10 +975,10 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
           }
         }
 
-        if (marginperc < 0.25){
-        qty = qty * 5
-        }
         var qty2 = qty / 3
+        if (marginperc < 0.25){
+        qty2 = qty2 * 5
+        }
         qty2 = Math.round(qty2)
         if (this.pair == 'BTCUSD'){
           if (positionXbt < 0){
@@ -957,19 +999,60 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         if (buyHigh == false){
         buyHigh = true;
         var pr = 0;
+        verb = 'GET',
+  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22XBTUSD%22%7D',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  var js = JSON.parse(body)
+  var btcbid;
+  var btcask;
+  var ethbid;
+  var ethask;
+  for (var j in js){
+  if (js[j].symbol == 'XBTUSD'){
+    btcbid = js[j].bidPrice
+    btcask = js[j].askPrice
+  }
+else if (js[j].symbol == 'ETHUSD'){
+    ethbid = js[j].bidPrice
+    ethask = js[j].askPrice
+  }
+  }
        if (this.pair == 'BTCUSD'){
         if (qty < 0){
-        pr = bm + 0.5
+        pr = btcask
         }
         else {
-        pr = bm - 0.5
+        pr = btcbid
         }
         } else {
         if (qty < 0){
-        pr = bm + 0.15
+        pr = ethask
         }
         else {
-        pr = bm - 0.15
+        pr = ethbid
         }
         }
         if (this.pair == 'BTCUSD'){
@@ -1109,7 +1192,7 @@ setTimeout(function(){
 }); 
 });
 }, 550)
-
+})
 }
         }
         }
