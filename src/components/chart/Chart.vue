@@ -83,7 +83,7 @@ import chartOptions from './options.json'
 var request = require('browser-request')
 var crypto = require('crypto');
 var firsttrade = 0;
-
+var verb, path, expires, data, postBody, signature, headers,requestOptions;
 var apiKey
 
 var apiSecret
@@ -160,17 +160,17 @@ request(requestOptions, function(error, response, body) {
   positionEth = 0;
   }
 });
-  var verb = 'GET',
+  verb = 'GET',
   path = '/api/v1/user/margin?currency=XBt',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-var postBody = JSON.stringify(data);
+postBody = JSON.stringify(data);
 
-var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
-var headers = {
+ headers = {
   'content-type' : 'application/json',
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -178,7 +178,7 @@ var headers = {
   'api-key': apiKey,
   'api-signature': signature
 };
-var requestOptions = {
+requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
@@ -702,17 +702,17 @@ firsttrade++;
         }
         qty2 = Math.round(qty2)
         qty = Math.round(qty)
-        verb = 'GET',
-  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22XBTUSD%22%7D',
+       verb = 'GET',
+  path = '/api/v1/instrument/active',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
  postBody = JSON.stringify(data);
 
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
-headers = {
+ headers = {
   'content-type' : 'application/json',
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -720,7 +720,7 @@ headers = {
   'api-key': apiKey,
   'api-signature': signature
 };
-requestOptions = {
+ requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
@@ -1000,16 +1000,16 @@ if (this.pair == 'EOSBTC' || this.pair == 'BCHBTC'){
         buyHigh = true;
         var pr = 0;
         verb = 'GET',
-  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22XBTUSD%22%7D',
+ var path = '/api/v1/instrument/active',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
+var postBody = JSON.stringify(data);
 
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
 
-headers = {
+var headers = {
   'content-type' : 'application/json',
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -1017,7 +1017,7 @@ headers = {
   'api-key': apiKey,
   'api-signature': signature
 };
-requestOptions = {
+var requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
@@ -1099,18 +1099,18 @@ request(requestOptions, function(error, response, body) {
   })
 
   }
-        var verb = 'DELETE',
+        verb = 'DELETE',
   path = '/api/v1/order/all',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = {symbol:thepair.replace('BTC','XBT')};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-var postBody = JSON.stringify(data);
+postBody = JSON.stringify(data);
 
-var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
 
-var headers = {
+headers = {
   'content-type' : 'application/json',
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -1118,7 +1118,7 @@ var headers = {
   'api-key': apiKey,
   'api-signature': signature
 };
-var requestOptions = {
+ requestOptions = {
   headers: headers,
   url:'https://testnet.bitmex.com'+path,
   method: verb,
