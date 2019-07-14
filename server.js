@@ -27,7 +27,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     starttime = starttime - 1000 * 60 * 60 * 24
                     beginBall2 = 0.01
                     gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(beginBall) - 1 )* 100)
-                    gains2 = ((parseFloat(lines[l].split(',')[4]) / parseFloat(beginBall2) - 1 )* 100)
+                    gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(beginBall2) - 1 )* 100)
                 }
                 var diff = parseFloat(lines[l].split(',')[7]) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
