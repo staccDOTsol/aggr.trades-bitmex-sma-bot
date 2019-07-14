@@ -641,7 +641,7 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = (-1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         if (this.pair == 'EOSBTC' || this.pair == 'XLMBTC'){
         qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*2.5
         }
