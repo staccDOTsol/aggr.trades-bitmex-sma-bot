@@ -510,7 +510,7 @@ export default {
       }
     },
     onTrades(trades) {
-    console.error(-1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12)
+    console.error(-1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12)
     console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 20 * 2){
@@ -613,7 +613,7 @@ this.chart.series[7].data[a].remove();
     if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
     
     console.log(this.tickData.exchanges[trades[trades.length-1][0]])
-    var test =((margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))/2)
+    var test =((margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))/2)
     console.log(test)
     test = test *2;
         test = test * 10 * 10
@@ -645,16 +645,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
         else {
         firsttrade++;
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = -1*(margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
         if (thepair == 'ETHUSD'){
@@ -941,16 +941,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
 if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
         else{
         firsttrade++
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50/6))*12
+        qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
         if (thepair == 'ETHUSD'){
