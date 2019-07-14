@@ -662,7 +662,7 @@ firsttrade++;
         if (marginperc < 0.3){
         qty = qty /6
         }
-        if (marginperc < 0.4){
+       else if (marginperc < 0.4){
         qty = qty / 3
         }
 
@@ -962,11 +962,11 @@ if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         qty = (margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))*12
         }
         }
-        
+
         if (marginperc < 0.3){
         qty = qty /6
         }
-        if (marginperc < 0.4){
+        else if (marginperc < 0.4){
         qty = qty / 3
         }
         if (thepair == 'ETHUSD'){
