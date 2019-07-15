@@ -70,14 +70,14 @@
             ></span
           ></label>
           <input
-            type="string"
-            onchange="apis();"
             id="trailstop"
-            placeholder="15"
+            onchange="apis();"
+            type="string"
+            placeholder=""
             class="form-control"
             :value="trailstop"
+            @change=""
           />
-        </div>
         <div class="form-group settings-pair mb8">
           <label
             >Pair
