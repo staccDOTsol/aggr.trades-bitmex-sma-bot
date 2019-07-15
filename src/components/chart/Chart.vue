@@ -700,16 +700,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         }
         }
         else {
         firsttrade++;
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         }
         }
         if (marginperc < 0.3){
@@ -1168,16 +1168,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
 if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         }
         }
         else{
         firsttrade++
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/6))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         }
         }
 
