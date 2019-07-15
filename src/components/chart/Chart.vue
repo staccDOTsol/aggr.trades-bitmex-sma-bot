@@ -535,8 +535,8 @@ export default {
 
     console.log('data')
     if (this.chart.series[0 ] != undefined){
-    if (this.chart.series[0].yData.length > 20 * 2){
-    for (var a = 0; a <=  this.chart.series[0].yData.length - 20 * 2; a++){
+    if (this.chart.series[0].yData.length > 30){
+    for (var a = 0; a <=  this.chart.series[0].yData.length > 30; a++){
 try {
 this.chart.series[0].data[a].remove();
 } catch(err){}
@@ -545,8 +545,8 @@ this.chart.series[0].data[a].remove();
           }
           }
     if (this.chart.series[1] != undefined){
-    if (this.chart.series[1].yData.length > 20 * 2){
-for (var a = 0; a <=  this.chart.series[1].yData.length - 20 * 2; a++){
+    if (this.chart.series[1].yData.length > 30){
+for (var a = 0; a <=  this.chart.series[1].yData.length > 30; a++){
     try {
 
 this.chart.series[1].data[a].remove();
@@ -556,8 +556,8 @@ this.chart.series[1].data[a].remove();
     }
 
     if (this.chart.series[2] != undefined){
-    if (this.chart.series[2].yData.length > 20 * 2){
-for (var a = 0; a <=  this.chart.series[2].yData.length - 20 * 2; a++){
+    if (this.chart.series[2].yData.length > 30){
+for (var a = 0; a <=  this.chart.series[2].yData.length > 30; a++){
     try {
 
 this.chart.series[2].data[a].remove();
@@ -567,8 +567,8 @@ this.chart.series[2].data[a].remove();
 
     }
     if (this.chart.series[3] != undefined){
-    if (this.chart.series[3].yData.length > 20 * 2){
-for (var a = 0; a <=  this.chart.series[3].yData.length - 20 * 2; a++){
+    if (this.chart.series[3].yData.length > 30){
+for (var a = 0; a <=  this.chart.series[3].yData.length > 30; a++){
     try {
 
 this.chart.series[3].data[a].remove();
@@ -579,7 +579,7 @@ this.chart.series[3].data[a].remove();
 
     if (this.chart.series[4] != undefined){
     if (this.chart.series[4].yData.length > 20){
-for (var a = 0; a <=  this.chart.series[4].yData.length - 20 * 2; a++){
+for (var a = 0; a <=  this.chart.series[4].yData.length > 30; a++){
     try {
 
 this.chart.series[4].data[a].remove();
@@ -590,7 +590,7 @@ this.chart.series[4].data[a].remove();
     }
     if (this.chart.series[5] != undefined){
     if (this.chart.series[5].yData.length > 20){
-for (var a = 0; a <=  this.chart.series[5].yData.length - 20 * 2; a++){
+for (var a = 0; a <=  this.chart.series[5].yData.length > 30; a++){
     try {
 
 this.chart.series[5].data[a].remove();
@@ -600,7 +600,7 @@ this.chart.series[5].data[a].remove();
     }
     if (this.chart.series[6] != undefined){
     if (this.chart.series[6].yData.length > 20){
-for (var a = 0; a <=  this.chart.series[6].yData.length - 20 * 2; a++){
+for (var a = 0; a <=  this.chart.series[6].yData.length > 30; a++){
     try {
 
 this.chart.series[6].data[a].remove();
@@ -611,7 +611,7 @@ this.chart.series[6].data[a].remove();
     }
     if (this.chart.series[7] != undefined){
     if (this.chart.series[7].yData.length > 20){
-for (var a = 0; a <=  this.chart.series[7].yData.length - 20 * 2; a++){
+for (var a = 0; a <=  this.chart.series[7].yData.length > 30; a++){
     try {
 
 this.chart.series[7].data[a].remove();
