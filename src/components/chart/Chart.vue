@@ -984,8 +984,8 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-        var trail = pr * 0.05 * -1
-         var stop = pr * 0.95
+        var trail = pr * 0.01 * -1
+         var stop = pr * 0.99
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
@@ -1466,8 +1466,8 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-var trail = pr * 0.05
-        var stop = pr * 1.05
+var trail = pr * 0.01
+        var stop = pr * 1.01
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
