@@ -700,16 +700,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200))
         if (thepair.indexOf('USD') == -1){
-        qty = -1*margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
+        qty = -1*margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13*4
         }
         }
         else {
         firsttrade++;
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200))
         if (thepair.indexOf('USD') == -1){
-        qty = -1*margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
+        qty = -1*margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13*4
         }
         }
         if (qty == 0){
@@ -1141,16 +1141,16 @@ setTimeout(function(){
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200))
 if (thepair.indexOf('USD') == -1){
-        qty = margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
+        qty = margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13*4
         }
         }
         else{
         firsttrade++
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200))
         if (thepair.indexOf('USD') == -1){
-        qty = margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
+        qty = margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13*4
         }
         }
         if (qty == 0){
