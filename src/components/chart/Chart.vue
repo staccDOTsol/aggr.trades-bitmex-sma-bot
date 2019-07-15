@@ -738,9 +738,9 @@ firsttrade++;
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 2;
-            if (qty < positionBtc)
+            if (qty < positionXbt)
             {
-            qty = positionBtc * -1
+            qty = positionXbt * -1
             }
           }
           else 
@@ -1203,9 +1203,9 @@ if (thepair.indexOf('USD') == -1){
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 2;
-            if (qty > positionBtc)
+            if (qty > positionXbt)
             {
-            qty = positionBtc * -1
+            qty = positionXbt * -1
             }
           }else 
           if (marginperc < 0.175){
