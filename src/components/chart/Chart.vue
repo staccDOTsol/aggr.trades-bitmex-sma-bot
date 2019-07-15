@@ -134,32 +134,32 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   for (var j in JSON.parse(body)){
   if (JSON.parse(body)[j].symbol == "XBTUSD"){
-    positionXbt = JSON.parse(body)[0].currentQty;
+    positionXbt = JSON.parse(body)[j].currentQty;
 
   }
   else if (JSON.parse(body)[j].symbol == "ETHUSD"){
-    positionEth = JSON.parse(body)[0].currentQty;
+    positionEth = JSON.parse(body)[j].currentQty;
 
   }else if (JSON.parse(body)[j].symbol == "ADAU19"){
-    positionAda = JSON.parse(body)[0].currentQty;
+    positionAda = JSON.parse(body)[j].currentQty;
 
   }
   else if (JSON.parse(body)[j].symbol == "EOSU19"){
-    positionEos = JSON.parse(body)[0].currentQty;
+    positionEos = JSON.parse(body)[j].currentQty;
 
   }else if (JSON.parse(body)[j].symbol == "LTCU19"){
-    positionLtc = JSON.parse(body)[0].currentQty;
+    positionLtc = JSON.parse(body)[j].currentQty;
 
   }else if (JSON.parse(body)[j].symbol == "XRPU19"){
-    positionXrp = JSON.parse(body)[0].currentQty;
+    positionXrp = JSON.parse(body)[j].currentQty;
 
   }
   else if (JSON.parse(body)[j].symbol == "BCHU19"){
-    positionBch = JSON.parse(body)[0].currentQty;
+    positionBch = JSON.parse(body)[j].currentQty;
 
   }
   else if (JSON.parse(body)[j].symbol == "TRXU19"){
-    positionTrx = JSON.parse(body)[0].currentQty;
+    positionTrx = JSON.parse(body)[j].currentQty;
 
   }
   }
