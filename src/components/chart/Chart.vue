@@ -740,7 +740,7 @@ firsttrade++;
             qty = qty * 2;
           }
           else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -749,7 +749,7 @@ firsttrade++;
           if (positionEth > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -758,7 +758,7 @@ firsttrade++;
           if (positionAda > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -767,7 +767,7 @@ firsttrade++;
           if (positionEos > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -776,7 +776,7 @@ firsttrade++;
           if (positionTrx > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -785,7 +785,7 @@ firsttrade++;
           if (positionXrp > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -794,7 +794,7 @@ firsttrade++;
           if (positionBch > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -803,7 +803,7 @@ firsttrade++;
           if (positionLtc > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -963,13 +963,13 @@ else if (js[j].symbol == 'XRPU19'){
         pr =   Math.round(pr*2)/2;
         }
         buyHigh = false;
-if (marginperc < 0.15){
+if (marginperc < 0.095){
         qty = qty / 2
         qty = Math.floor(qty)
         verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty / 2,ordType:"Market"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,ordType:"Market"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1172,7 +1172,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionXbt < 0){
             qty = qty * 2;
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1181,7 +1181,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionEth > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1190,7 +1190,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionAda > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1199,7 +1199,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionEos > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1208,7 +1208,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionTrx > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1217,7 +1217,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionXrp > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1226,7 +1226,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionBch > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1235,7 +1235,7 @@ if (thepair.indexOf('USD') == -1){
           if (positionLtc > 0){
             qty = qty * 2
           }else {
-          if (marginperc < 0.33){
+          if (marginperc < 0.175){
         qty = 0
         }
           }
@@ -1403,13 +1403,13 @@ else if (js[j].symbol == 'XRPU19'){
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
         }
-if (marginperc < 0.15){
+if (marginperc < 0.095){
         qty = qty / 2
         qty = Math.floor(qty)
         verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty / 2,ordType:"Market"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,ordType:"Market"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
