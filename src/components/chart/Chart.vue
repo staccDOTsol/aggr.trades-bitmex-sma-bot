@@ -661,12 +661,12 @@ firsttrade++;
         if (thepair == "ETHUSD"){
         if (positionEth >= 0 && qty < 0){
 
-        qty = positionEth * -1
+        qty = 0.2 * positionEth * -1
         }
         } else {
         if (positionXbt >= 0 && qty < 0){
 
-        qty = positionXbt * -1
+        qty = 0.2 * positionXbt * -1
         }
         }
         }
@@ -972,12 +972,12 @@ if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         if (thepair == "ETHUSD"){
         if (positionEth <= 0 && qty > 0){
 
-        qty = positionEth * -1
+        qty = 0.2 * positionEth * -1
         }
         } else {
         if (positionXbt <= 0 && qty > 0){
 
-        qty = positionXbt * -1
+        qty = 0.2 * positionXbt * -1
         }
         }
         }
