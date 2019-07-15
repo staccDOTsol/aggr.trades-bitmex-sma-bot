@@ -1148,6 +1148,8 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
+
+  refreshMargin();
 });
 }, 550);
 });});
@@ -1653,6 +1655,8 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
+  
+  refreshMargin();
 });
 }, 550);
 }); 
