@@ -935,71 +935,121 @@ else if (js[j].symbol == 'XRPU19'){
         stopQty = positionXbt * -1
         if (qty <= 0){
         pr = btcask
+        if (marginperc < 0.15){
+        pr = btcbid
+        }
         }
         else {
         pr = btcbid
+        if (marginperc < 0.15){
+        pr = btcask
+        }
         }
         } else if (thepair == 'ETHUSD'){
         stopQty = positionEth * -1
         if (qty < 0){
         pr = ethask
+
+        if (marginperc < 0.15){
+        pr = ethbid
+        }
         }
         else {
         pr = ethbid
+        
+        if (marginperc < 0.15){
+        pr = ethask
+        }
         }
         }
         else if (thepair == 'TRXBTC'){
         stopQty = positionTrx * -1
         if (qty < 0){
         pr = trxask
+        if (marginperc < 0.15){
+        pr = trxbid
+        }
         }
         else {
         pr = trxbid
+        if (marginperc < 0.15){
+        pr = trxask
+        }
         }
         }
         else if (thepair == 'ADABTC'){
         stopQty = positionAda * -1
         if (qty < 0){
         pr = adaask
+        if (marginperc < 0.15){
+        pr = adabid
+        }
         }
         else {
         pr = adabid
+        if (marginperc < 0.15){
+        pr =adaask
+        }
         }
         }
         else if (thepair == 'EOSBTC'){
         stopQty = positionEos * -1
         if (qty < 0){
         pr = eosask
+        if (marginperc < 0.15){
+        pr = eosbid
+        }
         }
         else {
         pr = eosbid
+        if (marginperc < 0.15){
+        pr = eosask
+        }
         }
         }
         else if (thepair == 'BCHBTC'){
         stopQty = positionBch * -1
         if (qty< 0){
         pr = bchask
+        if (marginperc < 0.15){
+        pr = bchbid
+        }
         }
         else {
         pr = bchbid
+        if (marginperc < 0.15){
+        pr = bchask
+        }
         }
         }
         else if (thepair == 'LTCBTC'){
         stopQty = positionLtc * -1
         if (qty < 0){
         pr = ltcask
+        if (marginperc < 0.15){
+        pr = ltcbid
+        }
         }
         else {
         pr = ltcbid
+        if (marginperc < 0.15){
+        pr = ltcask
+        }
         }
         }
         else if (thepair == 'XRPBTC'){
         stopQty = positionXrp * -1
         if (qty < 0){
         pr = xrpask
+        if (marginperc < 0.15){
+        pr = xrpbid
+        }
         }
         else {
         pr = xrpbid
+        if (marginperc < 0.15){
+        pr = xrpask
+        }
         }
         }
         var trail = pr * trailstop * -1
@@ -1434,71 +1484,119 @@ else if (js[j].symbol == 'XRPU19'){
         stopQty = positionXbt * -1
         if (qty <= 0){
         pr = btcask
+        if (marginperc < 0.15){
+        pr = btcbid
+        }
         }
         else {
         pr = btcbid
+        if (marginperc < 0.15){
+        pr = btcask
+        }
         }
         } else if (thepair == 'ETHUSD'){
         stopQty = positionEth * -1
         if (qty < 0){
         pr = ethask
+        if (marginperc < 0.15){
+        pr = ethbid
+        }
         }
         else {
         pr = ethbid
+        if (marginperc < 0.15){
+        pr = ethask
+        }
         }
         }
         else if (thepair == 'TRXBTC'){
         stopQty = positionTrx * -1
         if (qty < 0){
         pr = trxask
+        if (marginperc < 0.15){
+        pr = trxbid
+        }
         }
         else {
         pr = trxbid
+        if (marginperc < 0.15){
+        pr = trxask
+        }
         }
         }
         else if (thepair == 'ADABTC'){
         stopQty = positionAda * -1
         if (qty < 0){
         pr = adaask
+        if (marginperc < 0.15){
+        pr = adabid
+        }
         }
         else {
         pr = adabid
+        if (marginperc < 0.15){
+        pr =adaask
+        }
         }
         }
         else if (thepair == 'EOSBTC'){
         stopQty = positionEos * -1
         if (qty < 0){
         pr = eosask
+        if (marginperc < 0.15){
+        pr = eosbid
+        }
         }
         else {
         pr = eosbid
+        if (marginperc < 0.15){
+        pr = eosask
+        }
         }
         }
         else if (thepair == 'BCHBTC'){
         stopQty = positionBch * -1
         if (qty< 0){
         pr = bchask
+        if (marginperc < 0.15){
+        pr = bchbid
+        }
         }
         else {
         pr = bchbid
+        if (marginperc < 0.15){
+        pr = bchask
+        }
         }
         }
         else if (thepair == 'LTCBTC'){
         stopQty = positionLtc * -1
         if (qty < 0){
         pr = ltcask
+        if (marginperc < 0.15){
+        pr = ltcbid
+        }
         }
         else {
         pr = ltcbid
+        if (marginperc < 0.15){
+        pr = ltcask
+        }
         }
         }
         else if (thepair == 'XRPBTC'){
         stopQty = positionXrp * -1
         if (qty < 0){
         pr = xrpask
+        if (marginperc < 0.15){
+        pr = xrpbid
+        }
         }
         else {
         pr = xrpbid
+        if (marginperc < 0.15){
+        pr = xrpask
+        }
         }
         }
         var trail = pr * trailstop 
@@ -1655,7 +1753,7 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-  
+
   refreshMargin();
 });
 }, 550);
