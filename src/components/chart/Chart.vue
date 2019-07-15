@@ -737,7 +737,7 @@ firsttrade++;
         qty = (qty * 8) ;
         }
         else {
-        qty = (qty * 20)
+        qty = (qty / 40)
         }
         console.log('marginperc')
         console.log(marginperc)
@@ -1231,7 +1231,7 @@ if (thepair.indexOf('USD') == -1){
         qty = (qty * 8) ;
         }
         else {
-        qty = (qty * 20)
+        qty = (qty / 40)
         }
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
