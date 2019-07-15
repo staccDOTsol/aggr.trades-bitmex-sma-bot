@@ -984,15 +984,24 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-
+        var trail = pr * 0.05 * -1
+         var stop = pr * 0.95
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
+        trail = Math.round(trail*2)/2;
+        stop = Math.round(stopPx*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopPx * 4) / 4).toFixed(2));
+        
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
+       
+        trail = Math.round(trail*2)/2; 
+        stop = Math.round(stopPx*2)/2; 
         }
         buyHigh = false;
 if (marginperc < 0.095){
@@ -1063,7 +1072,7 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail, stopPx: stop };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1094,7 +1103,7 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,price:pr,ordType:"StopLimit", pegOffsetValue: trail, stopPx: stop };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1457,7 +1466,25 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-
+var trail = pr * 0.05
+        var stop = pr * 1.05
+        if (thepair == 'BTCUSD'){
+        pr = Math.round(pr*2)/2;
+        trail = Math.round(trail*2)/2;
+        stop = Math.round(stopPx*2)/2;
+        }
+        else if (thepair == 'ETHUSD'){
+        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopPx * 4) / 4).toFixed(2));
+        
+        }
+        else if (thepair == 'LTCBTC'){
+        pr =   Math.round(pr*2)/2;
+       
+        trail = Math.round(trail*2)/2; 
+        stop = Math.round(stopPx*2)/2; 
+        }
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         }
@@ -1536,7 +1563,7 @@ request(requestOptions, function(error, response, body) {
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail, stopPx: stop };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1566,7 +1593,7 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,price:pr,ordType:"Limit"};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,price:pr,ordType:"StopLimit", pegOffsetValue: trail, stopPx: stop };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
