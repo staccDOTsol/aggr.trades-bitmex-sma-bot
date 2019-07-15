@@ -712,6 +712,9 @@ firsttrade++;
         qty = -1*margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
         }
         }
+        if (qty == 0){
+        qty = -1;
+        }
         if (marginperc < 0.3){
         if (thepair == "ETHUSD"){
         if (positionEth <= 0 && qty > 0){
@@ -1149,6 +1152,9 @@ if (thepair.indexOf('USD') == -1){
         if (thepair.indexOf('USD') == -1){
         qty = margin222 *(btcbtc/((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/13
         }
+        }
+        if (qty == 0){
+        qty = 1;
         }
 
         if (marginperc < 0.3){
