@@ -182,39 +182,6 @@ request(requestOptions, function(error, response, body) {
   positionAda = 0;
   }
 });
-verb = 'GET',
-  path = '/api/v1/position?filter=%7B%22symbol%22%3A%20%22ETHUSD%22%7D',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = ''
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
-
-headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: {}
-};
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  if (JSON.parse(body)[0] != undefined){
-  positionEth = JSON.parse(body)[0].currentQty;
-  }
-  else{
-  positionEth = 0;
-  }
-});
   verb = 'GET',
   path = '/api/v1/user/margin?currency=XBt',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
