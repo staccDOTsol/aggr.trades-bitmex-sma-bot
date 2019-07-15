@@ -86,7 +86,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
         if (!match){
             starttime = new Date().getTime();
         	beginBal = margin;
-            beginBal = wallet;
+            beginBal2 = wallet;
         }
         console.log(line)
         console.log(starttime)
