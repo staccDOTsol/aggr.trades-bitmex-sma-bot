@@ -242,12 +242,11 @@ class Exchange extends EventEmitter {
       return this.fetchProducts().then((data) => this.validatePair(pair))
     }
     if (this.id == 'bitmex'){
-      pair = pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19')
+      pair = pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19').replace(/ADABTC$/, 'ADAU19').replace(/LTCBTC$/, 'LTCU19').replace(/TRXBTC$/, 'TRXU19').replace(/XRPBTC$/, 'XRPU19')
+   
     }
     if (!pair || (pair && (!(this.pair = pair) || !this.pairs.length))) {
       console.log(`[${this.id}] unknown pair ${pair}`)
-
-      this.emit('error', new Error(`Unknown pair ${pair}`))
 
       this.emit('match', null)
 

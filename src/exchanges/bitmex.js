@@ -6,7 +6,7 @@ class Bitmex extends Exchange {
 
     this.id = 'bitmex'
     if (this.pair != undefined){
-    this.pair = this.pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19')
+    this.pair = this.pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19').replace(/ADABTC$/, 'ADAU19').replace(/LTCBTC$/, 'LTCU19').replace(/TRXBTC$/, 'TRXU19').replace(/XRPBTC$/, 'XRPU19')
     }
     this.endpoints = {
       PRODUCTS: 'https://testnet.bitmex.com/api/v1/instrument/active',
