@@ -12,7 +12,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
         var lines = data.split('\n')
 
-        var send = "<head><meta http-equiv=\"refresh\" content=\"22\" /></head>";
+        var send = "<head><meta http-equiv=\"refresh\" content=\"5\" /></head>";
         for (var l in lines){
         	if (parseFloat(lines[l].split(',')[3]) >= 0){
         		var beginBall = lines[l].split(',')[5]
