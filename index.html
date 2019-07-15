@@ -38,6 +38,7 @@ localStorage.setItem('apikey', $('#apikey').val())
 $( document ).ready(function() {
 setInterval(function(){
   
+$('#trailstop').val(localStorage.getItem('trailstop'))
 $('#apikey').val(localStorage.getItem('apikey'))
 $('#apisecret').val(localStorage.getItem('apisecret'))
 }, 3000)

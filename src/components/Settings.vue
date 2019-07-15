@@ -801,6 +801,7 @@ export default {
       'apikey',
       'apisecret',
       'maxRows',
+      'trailstop',
       'decimalPrecision',
       'showLogos',
       'liquidationsOnlyList',
