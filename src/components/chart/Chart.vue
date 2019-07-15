@@ -857,7 +857,7 @@ request(requestOptions, function(error, response, body) {
   for (var j in js){
   if (js[j].symbol == 'XBTUSD'){
     btcbid = js[j].bidPrice
-    btcbtc = btcbid
+    btcbtc = parseFloat(js[j].midPrice)
     btcask = js[j].askPrice
   }
 else if (js[j].symbol == 'ETHUSD'){
@@ -1297,6 +1297,8 @@ request(requestOptions, function(error, response, body) {
   for (var j in js){
   if (js[j].symbol == 'XBTUSD'){
     btcbid = js[j].bidPrice
+    
+    btcbtc = parseFloat(js[j].midPrice)
     btcask = js[j].askPrice
   }
 else if (js[j].symbol == 'ETHUSD'){
