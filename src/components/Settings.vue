@@ -72,6 +72,7 @@
           <input
             type="string"
             onchange="apis();"
+            id="trailstop"
             placeholder="15"
             class="form-control"
             :value="trailstop"
