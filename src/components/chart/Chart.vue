@@ -77,7 +77,7 @@ var margin333
 var marginperc
 var positionXbt;
 var positionAda;
-
+var btcbtc = 10000;
 var positionEos;
 
 var positionLtc;
@@ -701,15 +701,15 @@ firsttrade++;
         if (firsttrade == 2){
         firsttrade++;
         qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
-        if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        if (thepair.indexOf('USD') == -1){
+        qty = -1*(btcbtc*((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)/13))
         }
         }
         else {
         firsttrade++;
         qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
-        if (thepair == 'EOSBTC' || thepair == 'XLMBTC'){
-        qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        if (thepair.indexOf('USD') == -1){
+        qty = -1*(btcbtc*((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)/13))
         }
         }
         if (marginperc < 0.3){
@@ -890,6 +890,7 @@ request(requestOptions, function(error, response, body) {
   for (var j in js){
   if (js[j].symbol == 'XBTUSD'){
     btcbid = js[j].bidPrice
+    btcbtc = btcbid
     btcask = js[j].askPrice
   }
 else if (js[j].symbol == 'ETHUSD'){
@@ -1020,7 +1021,7 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 
  requestOptions = {
   headers: headers,
-  url:'https://www.bitmex.com'+path,
+  url:'https://testnet.bitmex.com'+path,
   method: verb,
   body: postBody
 };
@@ -1129,7 +1130,7 @@ setTimeout(function(){
 });
 
         }
-        }
+        } 
         else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
         if (firsttrade <2 ){
@@ -1138,15 +1139,15 @@ setTimeout(function(){
         else if (firsttrade == 2){
         firsttrade++;
         qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
-if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+if (thepair.indexOf('USD') == -1){
+        qty = (btcbtc*((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)/13))
         }
         }
         else{
         firsttrade++
         qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
-        if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
+        if (thepair.indexOf('USD') == -1){
+        qty = (btcbtc*((btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)/13))
         }
         }
 
@@ -1458,7 +1459,7 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 
  requestOptions = {
   headers: headers,
-  url:'https://www.bitmex.com'+path,
+  url:'https://testnet.bitmex.com'+path,
   method: verb,
   body: postBody
 };
