@@ -877,8 +877,8 @@ request(requestOptions, function(error, response, body) {
   var ethask;
   var adabid;
   var adaask;
-  var eosbid;
-  var eosask;
+  var xrpbid;
+  var xrpask;
   var bchbid;
   var bchask;
   var eosbid;
@@ -1321,8 +1321,8 @@ request(requestOptions, function(error, response, body) {
   var eosask;
   var bchbid;
   var bchask;
-  var eosbid;
-  var eosask;
+  var xrpbid;
+  var xrpask;
   var ltcbid;
   var ltcask;
   var trxbid;
