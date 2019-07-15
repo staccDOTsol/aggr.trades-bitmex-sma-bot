@@ -60,9 +60,9 @@
           />
 
         </div>
-          <div class="form-group settings mb8">
+          <div class="form-group settings-pair mb8">
           <label
-            >Pair
+            >Trailstop
             <span
               class="icon-info-circle"
               title="The trail stop %"
