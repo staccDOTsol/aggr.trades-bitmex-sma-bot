@@ -29,6 +29,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(beginBall) - 1 )* 100)
                     gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(beginBall2) - 1 )* 100)
                 }
+                if (gains < 0 || gains > 0){
                 var diff = parseFloat(lines[l].split(',')[7]) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
                 var apr = gains * (365 / diff)
@@ -47,6 +48,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
             + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
         }
+    }
         }
         res.send(send.replace('\n', '<br>'))
 }
