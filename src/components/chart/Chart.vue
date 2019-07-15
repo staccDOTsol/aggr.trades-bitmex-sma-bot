@@ -738,6 +738,10 @@ firsttrade++;
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 2;
+            if (qty < positionBtc)
+            {
+            qty = positionBtc * -1
+            }
           }
           else 
           if (marginperc < 0.175){
@@ -748,6 +752,10 @@ firsttrade++;
         else if (thepair == 'ETHUSD'){
           if (positionEth > 0){
             qty = qty * 2
+            if (qty < positionEth)
+            {
+            qty = positionEth * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -757,6 +765,10 @@ firsttrade++;
         else if (thepair == 'ADABTC'){
           if (positionAda > 0){
             qty = qty * 2
+            if (qty < positionAda)
+            {
+            qty = positionAda * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -766,6 +778,10 @@ firsttrade++;
         else if (thepair == 'EOSBTC'){
           if (positionEos > 0){
             qty = qty * 2
+            if (qty < positionEos)
+            {
+            qty = positionEos * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -775,6 +791,10 @@ firsttrade++;
         else if (thepair == 'TRXBTC'){
           if (positionTrx > 0){
             qty = qty * 2
+            if (qty < positionTrx)
+            {
+            qty = positionTrx * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -784,6 +804,10 @@ firsttrade++;
         else if (thepair == 'XRPBTC'){
           if (positionXrp > 0){
             qty = qty * 2
+            if (qty < positionXrp)
+            {
+            qty = positionXrp * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -793,6 +817,10 @@ firsttrade++;
         else if (thepair == 'BCHBTC'){
           if (positionBch > 0){
             qty = qty * 2
+            if (qty < positionBch)
+            {
+            qty = positionBch * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -802,6 +830,10 @@ firsttrade++;
         else if (thepair == 'LTCBTC'){
           if (positionLtc > 0){
             qty = qty * 2
+            if (qty < positionLtc)
+            {
+            qty = positionLtc * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1171,6 +1203,10 @@ if (thepair.indexOf('USD') == -1){
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
             qty = qty * 2;
+            if (qty > positionBtc)
+            {
+            qty = positionBtc * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1180,6 +1216,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'ETHUSD'){
           if (positionEth < 0){
             qty = qty * 2
+            if (qty > positionEth)
+            {
+            qty = positionEth * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1189,6 +1229,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'ADABTC'){
           if (positionAda < 0){
             qty = qty * 2
+            if (qty > positionAda)
+            {
+            qty = positionAda * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1198,6 +1242,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'EOSBTC'){
           if (positionEos < 0){
             qty = qty * 2
+            if (qty > positionEos)
+            {
+            qty = positionEos * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1207,6 +1255,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'TRXBTC'){
           if (positionTrx < 0){
             qty = qty * 2
+            if (qty > positionTrx)
+            {
+            qty = positionTrx * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1216,6 +1268,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'XRPBTC'){
           if (positionXrp < 0){
             qty = qty * 2
+            if (qty > positionXrp)
+            {
+            qty = positionXrp * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1225,6 +1281,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'BCHBTC'){
           if (positionBch < 0){
             qty = qty * 2
+            if (qty > positionBch)
+            {
+            qty = positionBch * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
@@ -1234,6 +1294,10 @@ if (thepair.indexOf('USD') == -1){
         else if (thepair == 'LTCBTC'){
           if (positionLtc < 0){
             qty = qty * 2
+            if (qty > positionLtc)
+            {
+            qty = positionLtc * -1
+            }
           }else 
           if (marginperc < 0.175){
         qty = 0
