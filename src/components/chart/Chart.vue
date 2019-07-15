@@ -100,9 +100,11 @@ var apiKey
 
 var apiSecret
 
+var trailstop
 setInterval(function(){
  apiKey  = localStorage.getItem('apikey')
  apiSecret = localStorage.getItem('apisecret')
+ trailstop = parseFloat(localStorage.getItem('trailstop')) / 100
 }, 5000);
 
 function refreshMargin(){
@@ -993,8 +995,8 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-        var trail = pr * 0.075 * -1
-         var stop = pr * 0.925
+        var trail = pr * trailstop * -1
+         var stop = pr * 1 + trailstop
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
@@ -1484,9 +1486,8 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpbid
         }
         }
-var trail = pr * 0.075
-
-        var stop = pr * 1.075
+        var trail = pr * trailstop 
+         var stop = pr * 1 - trailstop
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;

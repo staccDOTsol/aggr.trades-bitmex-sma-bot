@@ -60,6 +60,23 @@
           />
 
         </div>
+          <div class="form-group settings mb8">
+          <label
+            >Pair
+            <span
+              class="icon-info-circle"
+              title="The trail stop %"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            type="string"
+            onchange="apis();"
+            placeholder="15"
+            class="form-control"
+            :value="trailstop"
+          />
+        </div>
         <div class="form-group settings-pair mb8">
           <label
             >Pair
