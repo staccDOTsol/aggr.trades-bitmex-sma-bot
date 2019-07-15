@@ -689,7 +689,7 @@ this.chart.series[7].data[a].remove();
         if (num == 27){
         num = 26
         }
-        if (this.chart.series[5].yData[num]<=  0.99 * this.chart.series[4].yData[num]){
+        if (this.chart.series[5].yData[num]<=  0.98 * this.chart.series[4].yData[num]){
         console.log('sells greater')
         if (buyHigh == undefined){
         buyHigh = true;
@@ -1129,39 +1129,8 @@ setTimeout(function(){
 });
 
         }
-        } else if (this.chart.series[5].yData[num]>  0.99 * this.chart.series[4].yData[num]&& this.chart.series[5].yData[num]<  1.01 * this.chart.series[4].yData[num]) {
-
-          verb = 'DELETE',
-  path = '/api/v1/order/all',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
-
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-postBody = JSON.stringify(data);
-
- signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: postBody
-};
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-  console.log(body);
-});
-}
-        else if (this.chart.series[5].yData[num]>=  1.01 * this.chart.series[4].yData[num]){
+        }
+        else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
         if (firsttrade <2 ){
         firsttrade++;
