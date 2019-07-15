@@ -658,7 +658,11 @@ firsttrade++;
         }
         }
         if (marginperc < 0.3){
-        qty = qty /2
+        if (thepair == "ETHUSD"){
+        qty = positionEth * -1
+        } else {
+        qty = positionXbt * -1
+        }
         }
        else if (marginperc < 0.4){
         qty = qty / 1.25
@@ -959,7 +963,11 @@ if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
         }
 
         if (marginperc < 0.3){
-        qty = qty /2
+        if (thepair == "ETHUSD"){
+        qty = positionEth * -1
+        } else {
+        qty = positionXbt * -1
+        }
         }
         else if (marginperc < 0.4){
         qty = qty / 1.25
