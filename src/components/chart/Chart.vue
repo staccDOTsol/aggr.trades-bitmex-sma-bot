@@ -702,14 +702,14 @@ firsttrade++;
         firsttrade++;
         qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair.indexOf('USD') == -1){
-        qty = -1*margin222*(btcbtc/(btcbtc*B2*200/4))*372
+        qty = -1*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close*200/4))*372
         }
         }
         else {
         firsttrade++;
         qty = -1*(margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair.indexOf('USD') == -1){
-        qty = -1*margin222*(btcbtc/(btcbtc*B2*200/4))*372
+        qty = -1*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close*200/4))*372
         }
         }
         if (qty == 0){
@@ -1143,14 +1143,14 @@ setTimeout(function(){
         firsttrade++;
         qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
 if (thepair.indexOf('USD') == -1){
-        qty = margin222*(btcbtc/(btcbtc*B2*200/4))*372
+        qty = margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close*200/4))*372
         }
         }
         else{
         firsttrade++
         qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*200/4))
         if (thepair.indexOf('USD') == -1){
-        qty = margin222*(btcbtc/(btcbtc*B2*200/4))*372
+        qty = margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close*200/4))*372
         }
         }
         if (qty == 0){
