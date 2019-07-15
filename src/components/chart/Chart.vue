@@ -733,7 +733,7 @@ firsttrade++;
         if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
         }
-        else if (thepair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
         qty = qty * 8;
         }
         else {
@@ -1228,7 +1228,7 @@ if (thepair.indexOf('USD') == -1){
         if (thepair == 'ETHUSD'){
         qty = qty * 13.4852071;
         }
-        else if (thepair == 'BTCUSD'){
+        if (thepair == 'BTCUSD'){
         qty = qty * 8;
         }
         else {
