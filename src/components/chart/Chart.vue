@@ -945,16 +945,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400)
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400))
 if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400)
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400))
         }
         }
         else{
         firsttrade++
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400)
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400))
         if (thepair == 'EOSBTC' || thepair == 'BCHBTC'){
-        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400)
+        qty = (margin222*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*400))
         }
         }
 
