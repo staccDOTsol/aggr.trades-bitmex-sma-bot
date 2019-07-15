@@ -244,6 +244,11 @@ class Exchange extends EventEmitter {
     if (this.id == 'bitmex'){
       pair = pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19').replace(/ADABTC$/, 'ADAU19').replace(/LTCBTC$/, 'LTCU19').replace(/TRXBTC$/, 'TRXU19').replace(/XRPBTC$/, 'XRPU19')
    
+    this.valid = true
+
+    this.emit('match', this.pair)
+
+    return Promise.resolve()
     }
     if (!pair || (pair && (!(this.pair = pair) || !this.pairs.length))) {
       console.log(`[${this.id}] unknown pair ${pair}`)
