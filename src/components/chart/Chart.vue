@@ -669,16 +669,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/9
+        qty = -1*(marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/18
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/2
+        qty = -1*(marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/4
         }
         }
         else {
         firsttrade++;
-        qty = -1*(marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/9
+        qty = -1*(marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/18
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/2
+        qty = -1*(marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/4
         }
         }
         if (marginperc < 0.3){
@@ -1157,16 +1157,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/9
+        qty = (marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/18
 if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/2
+        qty = (marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/4
         }
         }
         else{
         firsttrade++
-        qty = (marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/9
+        qty = (marginperc*this.tickData.exchanges[trades[trades.length-1][0]].close)/18
         if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/2
+        qty = (marginperc*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))/4
         }
         }
 
