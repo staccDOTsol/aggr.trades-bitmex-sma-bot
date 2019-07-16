@@ -220,6 +220,8 @@ request(requestOptions, function(error, response, body) {
   for (var o in orders){
   if (orders[o] == JSON.parse(body)[j]['orderID']){
   console.error('ENTER STOP')
+orders.remove(orders[o]);
+console.log(orders)
   var stopQty;
   if (JSON.parse(body)[j].side == 'Sell'){
 stopQty = JSON.parse(body)[j].orderQty 
@@ -258,7 +260,6 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-orders.remove(orders[o]);
 stops.push(JSON.parse(body)['orderID'])
 
   });
