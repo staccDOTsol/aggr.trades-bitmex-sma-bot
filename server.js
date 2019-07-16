@@ -56,6 +56,12 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     }
                     gainsArr[acc].push(gains)
                     gains2Arr[acc].push(gains2)
+                    if (gains2Arr[acc].length > 2){
+                        gainsArr[acc] = gainsArr[acc].shift()
+                        gainsArr2[acc] = gainsArr2[acc].shift()
+                        
+
+                    }
 
                 var diff = parseFloat(lines[l].split(',')[7]) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
