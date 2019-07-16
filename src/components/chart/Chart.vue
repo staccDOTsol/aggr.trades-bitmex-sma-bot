@@ -210,14 +210,14 @@ console.log(orders)
   var stopQty;
   var trail;
   if (JSON.parse(body)[j].side == 'Sell'){
-stopQty = JSON.parse(body)[j].orderQty 
+var stopQty = JSON.parse(body)[j].orderQty 
   
      var trail = close * trailstop
   }
   else {
 
      var trail = close * trailstop * -1
-stopQty = JSON.parse(body)[j].orderQty * -1
+var stopQty = JSON.parse(body)[j].orderQty * -1
   }
    var pr = close
 
