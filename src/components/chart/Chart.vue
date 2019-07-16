@@ -113,7 +113,7 @@ stopQty += JSON.parse(body)[j].orderQty * -1
   }
   }
   }
-  for (var j in JSON.parse(body)){
+  for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
   if ((stopQty < 0 &&  stopQty < pos ) || (stopQty > 0 && stopQty > pos)){
 if (JSON.parse(body)[j].side == 'Sell'){
