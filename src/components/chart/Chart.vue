@@ -891,10 +891,10 @@ this.chart.series[7].data[a].remove();
         buyHigh = true;
         }
         if (buyHigh == true){
-        if (firsttrade < 2){
+        if (firsttrade < 1){
 firsttrade++;
         }
-        if (firsttrade == 2){
+       else if (firsttrade == 1){
         firsttrade++;
         qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
         if (thepair.indexOf('USD') == -1){
@@ -1423,10 +1423,10 @@ console.log(orders)
         } 
         else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
-        if (firsttrade <2 ){
+        if (firsttrade <1 ){
         firsttrade++;
         }
-        else if (firsttrade == 2){
+        else if (firsttrade == 1){
         firsttrade++;
         qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
 if (thepair.indexOf('USD') == -1){
