@@ -117,17 +117,17 @@ request(requestOptions, function(error, response, body) {
   for (var j in JSON.parse(body)){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
   if (JSON.parse(body)[j].side == 'Sell'){
-stopQty += JSON.parse(body)[j].orderQty 
+stopQty += JSON.parse(body)[j].orderQty * -1 
   }
   else {
 
-stopQty += JSON.parse(body)[j].orderQty * -1
+stopQty += JSON.parse(body)[j].orderQty
   }
   }
   }
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
-  if ((stopQty < 0 &&  stopQty < pos ) || (stopQty > 0 && stopQty > pos)){
+  if ((JSON.parse(body)[j]['side'] == 'Sell' &&  stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos)){
 if (JSON.parse(body)[j].side == 'Sell'){
 stopQty = stopQty - JSON.parse(body)[j].orderQty 
   }
