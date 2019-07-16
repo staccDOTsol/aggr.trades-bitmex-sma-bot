@@ -746,6 +746,7 @@ firsttrade++;
        else if (marginperc < 0.4){
         qty = qty / 1.25
         }
+       console.log(1)
 
        
        if (thepair == 'ETHUSD'){
@@ -873,6 +874,7 @@ firsttrade++;
         qty = qty / 5 
         }
 
+       console.log(2)
         qty = Math.round(qty)
           var dd = this.tickData.exchanges[trades[trades.length-1][0]].close / entry
   var market = false;
@@ -921,6 +923,7 @@ request(requestOptions, function(error, response, body) {
 });
 }, 1000)
 }
+       console.log(3)
        verb = 'GET',
   path = '/api/v1/instrument/active',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -1141,8 +1144,7 @@ else if (js[j].symbol == 'XRPU19'){
         stop = Math.round(stop*2)/2; 
         }
         
-        trail = math.format(trail, {exponential: {lower: -Infinity, upper: Infinity}})
-
+        
         buyHigh = false;
 if (marginperc < 0.095){
         qty = qty / 2
@@ -1755,7 +1757,6 @@ else if (js[j].symbol == 'XRPU19'){
         stop = Math.round(stop*2)/2; 
         }
         
-        trail = math.format(trail, {exponential: {lower: -Infinity, upper: Infinity}})
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         }
