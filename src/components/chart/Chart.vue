@@ -1715,7 +1715,7 @@ request(requestOptions, function(error, response, body) {
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
   'api-expires': expires,
-  'api-key': apiKey,a
+  'api-key': apiKey,
   'api-signature': signature
 };
 
