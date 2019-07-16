@@ -69,6 +69,7 @@
 </template>
 
 <script>
+var qty = 0;
 var close = 0;
 import { mapState } from 'vuex'
 let buyHigh;
@@ -664,7 +665,7 @@ this.chart.series[7].data[a].remove();
     console.log(bm)
     }
     }
-        var qty = 0;
+        qty = 0;
     
 
     if (
@@ -1016,7 +1017,7 @@ else if (js[j].symbol == 'XRPU19'){
     xrpask = js[j].askPrice
   }
   }
-  var qty = 0;
+  qty = 0;
         if (thepair == 'BTCUSD'){
         qty = positionXbt * -1
         if (qty <= 0){
@@ -1641,7 +1642,7 @@ else if (js[j].symbol == 'XRPU19'){
     xrpask = js[j].askPrice
   }
   }
-  var qty = 0;
+ qty = 0;
         if (thepair == 'BTCUSD'){
         qty = positionXbt * -1
         if (qty <= 0){
