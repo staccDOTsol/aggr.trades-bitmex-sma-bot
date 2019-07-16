@@ -173,22 +173,7 @@ request(requestOptions, function(error, response, body) {
   }
   }
   })
-   var trail = close * trailstop * -1
-   var pr = close
 
-        if (thepair == 'BTCUSD'){
-        trail = Math.round(trail*2)/2;
-        pr = Math.round(pr*2)/2;
-        }else if (thepair == 'ETHUSD'){
-        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
-         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-        
-        }
-        else if (thepair == 'LTCBTC'){
-       
-        pr = Math.round(pr*2)/2; 
-        trail = Math.round(trail*2)/2; 
-        }
         verb = 'GET',
   path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordStatus%22%3A%22Filled%22%2C%20%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -223,13 +208,32 @@ request(requestOptions, function(error, response, body) {
 orders.remove(orders[o]);
 console.log(orders)
   var stopQty;
+  var trail;
   if (JSON.parse(body)[j].side == 'Sell'){
 stopQty = JSON.parse(body)[j].orderQty 
+  
+     var trail = close * trailstop
   }
   else {
 
+     var trail = close * trailstop * -1
 stopQty = JSON.parse(body)[j].orderQty * -1
   }
+   var pr = close
+
+        if (thepair == 'BTCUSD'){
+        trail = Math.round(trail*2)/2;
+        pr = Math.round(pr*2)/2;
+        }else if (thepair == 'ETHUSD'){
+        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+        
+        }
+        else if (thepair == 'LTCBTC'){
+       
+        pr = Math.round(pr*2)/2; 
+        trail = Math.round(trail*2)/2; 
+        }
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
