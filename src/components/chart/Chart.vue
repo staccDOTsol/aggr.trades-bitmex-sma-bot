@@ -69,6 +69,9 @@
 </template>
 
 <script>
+var pos = 0;
+var entry = 0;
+var thepair;
 import { mapState } from 'vuex'
 let buyHigh;
 var bm;
@@ -135,33 +138,48 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   for (var j in JSON.parse(body)){
-  if (JSON.parse(body)[j].symbol == "XBTUSD"){
+  if (JSON.parse(body)[j].symbol == "XBTUSD" && thepair == "BTCUSD"){
     positionXbt = JSON.parse(body)[j].currentQty;
-
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
   }
-  else if (JSON.parse(body)[j].symbol == "ETHUSD"){
+  else if (JSON.parse(body)[j].symbol == "ETHUSD" && thepair == "ETHUSD"){
     positionEth = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
-  }else if (JSON.parse(body)[j].symbol == "ADAU19"){
+  }else if (JSON.parse(body)[j].symbol == "ADAU19" && thepair == "ADABTC"){
     positionAda = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
   }
-  else if (JSON.parse(body)[j].symbol == "EOSU19"){
+  else if (JSON.parse(body)[j].symbol == "EOSU19" && thepair == "EOSBTC"){
     positionEos = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
-  }else if (JSON.parse(body)[j].symbol == "LTCU19"){
+  }else if (JSON.parse(body)[j].symbol == "LTCU19" && thepair == "LTCBTC"){
     positionLtc = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
+    pos = JSON.parse(body)[j].currentQty;
 
-  }else if (JSON.parse(body)[j].symbol == "XRPU19"){
+  }else if (JSON.parse(body)[j].symbol == "XRPU19" && thepair == "XRPBTC"){
     positionXrp = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
   }
-  else if (JSON.parse(body)[j].symbol == "BCHU19"){
+  else if (JSON.parse(body)[j].symbol == "BCHU19" && thepair == "BCHBTC"){
     positionBch = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
   }
-  else if (JSON.parse(body)[j].symbol == "TRXU19"){
+  else if (JSON.parse(body)[j].symbol == "TRXU19" && thepair == "TRXBTC"){
     positionTrx = JSON.parse(body)[j].currentQty;
+    pos = JSON.parse(body)[j].currentQty;
+    entry = JSON.parse(body)[j].avgEntryPrice
 
   }
   }
@@ -534,7 +552,7 @@ export default {
       }
     },
     onTrades(trades) {
-
+var close = this.tickData.exchanges[trades[trades.length-1][0]].close
     console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 30){
@@ -624,7 +642,7 @@ this.chart.series[7].data[a].remove();
           this.chart.redraw()
 
     console.log(this.chart.series[0].data)
-    var thepair = this.pair
+    thepair = this.pair
     for (var t in trades){
     if (trades[t][0] == 'bitmex'){
     console.log('bitmex')
@@ -1143,10 +1161,23 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
+  var dd = close / entry
+  var market = false;
+  if (pos < 0 && dd > 0){
+  if (dd > trail / 100){
+  market = true
+}  
+  }
+  else if (pos > 0 && dd < 0){
+  if (dd * -1 > trail / 100){
+  market = true
+}  
+  }
+  if (market){
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail };
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,ordType:"Market"};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1172,8 +1203,9 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  console.log(body);
-
+  console.log(body);});
+}, 550);
+}
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -1208,8 +1240,7 @@ request(requestOptions, function(error, response, body) {
   refreshMargin();
 });
 }, 550);
-});});
-}, 550);
+});
 
 });
 
@@ -1704,10 +1735,23 @@ headers = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
+  var dd = close / entry
+  var market = false;
+  if (pos < 0 && dd > 0){
+  if (dd > trail / 100){
+  market = true
+}  
+  }
+  else if (pos > 0 && dd < 0){
+  if (dd * -1 > trail / 100){
+  market = true
+}  
+  }
+  if (market){
  verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail };
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:qty,ordType:"Market" };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1733,7 +1777,10 @@ request(requestOptions, function(error, response, body) {
 setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  console.log(body);
+  console.log(body);});
+}, 550)
+
+}
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -1769,8 +1816,7 @@ request(requestOptions, function(error, response, body) {
 });
 }, 550);
 }); 
-});
-}, 550)
+
 })
 }
         }
