@@ -238,11 +238,11 @@ request(requestOptions, function(error, response, body) {
 }
 setInterval(function(){
   marginDo()
-  }, 8000)
+  }, 16000)
 
 setInterval(function(){
   refreshMargin();
-}, 20000)
+}, 15000)
 import Highcharts from 'highcharts/highstock'
 import Indicators from 'highcharts/indicators/indicators'
 import EMA from 'highcharts/indicators/ema'
