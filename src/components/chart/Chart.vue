@@ -162,7 +162,7 @@ request(requestOptions, function(error, response, body) {
         trail = Math.round(trail*2)/2; 
         }
         verb = 'GET',
-  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordStatus%22%3A%22Filled%22%2C%20%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
@@ -188,9 +188,9 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   for (var j in JSON.parse(body)){
-  if (JSON.parse(body)[j]['ordStatus'] == 'Filled'){
   for (var o in orders){
   if (orders[o] == JSON.parse(body)[j]['orderID']){
+  console.error('ENTER STOP')
   var stopQty;
   if (JSON.parse(body)[j].side == 'Sell'){
 stopQty = JSON.parse(body)[j].orderQty 
@@ -234,7 +234,6 @@ stops.push(JSON.parse(body)['orderID'])
 
   });
 }, 550);
-  }
   }
   }
   }
@@ -1377,6 +1376,8 @@ request(requestOptions, function(error, response, body) {
   orders.push(JSON.parse(body)['orderID']);
 
 
+console.log('orders')
+console.log(orders)
   refreshMargin();
 });
 }, 550);
@@ -1909,6 +1910,8 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   orders.push(JSON.parse(body)['orderID']);
 
+console.log('orders')
+console.log(orders)
   refreshMargin();
 });
 }, 550);
