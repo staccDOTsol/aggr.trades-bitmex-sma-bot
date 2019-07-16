@@ -677,6 +677,7 @@ this.chart.series[7].data[a].remove();
         if (num == 27){
         num = 26
         }
+        if (this.chart.series[5].yData[num]<=  0.98 * this.chart.series[4].yData[num]){
 
         console.log('sells greater')
         if (buyHigh == undefined){
@@ -1298,6 +1299,7 @@ request(requestOptions, function(error, response, body) {
 
         }
         } 
+        }
         else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
         if (firsttrade <2 ){
