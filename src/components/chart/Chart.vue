@@ -685,6 +685,7 @@ this.chart.series[7].data[a].remove();
         buyHigh = true;
         }
         if (buyHigh == true){
+        buyHigh = false;
         console.log('buyhigh')
         if (firsttrade < 2){
         console.log('buyhigh2')
@@ -1642,7 +1643,6 @@ else if (js[j].symbol == 'XRPU19'){
     xrpask = js[j].askPrice
   }
   }
- qty = 0;
         if (thepair == 'BTCUSD'){
         qty = positionXbt * -1
         if (qty <= 0){
