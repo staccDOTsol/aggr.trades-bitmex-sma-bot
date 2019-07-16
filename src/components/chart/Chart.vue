@@ -552,8 +552,10 @@ export default {
       }
     },
     onTrades(trades) {
+if (this.tickData != undefined){
 var close = this.tickData.exchanges[trades[trades.length-1][0]].close
-    console.log('data')
+    }
+        console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 30){
     for (var a = 0; a <=  this.chart.series[0].yData.length > 30; a++){
