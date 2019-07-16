@@ -59,9 +59,12 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     gains2Arr[acc].push(gains2)
                     aa++;
                     if (aa > 5){
-
-                        gainsArr[acc] = gainsArr[acc].shift()
-                        gains2Arr[acc] = gains2Arr[acc].shift()
+                        ga = gainsArr[acc][gainsArr[acc].length-1]
+                        ga2 = gains2Arr[acc][gains2Arr[acc].length-1]
+                        gainsArr[acc] = []
+                        gains2Arr[acc] = []
+                        gainsArr[acc].push(ga)
+                        gains2Arr[acc].push(ga2)
                         
 
                     }
