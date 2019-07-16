@@ -187,6 +187,7 @@ requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
+  console.error(orders)
   for (var j in JSON.parse(body)){
   for (var o in orders){
   if (orders[o] == JSON.parse(body)[j]['orderID']){
