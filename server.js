@@ -1,9 +1,28 @@
 const express = require('express')
 const app = express()
 const port = 3000
+var bodyParser = require('body-parser')
+app.set('view engine', 'ejs');
 
 	const fs = require('fs');
+app.get('/graph', (req, res) => {
+res.render('index.ejs', {
+            gains: gainsArr,
+            gains2 : gains2Arr
+        })
 
+})
+app.get('/graphU', (req, res) => {
+res.json({
+            gains: gainsArr,
+            gains2 : gains2Arr
+        })
+
+})
+
+
+var gainsArr = {}
+var gains2Arr = {}
 app.get('/', (req, res) => {
 fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
     if (!err) {
@@ -14,6 +33,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
         var send = "<head><meta http-equiv=\"refresh\" content=\"5\" /></head>";
         for (var l in lines){
+            var acc = lines[l].split(',')[0]
         	if (parseFloat(lines[l].split(',')[3]) >= 0){
         		var beginBall = lines[l].split(',')[5]
                 var beginBall2 = lines[l].split(',')[3]
@@ -30,6 +50,13 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(beginBall2) - 1 )* 100)
                 }
                 if (gains < 0 || gains > 0){
+                    if (gainsArr[acc] == undefined){
+                        gainsArr[acc] = []
+                        gains2Arr[acc] = []
+                    }
+                    gainsArr[acc].push(gains)
+                    gains2Arr[acc].push(gains2)
+
                 var diff = parseFloat(lines[l].split(',')[7]) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
                 var apr = gains * (365 / diff)
