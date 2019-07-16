@@ -162,7 +162,7 @@ request(requestOptions, function(error, response, body) {
         trail = Math.round(trail*2)/2; 
         }
         verb = 'GET',
-  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')',
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
