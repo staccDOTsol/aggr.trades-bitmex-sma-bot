@@ -1298,7 +1298,6 @@ request(requestOptions, function(error, response, body) {
 });
 
         }
-        } 
         }
         else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
@@ -1919,6 +1918,7 @@ request(requestOptions, function(error, response, body) {
 }); 
 })
 }
+        } 
         }
         var t = new Date().getTime() - 1000 * 420;
         var tt = [];
