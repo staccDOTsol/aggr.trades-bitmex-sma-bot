@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "highcharts": "^7.0.3",
+    "mathjs": "^6.0.3",
     "net": "^1.0.2",
     "pako": "^1.0.6",
     "proxy-lists": "^1.18.0",
