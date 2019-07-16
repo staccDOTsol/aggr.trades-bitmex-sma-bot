@@ -1605,7 +1605,7 @@ else if (js[j].symbol == 'XRPU19'){
         }
         }
         }
-        var trail = pr * trailstop 
+        var trail = pr * trailstop * -1
          var stop = pr * 1 - trailstop
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
@@ -1715,7 +1715,7 @@ request(requestOptions, function(error, response, body) {
   'Accept': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
   'api-expires': expires,
-  'api-key': apiKey,
+  'api-key': apiKey,a
   'api-signature': signature
 };
 
