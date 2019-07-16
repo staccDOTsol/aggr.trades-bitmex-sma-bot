@@ -1334,7 +1334,7 @@ request(requestOptions, function(error, response, body) {
          verb = 'DELETE',
   path = '/api/v1/order/all',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {filter:{"pegPriceType":""},symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
+  data = {filter:{"ordType":"Limit"},symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -1869,7 +1869,7 @@ request(requestOptions, function(error, response, body) {
         verb = 'DELETE',
   path = '/api/v1/order/all',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {filter:{"pegPriceType":""},symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
+  data = {filter:{"ordType":"Limit"},symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
