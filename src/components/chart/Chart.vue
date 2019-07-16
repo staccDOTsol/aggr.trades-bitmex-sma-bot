@@ -152,7 +152,7 @@ request(requestOptions, function(error, response, body) {
 
         if (thepair == 'BTCUSD'){
         trail = Math.round(trail*2)/2;
-        }
+        }else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
         
