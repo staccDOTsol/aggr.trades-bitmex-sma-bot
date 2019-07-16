@@ -896,14 +896,14 @@ firsttrade++;
         }
        else if (firsttrade == 1){
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2
         if (thepair.indexOf('USD') == -1){
         qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else {
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2
         if (thepair.indexOf('USD') == -1){
         qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
@@ -966,7 +966,7 @@ firsttrade++;
         console.log(positionXbt)
         console.log(positionEth)
         if (thepair == 'BTCUSD'){
-          if (positionXbt < 0){
+          if (positionXbt > 0){
             qty = qty * 2;
             if (qty < positionXbt)
             {
@@ -1428,14 +1428,14 @@ console.log(orders)
         }
         else if (firsttrade == 1){
         firsttrade++;
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2
 if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else{
         firsttrade++
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2
         if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
