@@ -703,7 +703,6 @@ firsttrade++;
         qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
-        }
         if (thepair == "ETHUSD"){
         qty = qty * 13
         }
@@ -755,6 +754,7 @@ firsttrade++;
         qty = qty / 1.25
         }
 
+       
         console.log('marginperc')
         console.log(marginperc)
         console.log(thepair)
@@ -1264,6 +1264,8 @@ if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
+
+        
         if (thepair == "ETHUSD"){
         qty = qty * 13
         }
