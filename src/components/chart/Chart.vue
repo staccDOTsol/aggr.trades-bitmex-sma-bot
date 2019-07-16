@@ -691,16 +691,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else {
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         if (marginperc < 0.3){
@@ -751,16 +751,6 @@ firsttrade++;
         qty = qty / 1.25
         }
 
-       
-       if (thepair == 'ETHUSD'){
-        qty = (qty * 13.4852071*5.375)
-        }
-         else if (thepair == 'BTCUSD'){
-        qty = (qty * 8) ;
-        }
-        else {
-        qty = (qty)
-        }
         console.log('marginperc')
         console.log(marginperc)
         console.log(thepair)
@@ -1258,16 +1248,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
 if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else{
         firsttrade++
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
         if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
 
@@ -1317,15 +1307,6 @@ if (thepair.indexOf('USD') == -1){
         }
         else if (marginperc < 0.4){
         qty = qty / 1.25
-        }
-       if (thepair == 'ETHUSD'){
-        qty = (qty * 13.4852071*5.375)
-        }
-         else if (thepair == 'BTCUSD'){
-        qty = (qty * 8) ;
-        }
-        else {
-        qty = (qty)
         }
         if (thepair == 'BTCUSD'){
           if (positionXbt < 0){
