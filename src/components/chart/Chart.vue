@@ -1374,7 +1374,7 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  orders.push(JSON.parse(body)['orderID'];
+  orders.push(JSON.parse(body)['orderID']);
 
 
   refreshMargin();
