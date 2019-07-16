@@ -20,64 +20,6 @@
           class="stack__toggler icon-cross"
           @click="$emit('close')"
         ></a>
-        <div class="form-group mb8">
-          <label
-            >TestNet API Key
-            <span
-              class="icon-info-circle"
-              title="Your API Key on testnet, with Order permissions (NOT Order Cancel)"
-              v-tippy
-            ></span
-          ></label>
-          <input
-            id="apikey"
-            onchange="apis();"
-            type="string"
-            placeholder=""
-            class="form-control"
-            :value="apikey"
-            @change=""
-          />
-
-        </div>
-        <div class="form-group settings-pair mb8">
-          <label
-            >API Secret
-            <span
-              class="icon-info-circle"
-              title="Your API Secret - note that your API Key and Secret are kept within your browser storage, and never sent to the server"
-              v-tippy
-            ></span
-          ></label>
-          <input
-            id="apisecret"
-            onchange="apis();"
-            type="string"
-            placeholder=""
-            class="form-control"
-            :value="apisecret"
-            @change=""
-          />
-
-        </div>
-          <div class="form-group settings-pair mb8">
-          <label
-            >Trailstop
-            <span
-              class="icon-info-circle"
-              title="The trail stop %"
-              v-tippy
-            ></span
-          ></label>
-          <input
-            id="trailstop"
-            onchange="apis();"
-            type="string"
-            placeholder=""
-            class="form-control"
-            :value="trailstop"
-            @change=""
-          />
         <div class="form-group settings-pair mb8">
           <label
             >Pair
@@ -96,8 +38,8 @@
           />
           <small class="help-text mt8" v-if="showPairSubdomainHelp"
             ><i class="icon-info-circle"></i> Consider using
-            <a :href="'https://' + pair.replace(/\+/g, '_').toLowerCase() + '.35.239.130.201'"
-              >https://{{ pair.replace(/\+/g, '_').toLowerCase() }}.35.239.130.201</a
+            <a :href="'https://' + pair.replace(/\+/g, '_').toLowerCase() + '.aggr.trade'"
+              >https://{{ pair.replace(/\+/g, '_').toLowerCase() }}.aggr.trade</a
             >
             to hook your settings to <strong>{{ pair }}</strong> indefinitely
             !</small>
@@ -735,6 +677,21 @@
             </label>
           </div>
         </div>
+        <div class="form-group mb8">
+            <label
+              class="checkbox-control"
+            >
+              <input
+                type="checkbox"
+                class="form-control"
+                :checked="tradeSpray"
+                @change="$store.commit('toggleTradeSpray', $event.target.checked)"
+              />
+              <div></div>
+              <span>Show spray in basis points</span>
+            </label>
+          </div>
+        </div>
         <div class="mt15 settings__footer flex-middle">
           <div class="form-group">
             <div v-if="version.number">
@@ -772,8 +729,6 @@
 </template>
 
 <script>
-
-
 import { mapState } from 'vuex'
 
 import socket from '../services/socket'
@@ -799,14 +754,12 @@ export default {
   computed: {
     ...mapState([
       'pair',
-      'apikey',
-      'apisecret',
       'maxRows',
-      'trailstop',
       'decimalPrecision',
       'showLogos',
       'liquidationsOnlyList',
       'aggregationLag',
+      'tradeSpray',
       'showCounters',
       'showStats',
       'statsPeriod',
