@@ -22,6 +22,7 @@ res.json({
 
 
 var gainsArr = {}
+var aa = 0;
 var gains2Arr = {}
 app.get('/', (req, res) => {
 fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
@@ -56,7 +57,9 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                     }
                     gainsArr[acc].push(gains)
                     gains2Arr[acc].push(gains2)
-                    if (gains2Arr[acc].length > 2){
+                    aa++;
+                    if (aa > 5){
+
                         gainsArr[acc] = gainsArr[acc].shift()
                         gains2Arr[acc] = gains2Arr[acc].shift()
                         
