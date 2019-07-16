@@ -113,7 +113,7 @@ stopQty = JSON.parse(body)[j].orderQty * -1
   }
   if ((stopQty < 0 &&  stopQty < pos ) || (stopQty > 0 && stopQty > pos)){
 console.error('CANCEL STOP')
-stops = stops.splice(JSON.parse(body)[j]['orderID'], 1)
+stops = stops.splice(JSON.parse(body)[j]['orderID'])
 verb = 'DELETE',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -235,7 +235,7 @@ setTimeout(function(){
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-orders = orders.splice(orders[o],1);
+orders = orders.splice(orders[o]);
 stops.push(JSON.parse(body)['orderID'])
 
   });
