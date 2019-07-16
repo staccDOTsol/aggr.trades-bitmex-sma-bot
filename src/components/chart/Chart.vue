@@ -1077,6 +1077,9 @@ else if (js[j].symbol == 'XRPU19'){
         }
         }
         }
+        if (pr == 0){
+        pr = close
+        }
         var trail = pr * trailstop * -1
          var stop = pr * 1 + trailstop
         if (thepair == 'BTCUSD'){
@@ -1642,6 +1645,9 @@ else if (js[j].symbol == 'XRPU19'){
         pr = xrpask
         }
         }
+        }
+        if (pr == 0){
+        pr = close
         }
         var trail = pr * trailstop * -1
          var stop = pr * 1 - trailstop
