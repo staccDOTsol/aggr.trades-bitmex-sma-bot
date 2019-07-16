@@ -69,6 +69,7 @@
 </template>
 
 <script>
+var close = 0;
 import { mapState } from 'vuex'
 let buyHigh;
 var thepair;
@@ -653,9 +654,9 @@ this.chart.series[7].data[a].remove();
         var qty = 0;
     if (this.tickData != undefined){
     if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
-    
+    close = this.tickData.exchanges[trades[trades.length-1][0]].close
     console.log(this.tickData.exchanges[trades[trades.length-1][0]])
-    var test =((margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))/2)
+    var test =((margin222*1.25*((margin222*close)*50))/2)
     console.log(test)
     test = test *2;
         test = test * 10 * 10
@@ -687,16 +688,16 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = -1*(marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
         else {
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = -1*(marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
-        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
         if (marginperc < 0.3){
@@ -876,7 +877,7 @@ firsttrade++;
 
        console.log(2)
         qty = Math.round(qty)
-          var dd = this.tickData.exchanges[trades[trades.length-1][0]].close / entry
+          var dd = close / entry
   var market = false;
   if (pos < 0 && dd > 0){
   if (dd > trail / 100){
@@ -1211,7 +1212,7 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-  var dd = this.tickData.exchanges[trades[trades.length-1][0]].close / entry
+  var dd = close / entry
   var market = false;
   if (pos < 0 && dd > 0){
   if (dd > trail / 100){
@@ -1304,16 +1305,16 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = (marginperc*margin222*close)*0.5*7
 if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = (marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
         else{
         firsttrade++
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*0.5*7
+        qty = (marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
-        qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2*7
+        qty = (marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
 
@@ -1483,7 +1484,7 @@ if (thepair.indexOf('USD') == -1){
         qty = qty / 5 
         }
         qty = Math.round(qty)
-          var dd = this.tickData.exchanges[trades[trades.length-1][0]].close / entry
+          var dd = close / entry
   market = false;
   if (pos < 0 && dd > 0){
   if (dd > trail / 100){
@@ -1832,7 +1833,7 @@ headers = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
-   var dd = this.tickData.exchanges[trades[trades.length-1][0]].close / entry
+   var dd = close / entry
   market = false;
   if (pos < 0 && dd > 0){
   if (dd > trail / 100){
