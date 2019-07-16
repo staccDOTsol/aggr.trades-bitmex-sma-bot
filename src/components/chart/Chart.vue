@@ -238,7 +238,7 @@ request(requestOptions, function(error, response, body) {
 }
 setInterval(function(){
   marginDo()
-  }, 21000)
+  }, 2000)
 
 setInterval(function(){
   refreshMargin();
