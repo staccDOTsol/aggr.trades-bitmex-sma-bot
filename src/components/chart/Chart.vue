@@ -88,7 +88,7 @@ setInterval(function(){
 
 
 var verb = 'GET',
-  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22StopLimit%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22StopLimit%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   data = ''
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
