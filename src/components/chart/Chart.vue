@@ -101,17 +101,28 @@ var requestOptions = {
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
+  var stopQty = 0;
   for (var j in JSON.parse(body)){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
-  var stopQty;
   if (JSON.parse(body)[j].side == 'Sell'){
-stopQty = JSON.parse(body)[j].orderQty 
+stopQty += JSON.parse(body)[j].orderQty 
   }
   else {
 
-stopQty = JSON.parse(body)[j].orderQty * -1
+stopQty += JSON.parse(body)[j].orderQty * -1
   }
+  }
+  }
+  for (var j in JSON.parse(body)){
+  if (stops.includes(JSON.parse(body)[j]['orderID'])){
   if ((stopQty < 0 &&  stopQty < pos ) || (stopQty > 0 && stopQty > pos)){
+if (JSON.parse(body)[j].side == 'Sell'){
+stopQty = stopQty - JSON.parse(body)[j].orderQty 
+  }
+  else {
+
+stopQty = stopQty -  JSON.parse(body)[j].orderQty * -1
+  }
 console.error('CANCEL STOP')
 stops = stops.splice(JSON.parse(body)[j]['orderID'])
 verb = 'DELETE',
