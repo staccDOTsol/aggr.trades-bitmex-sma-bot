@@ -665,7 +665,6 @@ this.chart.series[7].data[a].remove();
     console.log(bm)
     }
     }
-        qty = 0;
     
 
     if (
@@ -1018,7 +1017,6 @@ else if (js[j].symbol == 'XRPU19'){
     xrpask = js[j].askPrice
   }
   }
-  qty = 0;
         if (thepair == 'BTCUSD'){
         qty = positionXbt * -1
         if (qty <= 0){
@@ -1161,7 +1159,6 @@ else if (js[j].symbol == 'XRPU19'){
         }
         
         
-        buyHigh = false;
 if (marginperc < 0.095){
         qty = qty / 2
         qty = Math.floor(qty)
