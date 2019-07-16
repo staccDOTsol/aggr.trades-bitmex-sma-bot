@@ -75,6 +75,9 @@ var margin = []
         var quoinexBids = []
         setInterval(function() {
             //chart = Highcharts.stockChart('container', options);
+            $.getJSON('http://35.239.130.201:3000/', function(jsondata) {
+
+            })
             $.getJSON('http://35.239.130.201:3000/graphU', function(jsondata) {
             console.log(jsondata)
                 if (first == true){
