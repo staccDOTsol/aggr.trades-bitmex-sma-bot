@@ -553,7 +553,20 @@ export default {
       }
     },
     onTrades(trades) {
-
+if (this.tickData != undefined){
+    if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
+    close = this.tickData.exchanges[trades[trades.length-1][0]].close
+    console.log(this.tickData.exchanges[trades[trades.length-1][0]])
+    var test =((margin222*1.25*((margin222*close)*50))/2)
+    console.log('close: ' + close)
+    test = test *2;
+        test = test * 10 * 10
+        if (thepair == 'ETHUSD'){
+       // test = test * 3
+        }
+        //console.log(test)
+    }
+    }
     console.log('data')
     if (this.chart.series[0 ] != undefined){
     if (this.chart.series[0].yData.length > 30){
@@ -652,20 +665,7 @@ this.chart.series[7].data[a].remove();
     }
     }
         var qty = 0;
-    if (this.tickData != undefined){
-    if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
-    close = this.tickData.exchanges[trades[trades.length-1][0]].close
-    console.log(this.tickData.exchanges[trades[trades.length-1][0]])
-    var test =((margin222*1.25*((margin222*close)*50))/2)
-    console.log(test)
-    test = test *2;
-        test = test * 10 * 10
-        if (thepair == 'ETHUSD'){
-       // test = test * 3
-        }
-        //console.log(test)
-    }
-    }
+    
 
     if (
     this.chart.series[1].data[this.chart.series[1].data.length-1] != undefined){
