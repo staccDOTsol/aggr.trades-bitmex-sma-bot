@@ -50,6 +50,7 @@ function accChange(){
     acc = $('#acc').val()
 console.log(acc)
 }
+var margin = []
     var prices = [];
     var rois = [];
     var gains = []
@@ -82,6 +83,7 @@ console.log(acc)
                 }
                 gains.push([new Date().getTime(), jsondata.gains[acc][jsondata.gains[acc].length-1]]);
                 gains2.push([new Date().getTime(), jsondata.gains2[acc][jsondata.gains2[acc].length-1]]);
+                margin.push([new Date().getTime(), jsondata.margin[acc][jsondata.margin[acc].length-1]]);
                 console.log(gains)
                 console.log(gains2)
                 chart.series[0].setData(gains);
@@ -141,11 +143,28 @@ console.log(acc)
 
         yAxis: [{
             labels: {
+                                opposite: true, // left
+
                 align: 'right',
                 x: -3
             },
             title: {
                 text: 'Gains'
+            },
+            height: '100%',
+            lineWidth: 2,
+            resize: {
+                enabled: true
+            }
+        },{
+            labels: {
+                                opposite: false, // left
+
+                align: 'left',
+                x: -3
+            },
+            title: {
+                text: '% margin'
             },
             height: '100%',
             lineWidth: 2,
@@ -160,11 +179,18 @@ console.log(acc)
         series: [{
                 name: 'Margin',
                 data: gains,
-                color: '#00FF00'
+                color: '#00FF00',
+                yAxis: 0
             },{
                 name: 'Wallet',
                 data: gains2,
-                color: '#00FF00'
+                color: '#00FF00',
+                yAxis: 0
+            },{
+                name: '% margin',
+                data: margin,
+                color: '#00FF00',
+                yAxis: 1
             }
         ]
     }

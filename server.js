@@ -8,19 +8,21 @@ app.set('view engine', 'ejs');
 app.get('/graph', (req, res) => {
 res.render('index.ejs', {
             gains: gainsArr,
-            gains2 : gains2Arr
+            gains2 : gains2Arr,
+            margin: marginArr
         })
 
 })
 app.get('/graphU', (req, res) => {
 res.json({
             gains: gainsArr,
-            gains2 : gains2Arr
+            gains2 : gains2Arr,
+            margin: marginArr
         })
 
 })
 
-
+var marginArr[acc] = {}
 var gainsArr = {}
 var aa = 0;
 var gains2Arr = {}
@@ -40,7 +42,7 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                 var beginBall2 = lines[l].split(',')[3]
         		var gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(lines[l].split(',')[5]) - 1 )* 100)
                  var gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(lines[l].split(',')[8]) - 1 )* 100)
-                
+                var marginperc = parseFloat(lines[l].split(',')[2])/ parseFloat(lines[l].split(',')[4])
         		var starttime = parseFloat(lines[l].split(',')[6])
                 if (lines[l].split(',')[0] == '226991'){
         			lines[l].split(',')[0]+= ' - jare\'s latest testnet monster, fueled by @crypto_trader\'s massive testnet btc!'
@@ -53,18 +55,23 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
                 if (gains < 0 || gains > 0){
                     if (gainsArr[acc] == undefined){
                         gainsArr[acc] = []
+                        marginArr[acc] = []
                         gains2Arr[acc] = []
                     }
                     gainsArr[acc].push(gains)
                     gains2Arr[acc].push(gains2)
+                    marginArr[acc].push(marginperc)
                     aa++;
                     if (aa > 5){
                         ga = gainsArr[acc][gainsArr[acc].length-1]
                         ga2 = gains2Arr[acc][gains2Arr[acc].length-1]
+                        ma = marginArr[acc][marginArr[acc].length-1]
+                        marginArr[acc] = []
                         gainsArr[acc] = []
                         gains2Arr[acc] = []
                         gainsArr[acc].push(ga)
                         gains2Arr[acc].push(ga2)
+                        marginArr[acc].push(ma)
                         
 
                     }
