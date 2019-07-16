@@ -22,7 +22,7 @@ res.json({
 
 })
 
-var marginArr[acc] = {}
+var marginArr = {}
 var gainsArr = {}
 var aa = 0;
 var gains2Arr = {}
