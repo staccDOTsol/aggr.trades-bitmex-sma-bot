@@ -149,9 +149,11 @@ request(requestOptions, function(error, response, body) {
   }
   })
    var trail = close * trailstop * -1
+   var pr = close
 
         if (thepair == 'BTCUSD'){
         trail = Math.round(trail*2)/2;
+        pr = Math.round(pr*2)/2;
         }else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
@@ -159,6 +161,7 @@ request(requestOptions, function(error, response, body) {
         }
         else if (thepair == 'LTCBTC'){
        
+        pr = Math.round(pr*2)/2; 
         trail = Math.round(trail*2)/2; 
         }
         verb = 'GET',
@@ -203,7 +206,7 @@ stopQty = JSON.parse(body)[j].orderQty * -1
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:close,ordType:"StopLimit", pegOffsetValue: trail };
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail };
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
