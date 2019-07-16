@@ -691,17 +691,21 @@ firsttrade++;
         }
         if (firsttrade == 2){
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
         if (thepair.indexOf('USD') == -1){
         qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else {
         firsttrade++;
-        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
+        qty = -1*(marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
         if (thepair.indexOf('USD') == -1){
         qty = -1*(marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
+        }
+        }
+        if (thepair == "ETHUSD"){
+        qty = qty * 13
         }
         if (marginperc < 0.3){
         if (thepair == "ETHUSD"){
@@ -1248,19 +1252,21 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
 if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
         else{
         firsttrade++
-        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2
+        qty = (marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5
         if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*this.tickData.exchanges[trades[trades.length-1][0]].close)))*2
         }
         }
-
+        if (thepair == "ETHUSD"){
+        qty = qty * 13
+        }
         if (marginperc < 0.3){
         if (thepair == "ETHUSD"){
         if (positionEth <= 0 && qty > 0){
