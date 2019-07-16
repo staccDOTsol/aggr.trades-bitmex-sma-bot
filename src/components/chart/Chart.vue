@@ -1317,22 +1317,12 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
-        console.log('buyhigh5')
-        console.log('marginperc: ' + marginperc.toString())
-        console.log('margin222: ' + margin222.toString())
-        console.log('close: ' + close.toString())
-        console.log('btcbtc: ' + btcbtc.toString())
         qty = (marginperc*margin222*close)*0.5*7
 if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
         else{
-        console.log('buyhigh6')
-        console.log('marginperc: ' + marginperc.toString())
-        console.log('margin222: ' + margin222.toString())
-        console.log('close: ' + close.toString())
-        console.log('btcbtc: ' + btcbtc.toString())
         firsttrade++
         qty = (marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
@@ -1506,6 +1496,7 @@ if (thepair.indexOf('USD') == -1){
         qty = qty / 5 
         }
         qty = Math.round(qty)
+        console.log('qty round ' + qty)
           var dd = close / entry
   market = false;
   if (pos < 0 && dd > 0){
@@ -1556,6 +1547,7 @@ request(requestOptions, function(error, response, body) {
         if (buyHigh == undefined){
         buyHigh = false;
         }
+        console.log('buys buyghigh ' + buyHigh)
         console.log(qty)
         if (buyHigh == false){
         buyHigh = true;
