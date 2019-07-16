@@ -495,7 +495,7 @@ export default {
           : this.$refs.chartContainer.offsetWidth) -
           20 * 0.1) /
         this.chartCandleWidth
-      const range = timeframe * 2 * count
+      const range = timeframe * 2 * count / 100
 
       socket
         .fetchRange(range, clear)
