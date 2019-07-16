@@ -684,10 +684,17 @@ this.chart.series[7].data[a].remove();
         buyHigh = true;
         }
         if (buyHigh == true){
+        console.log('buyhigh')
         if (firsttrade < 2){
+        console.log('buyhigh2')
 firsttrade++;
         }
         if (firsttrade == 2){
+        console.log('buyhigh3')
+        console.log('marginperc: ' + marginperc.toString())
+        console.log('margin222: ' + margin222.toString())
+        console.log('close: ' + close.toString())
+        console.log('btcbtc: ' + btcbtc.toString())
         firsttrade++;
         qty = -1*(marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
@@ -695,6 +702,11 @@ firsttrade++;
         }
         }
         else {
+        console.log('buyhigh4')
+        console.log('marginperc: ' + marginperc.toString())
+        console.log('margin222: ' + margin222.toString())
+        console.log('close: ' + close.toString())
+        console.log('btcbtc: ' + btcbtc.toString())
         firsttrade++;
         qty = -1*(marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
@@ -1306,12 +1318,22 @@ request(requestOptions, function(error, response, body) {
         }
         else if (firsttrade == 2){
         firsttrade++;
+        console.log('buyhigh5')
+        console.log('marginperc: ' + marginperc.toString())
+        console.log('margin222: ' + margin222.toString())
+        console.log('close: ' + close.toString())
+        console.log('btcbtc: ' + btcbtc.toString())
         qty = (marginperc*margin222*close)*0.5*7
 if (thepair.indexOf('USD') == -1){
         qty = (marginperc*margin222*(btcbtc/(btcbtc*close)))*2*7
         }
         }
         else{
+        console.log('buyhigh6')
+        console.log('marginperc: ' + marginperc.toString())
+        console.log('margin222: ' + margin222.toString())
+        console.log('close: ' + close.toString())
+        console.log('btcbtc: ' + btcbtc.toString())
         firsttrade++
         qty = (marginperc*margin222*close)*0.5*7
         if (thepair.indexOf('USD') == -1){
