@@ -75,12 +75,13 @@ console.log(acc)
         setInterval(function() {
             //chart = Highcharts.stockChart('container', options);
             $.getJSON('http://35.239.130.201:3000/graphU', function(jsondata) {
+            console.log(jsondata)
                 if (first == true){
                 first = false;
                 fperc = jsondata.btcNow;
                 }
-                gains.push([new Date().getTime(), jsondata.gains[acc][jsondata.gains.length-1]]);
-                gains2.push([new Date().getTime(), jsondata.gains2[acc][jsondata.gains2.length-1]]);
+                gains.push([new Date().getTime(), jsondata.gains[acc][jsondata.gains[acc].length-1]]);
+                gains2.push([new Date().getTime(), jsondata.gains2[acc][jsondata.gains2[acc].length-1]]);
                 console.log(gains)
                 console.log(gains2)
                 chart.series[0].setData(gains);
