@@ -64,7 +64,6 @@ collection.find().toArray((err, items) => {
                     gains = ((parseFloat(items[l].margin) / parseFloat(beginBall) - 1 )* 100)
                     gains2 = ((parseFloat(items[l].wallet) / parseFloat(beginBall2) - 1 )* 100)
                 }
-                if (gains < 0 || gains > 0){
                     if (gainsArr[acc] == undefined){
                         gainsArr[acc] = []
                         marginArr[acc] = []
@@ -85,8 +84,6 @@ collection.find().toArray((err, items) => {
                         gains2Arr[acc].push(ga2)
                         marginArr[acc].push(ma)
                         
-
-                    }
 
                 var diff = parseFloat(items[l].nowtime) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
