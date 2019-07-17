@@ -25,6 +25,7 @@
     "fs": "0.0.1-security",
     "highcharts": "^7.0.3",
     "mathjs": "^6.0.3",
+    "mongodb": "^3.2.7",
     "net": "^1.0.2",
     "pako": "^1.0.6",
     "proxy-lists": "^1.18.0",

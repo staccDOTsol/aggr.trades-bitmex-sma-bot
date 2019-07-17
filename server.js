@@ -1,6 +1,20 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const mongo = require('mongodb').MongoClient
+const url = 'mongodb://localhost:27017'
+var db;
+var collection
+
+mongo.connect(url, (err, client) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+db = client.db('logs')
+collection = db.collection('logs')
+})
+
 var bodyParser = require('body-parser')
 app.set('view engine', 'ejs');
 
@@ -106,7 +120,9 @@ var account = req.query.account;
 var avail = req.query.avail;
 var wallet = req.query.wallet;
 var margin = req.query.margin;
-fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
+collection.findOne({account: account}, (err, item) => {
+
+
     if (!err) {
         console.log('received data: ' + data);
 
@@ -168,20 +184,14 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
     }
     }
      console.log(ll)
+collection.updateOne({'account': account}, {'$set': {'test':test,
+'avail':avail, 'wallet':wallet,'margin':margin,'account':account,'beginBal':beginBal,'starttime':starttime.toString(),'nowtime': nowtime.toString(), 'beginBal2': beginBal2}},{ upsert: true } (err, item) => {
+  res.send('')
+})
 
-		fs.writeFile("log.csv", ll, function(err) {
-		    if(err) {
-		    	res.send('')
-		        return console.log(err);
-		    }
-
-		    console.log("The file was saved!");
-		    	res.send('')
-		}); 
     } else {
 		    	res.send('')
         console.log(err);
     }
-});
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
