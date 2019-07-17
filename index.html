@@ -26,10 +26,10 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="app"></div>
-    <script>
-function apis(){
+    <script>function apis(){
 console.log('apisecret!')
 console.log('apisecret!')
+  localStorage.setItem('ordermult', $('#ordermult').val())
   localStorage.setItem('trailstop', $('#trailstop').val())
   localStorage.setItem('apisecret', $('#apisecret').val())
 
@@ -37,12 +37,25 @@ console.log('apikey!!')
 localStorage.setItem('apikey', $('#apikey').val())
 }
 $( document ).ready(function() {
-setInterval(function(){
+  if(localStorage.getItem('ordermult') == undefined){
+
+$('#ordermult').val("1")
+  }
+  else {
+
+$('#ordermult').val(localStorage.getItem('ordermult'))
+  }
+  if(localStorage.getItem('trailstop') == undefined){
+
+$('#trailstop').val("3")
   
+  }
+  else{
+
 $('#trailstop').val(localStorage.getItem('trailstop'))
+  }
 $('#apikey').val(localStorage.getItem('apikey'))
 $('#apisecret').val(localStorage.getItem('apisecret'))
-}, 3000)
 })
 </script>
     <script src="dist/build.js?v=2.4.0"></script>

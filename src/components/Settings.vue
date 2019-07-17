@@ -83,6 +83,26 @@
             @change=""
           />
         </div>
+
+          <div class="form-group settings-pair mb8">
+          <label
+            >Order Multiplier
+            <span
+              class="icon-info-circle"
+              title="Order sizes get multiplied by this value"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            id="ordermult"
+            onchange="apis();"
+            type="string"
+            placeholder="1"
+            class="form-control"
+            :value="ordermult"
+            @change=""
+          />
+        </div>
         <div class="form-group settings-pair mb8">
           <label
             >Pair
