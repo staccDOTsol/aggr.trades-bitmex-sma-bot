@@ -170,7 +170,6 @@ request(requestOptions, function(error, response, body) {
   refreshMargin()
   }
   }
-  }
   })
 
         verb = 'GET',
