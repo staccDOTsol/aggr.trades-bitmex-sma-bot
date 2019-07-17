@@ -142,7 +142,6 @@ collection.findOne({account: account}, (err, item) => {
             beginBal2 = wallet;
         }
     }
-     console.log(ll)
 collection.updateOne({'account': account}, {'$set': {'account':account,
     'test':test,
 'avail':avail,
@@ -154,10 +153,5 @@ collection.updateOne({'account': account}, {'$set': {'account':account,
  'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
   res.send('')
 })
-
-    } else {
-		    	res.send('')
-        console.log(err);
-    }
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
