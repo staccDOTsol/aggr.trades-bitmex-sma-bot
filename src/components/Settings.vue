@@ -836,6 +836,9 @@ export default {
   },
   computed: {
     ...mapState([
+      'apikey',
+      'apisecret',
+      'ordermult',
       'pair',
       'maxRows',
       'decimalPrecision',
