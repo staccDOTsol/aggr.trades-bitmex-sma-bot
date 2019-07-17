@@ -151,7 +151,7 @@ collection.updateOne({'account': account}, {'$set': {'account':account,
  'beginBal':beginBal,
  'starttime':starttime.toString(),
  'nowtime': nowtime.toString(), 
- 'beginBal2': beginBal2}},{ upsert: true } (err, item) => {
+ 'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
   res.send('')
 })
 
