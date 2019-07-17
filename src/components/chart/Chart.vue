@@ -327,7 +327,6 @@ var subs = false;
   ws.onmessage = function (event) {
   if (JSON.parse(event.data).info){
   if (JSON.parse(event.data).info.includes('Welcome')){
-  console.error(JSON.parse(event.data))
       var expires = (Math.round(new Date().getTime() / 1000) + 6660)
 signature = crypto.createHmac('sha256', apiSecret).update('GET' + '/realtime' + expires + '').digest('hex');
 
@@ -338,13 +337,11 @@ signature = crypto.createHmac('sha256', apiSecret).update('GET' + '/realtime' + 
   }
   else 
   if (JSON.parse(event.data).subscribe == 'margin' ){
-  console.error(JSON.parse(event.data))
 
   }
   else if (JSON.parse(event.data).data){
 if (!lalafirst){ 
            ma = JSON.parse(event.data).data[0];
-console.error(ma)
 account = ma.account
 if (ma.availableMargin){
   margin222 = ma.availableMargin/100000000;
@@ -359,19 +356,16 @@ if (ma.availableMargin){
   marginDo()
 }
   ws.onclose = function(e) {
-    console.error('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
     setTimeout(function() {
       connect();
     }, 1000);
   };
 
   ws.onerror = function(err) {
-    console.error('Socket encountered error: ', err.message, 'Closing socket');
 ws.close()
       };
 }
 else {
-  console.error(JSON.parse(event.data))
 request = {"op": "subscribe", "args": "margin"}
 
 ws.send(JSON.stringify(request));
@@ -381,11 +375,6 @@ ws.send(JSON.stringify(request));
 }
 
 }
-
- 
-setInterval(function(){
-getVars()
-}, 5000);
 function getVars(){
   
  ordermult = parseFloat(localStorage.getItem('trailstop'))
@@ -1706,44 +1695,44 @@ request(requestOptions, function(error, response, body) {
   var trxbid;
   var trxask;
   for (var j in js){
-  if (js[j].symbol == 'XBTUSD'){
+  if (js[j].symbol == 'XBTUSD'&& thepair == "BTCUSD"){
     btcbid = js[j].bidPrice
 
     btcbtc = parseFloat(js[j].midPrice)
     btcask = js[j].askPrice
     close = js[j].askPrice
   }
-else if (js[j].symbol == 'ETHUSD'){
+else if (js[j].symbol == 'ETHUSD'&& thepair == "ETHUSD"){
     ethbid = js[j].bidPrice
     close = js[j].askPrice
     ethask = js[j].askPrice
   }
-else if (js[j].symbol == 'ADAU19'){
+else if (js[j].symbol == 'ADAU19'&& thepair == "ADABTC"){
     adabid = js[j].bidPrice
     close = js[j].askPrice
     adaask = js[j].askPrice
   }
-else if (js[j].symbol == 'TRXU19'){
+else if (js[j].symbol == 'TRXU19'&& thepair == "TRXBTC"){
     trxbid = js[j].bidPrice
     close = js[j].askPrice
     trxask = js[j].askPrice
   }
-else if (js[j].symbol == 'EOSU19'){
+else if (js[j].symbol == 'EOSU19'&& thepair == "EOSBTC"){
     eosbid = js[j].bidPrice
     eosask = js[j].askPrice
     close = js[j].askPrice
   }
-else if (js[j].symbol == 'BCHU19'){
+else if (js[j].symbol == 'BCHU19'&& thepair == "BCHBTC"){
     bchbid = js[j].bidPrice
     close = js[j].askPrice
     bchask = js[j].askPrice
   }
-else if (js[j].symbol == 'LTCU19'){
+else if (js[j].symbol == 'LTCU19'&& thepair == "LTCBTC"){
     ltcbid = js[j].bidPrice
     close = js[j].askPrice
     ltcask = js[j].askPrice
   }
-else if (js[j].symbol == 'XRPU19'){
+else if (js[j].symbol == 'XRPU19'&& thepair == "XRPBTC"){
     xrpbid = js[j].bidPrice
     close = js[j].askPrice
     xrpask = js[j].askPrice
