@@ -15,7 +15,7 @@ collection.insertOne({account: 'test'}, (err, result) => {
 collection.findOne({account: 'test'}, (err, item) => {
 console.log(err)
 console.log(item.account)
-collection.remove({},function(err,numberRemoved){
+collection.deleteMany({},function(err,numberRemoved){
             console.log("inside remove call back" + numberRemoved);
         });
 })
