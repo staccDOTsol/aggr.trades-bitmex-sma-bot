@@ -83,7 +83,7 @@ collection.find().toArray((err, items) => {
                         gainsArr[acc].push(ga)
                         gains2Arr[acc].push(ga2)
                         marginArr[acc].push(ma)
-                        
+                                }
 
                 var diff = parseFloat(items[l].nowtime) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
@@ -102,7 +102,7 @@ collection.find().toArray((err, items) => {
             + '<br>days: ' + diff.toPrecision(3)
             + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
-        }
+
     }
         }
         res.send(send.replace('\n', '<br>'))
