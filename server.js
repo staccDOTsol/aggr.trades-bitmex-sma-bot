@@ -153,5 +153,6 @@ collection.updateOne({'account': account}, {'$set': {'account':account,
  'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
   res.send('')
 })
+})
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
