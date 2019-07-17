@@ -14,7 +14,7 @@ collection.insertOne({account: 'test'}, (err, result) => {
 
 collection.findOne({account: 'test'}, (err, item) => {
 console.log(err)
-console.log(item)
+console.log(item.account)
 })
 })
 })
