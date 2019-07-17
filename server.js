@@ -128,14 +128,12 @@ collection.findOne({account: account}, (err, item) => {
         var beginBal2;
         var nowtime = new Date().getTime()
         var starttime;
-        for (var l in lines){
         	if (item != null){
                 match = true
                 beginBal2 = item.beginBal2
         		beginBal = item.beginBal
                 starttime = parseFloat(item.starttime)
         	}
-        }
         if (!match){
             starttime = new Date().getTime();
         	beginBal = margin;
