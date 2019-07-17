@@ -10,9 +10,11 @@ mongo.connect(url, (err, client) => {
   }
 db = client.db('logs')
 collection = db.collection('logs')
+collection.insertOne({account: 'test'}, (err, result) => {
 
 collection.findOne({account: 'test'}, (err, item) => {
 console.log(err)
 console.log(item)
+})
 })
 })
