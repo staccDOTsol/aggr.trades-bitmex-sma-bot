@@ -37,6 +37,8 @@ console.log('apikey!!')
 localStorage.setItem('apikey', $('#apikey').val())
 }
 $( document ).ready(function() {
+setInterval(function(){
+    if ($('#ordermult').val() == ""){
   if(localStorage.getItem('ordermult') == undefined){
 
 $('#ordermult').val("1")
@@ -45,7 +47,10 @@ $('#ordermult').val("1")
 
 $('#ordermult').val(localStorage.getItem('ordermult'))
   }
+}
+if ($('#tarilstop').val() == ""){
   if(localStorage.getItem('trailstop') == undefined){
+
 
 $('#trailstop').val("3")
   
@@ -54,8 +59,12 @@ $('#trailstop').val("3")
 
 $('#trailstop').val(localStorage.getItem('trailstop'))
   }
+}
+if ($('#apikey').val() == ""){
 $('#apikey').val(localStorage.getItem('apikey'))
 $('#apisecret').val(localStorage.getItem('apisecret'))
+}
+}, 1500)
 })
 </script>
     <script src="dist/build.js?v=2.4.0"></script>
