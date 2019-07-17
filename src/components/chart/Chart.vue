@@ -216,6 +216,22 @@ var stopQty = JSON.parse(body)[j].orderQty
      var trail = close * trailstop * -1
 var stopQty = JSON.parse(body)[j].orderQty * -1
   }
+  var pr = close;
+          if (thepair == 'BTCUSD'){
+        pr = Math.round(pr*2)/2;
+        trail = Math.round(trail*2)/2;
+        }
+        else if (thepair == 'ETHUSD'){
+        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+        
+        }
+        else if (thepair == 'LTCBTC'){
+        pr =   Math.round(pr*2)/2;
+       
+        trail = Math.round(trail*2)/2; 
+        }
+        
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
