@@ -899,6 +899,26 @@ export default {
   created() {
     this.stringifyCounters()
     this.stringifyStatsPeriod()
+    
+  if(localStorage.getItem('ordermult') == undefined){
+
+$('#ordermult').val("1")
+  }
+  else {
+
+$('#ordermult').val(localStorage.getItem('ordermult'))
+  }
+  if(localStorage.getItem('trailstop') == undefined){
+
+$('#trailstop').val("3")
+  
+  }
+  else{
+
+$('#trailstop').val(localStorage.getItem('trailstop'))
+  }
+$('#apikey').val(localStorage.getItem('apikey'))
+$('#apisecret').val(localStorage.getItem('apisecret'))
   },
   beforeDestroy() {
     document.removeEventListener('click', this._closeTippinHandler)
