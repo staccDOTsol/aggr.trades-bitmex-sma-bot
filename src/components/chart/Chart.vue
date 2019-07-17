@@ -206,14 +206,16 @@ orders.remove(orders[o]);
 console.log(orders)
 var stopQty;
   var trail;
-  if (JSON.parse(body)[j].side == 'Sell'){
+if (JSON.parse(body)[j].side == 'Sell'){
 var stopQty = JSON.parse(body)[j].orderQty 
   
      var trail = close * trailstop
+var stopPx = close * trailstop * -1
   }
   else {
 
      var trail = close * trailstop * -1
+var stopPx = close * trailstop
 var stopQty = JSON.parse(body)[j].orderQty * -1
   }
   var pr = close;
@@ -235,7 +237,7 @@ var stopQty = JSON.parse(body)[j].orderQty * -1
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail };
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,execInst:"ParticipateDoNotInitiate",price:pr,ordType:"StopLimit", pegOffsetValue: trail , stopPx: stopPx};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
