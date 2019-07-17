@@ -41,30 +41,27 @@ var gainsArr = {}
 var aa = 0;
 var gains2Arr = {}
 app.get('/', (req, res) => {
-fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
+collection.find().toArray((err, items) => {
     if (!err) {
-        console.log('received data: ' + data);
 
 
-        var lines = data.split('\n')
 
-        var send = "<head><meta http-equiv=\"refresh\" content=\"5\" /></head>";
-        for (var l in lines){
-            var acc = lines[l].split(',')[0]
-        	if (parseFloat(lines[l].split(',')[3]) >= 0){
-        		var beginBall = lines[l].split(',')[5]
-                var beginBall2 = lines[l].split(',')[3]
-        		var gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(lines[l].split(',')[5]) - 1 )* 100)
-                 var gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(lines[l].split(',')[8]) - 1 )* 100)
-                var marginperc = parseFloat(lines[l].split(',')[2])/ parseFloat(lines[l].split(',')[4])
-        		var starttime = parseFloat(lines[l].split(',')[6])
-                if (lines[l].split(',')[0] == '226991'){
-        			lines[l].split(',')[0]+= ' - jare\'s latest testnet monster, fueled by @crypto_trader\'s massive testnet btc!'
+        var send = "<head><meta http-equiv=\"refresh\" content=\"15\" /></head>";
+        for (var l in items){
+            var acc = items[l].account
+        	if (parseFloat(items[l].beginBal) >= 0){
+        		var beginBall = items[l].beginBal//5
+                var beginBall2 = items[l].wallet//3
+        		var gains = ((parseFloat(items[l].margin) / parseFloat(items[l].beginBal) - 1 )* 100)
+                 var gains2 = ((parseFloat(items[l].wallet) / parseFloat(items[l].beginBal2) - 1 )* 100)
+                var marginperc = parseFloat(items[l].avail)/ parseFloat(items[l].margin)
+        		var starttime = parseFloat(items[l].starttime)
+                if (items[l].account == '228306'){
         		    beginBall = 0.01
-                    starttime = starttime - 1000 * 60 * 60 * 24
+                    starttime = starttime - 1000 * 60 * 60 * 2
                     beginBall2 = 0.01
-                    gains = ((parseFloat(lines[l].split(',')[4]) / parseFloat(beginBall) - 1 )* 100)
-                    gains2 = ((parseFloat(lines[l].split(',')[3]) / parseFloat(beginBall2) - 1 )* 100)
+                    gains = ((parseFloat(items[l].margin) / parseFloat(beginBall) - 1 )* 100)
+                    gains2 = ((parseFloat(items[l].wallet) / parseFloat(beginBall2) - 1 )* 100)
                 }
                 if (gains < 0 || gains > 0){
                     if (gainsArr[acc] == undefined){
@@ -90,20 +87,20 @@ fs.readFile('log.csv', {encoding: 'utf-8'}, function(err,data){
 
                     }
 
-                var diff = parseFloat(lines[l].split(',')[7]) - starttime
+                var diff = parseFloat(items[l].nowtime) - starttime
                 diff = diff / 1000 / 60 / 60 / 24
                 var apr = gains * (365 / diff)
                 var apr2 = gains2 * (365 / diff)
-        	send += 'testnet: ' + lines[l].split(',')[1]
-        	+ '<br>account: ' + lines[l].split(',')[0]
-        	+ '<br>avail: ' + lines[l].split(',')[2]
-        	+ '<br>wallet: ' + lines[l].split(',')[3]
-        	+ '<br>margin: ' + lines[l].split(',')[4] // 1.00
+        	send += 'testnet: ' + items[l].test
+        	+ '<br>account: ' + items[l].account
+        	+ '<br>avail: ' + items[l].avail
+        	+ '<br>wallet: ' + items[l].wallet
+        	+ '<br>margin: ' + items[l].margin // 1.00
         	+ '<br>beginBal: ' + beginBall //1.05
         	+ '<br>gains (margin): ' + gains.toPrecision(3) + ' %'
             + '<br>gains (wallet): ' + gains2.toPrecision(3) + ' %'
             + '<br>first seen: ' + new Date(starttime)
-            + '<br>last seen: ' + new Date(parseFloat(lines[l].split(',')[7]))
+            + '<br>last seen: ' + new Date(parseFloat(items[l].nowtime))
             + '<br>days: ' + diff.toPrecision(3)
             + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
@@ -124,68 +121,37 @@ collection.findOne({account: account}, (err, item) => {
 
 
     if (!err) {
-        console.log('received data: ' + data);
 
 
-        var lines = data.split('\n')
         var match = false;
-        var line = lines.length + 1	;
-        console.log(line)
         var beginBal;
         var beginBal2;
         var nowtime = new Date().getTime()
         var starttime;
         for (var l in lines){
-        	if (lines[l].includes(account)){
-        		match = true;
-        		line = l
-
-                beginBal2 = lines[l].split(',')[8]
-        		beginBal = lines[l].split(',')[5]
-                starttime = parseFloat(lines[l].split(',')[6])
-        		console.log(beginBal)
+        	if (item != null){
+                match = true
+                beginBal2 = item.beginBal2
+        		beginBal = item.beginBal
+                starttime = parseFloat(item.starttime)
         	}
-        	lines[l]+='\n'
         }
         if (!match){
             starttime = new Date().getTime();
         	beginBal = margin;
             beginBal2 = wallet;
         }
-        console.log(line)
-        console.log(starttime)
-        console.log(nowtime)
-        if (line == -1){
-        	lines[lines.length+1] = account + ',' 
-        + test + ','
-        + avail + ','
-        + wallet + ','
-        + margin + ',' 
-        + beginBal + ','
-        + starttime.toString() + ','
-        + nowtime.toString()  + ','
-        + beginBal2 +'\n'
-        }
-        else {
-        lines[line] = account + ',' 
-        + test + ','
-        + avail + ','
-        + wallet + ','
-        + margin + ',' 
-        + beginBal + ','
-        + starttime.toString() + ','
-        + nowtime.toString()   + ','
-        + beginBal2 +'\n'
-    }
-    var ll = ""
-    for (var l in lines){
-    	if (lines[l].length>4){
-    	ll+=lines[l]
-    }
     }
      console.log(ll)
-collection.updateOne({'account': account}, {'$set': {'test':test,
-'avail':avail, 'wallet':wallet,'margin':margin,'account':account,'beginBal':beginBal,'starttime':starttime.toString(),'nowtime': nowtime.toString(), 'beginBal2': beginBal2}},{ upsert: true } (err, item) => {
+collection.updateOne({'account': account}, {'$set': {'account':account,
+    'test':test,
+'avail':avail,
+ 'wallet':wallet,
+ 'margin':margin,
+ 'beginBal':beginBal,
+ 'starttime':starttime.toString(),
+ 'nowtime': nowtime.toString(), 
+ 'beginBal2': beginBal2}},{ upsert: true } (err, item) => {
   res.send('')
 })
 
