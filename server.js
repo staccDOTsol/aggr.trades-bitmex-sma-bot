@@ -19,6 +19,7 @@ var bodyParser = require('body-parser')
 app.set('view engine', 'ejs');
 
 	const fs = require('fs');
+
 app.get('/graph', (req, res) => {
 res.render('index.ejs', {
             gains: gainsArr,

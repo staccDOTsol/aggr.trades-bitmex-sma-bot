@@ -899,7 +899,7 @@ export default {
   created() {
     this.stringifyCounters()
     this.stringifyStatsPeriod()
-    
+    setTimeout(function(){
   if(localStorage.getItem('ordermult') == undefined){
 
 $('#ordermult').val("1")
@@ -919,6 +919,7 @@ $('#trailstop').val(localStorage.getItem('trailstop'))
   }
 $('#apikey').val(localStorage.getItem('apikey'))
 $('#apisecret').val(localStorage.getItem('apisecret'))
+}, 1500)
   },
   beforeDestroy() {
     document.removeEventListener('click', this._closeTippinHandler)

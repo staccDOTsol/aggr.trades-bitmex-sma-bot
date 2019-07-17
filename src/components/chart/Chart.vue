@@ -308,13 +308,90 @@ var apiKey
 var apiSecret
 var ordermult
 var trailstop
-setInterval(function(){
+var aold
+var sold
+var ma;
+var wss = 'wss://testnet.bitmex.com/realtime'
+var lalafirst = true;
+var ws;
+var subs = false;
+     function connect() {
 
+   ws = new WebSocket(wss);
+  ws.onopen = function() {
+
+}
+  ws.onmessage = function (event) {
+  if (JSON.parse(event.data).info){
+  if (JSON.parse(event.data).info.includes('Welcome')){
+  console.error(JSON.parse(event.data))
+      var expires = (Math.round(new Date().getTime() / 1000) + 6660)
+signature = crypto.createHmac('sha256', apiSecret).update('GET' + '/realtime' + expires + '').digest('hex');
+
+       var request = {"op": "authKeyExpires", "args": [apiKey, expires , signature]}
+        ws.send(JSON.stringify(request));
+
+  }
+  }
+  else 
+  if (JSON.parse(event.data).subscribe == 'margin' ){
+  console.error(JSON.parse(event.data))
+
+  }
+  else if (JSON.parse(event.data).data){
+if (!lalafirst){ 
+           ma = JSON.parse(event.data).data[0];
+
+account = ma.account
+  margin222 = ma.availableMargin/100000000;
+  margin333 = ma.marginBalance/100000000;
+  marginperc = margin222 / margin333
+  wallet = ma.walletBalance/100000000 ;
+  marginDo()
+}
+  ws.onclose = function(e) {
+    console.error('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+    setTimeout(function() {
+      connect();
+    }, 1000);
+  };
+
+  ws.onerror = function(err) {
+    console.error('Socket encountered error: ', err.message, 'Closing socket');
+ws.close()
+      };
+}
+else {
+  console.error(JSON.parse(event.data))
+request = {"op": "subscribe", "args": "margin"}
+
+ws.send(JSON.stringify(request));
+  lalafirst = false;
+  subs = true;
+  }
+}
+
+}
+
+ 
+setInterval(function(){
+getVars()
+}, 5000);
+function getVars(){
+  
  ordermult = parseFloat(localStorage.getItem('trailstop'))
+ if ((aold == null ) && (sold == null)){
+ console.error('keys start')
  apiKey  = localStorage.getItem('apikey')
  apiSecret = localStorage.getItem('apisecret')
+ sold = apiSecret;
+ aold = apiKey
+ lalafirst = true;
+subs = false
+connect();
+ } 
  trailstop = parseFloat(localStorage.getItem('trailstop')) / 100
-}, 5000);
+}
 
 function refreshMargin(){
 verb = 'GET',
@@ -409,40 +486,7 @@ request(requestOptions, function(error, response, body) {
   positionAda = 0;
   }
 });
-  verb = 'GET',
-  path = '/api/v1/user/margin?currency=XBt',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = ''
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
-postBody = JSON.stringify(data);
-
- signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
-
- headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: {}
-};
-request(requestOptions, function(error, response, body) {
-  if (error) { console.log(error); }
-
-
-account = JSON.parse(body).account
-  margin222 = JSON.parse(body).availableMargin/100000000;
-  margin333 = JSON.parse(body).marginBalance/100000000;
-  marginperc = margin222 / margin333
-  wallet = JSON.parse(body).walletBalance/100000000 ;
-});
+  
 }
 setTimeout(function(){
   refreshMargin();
