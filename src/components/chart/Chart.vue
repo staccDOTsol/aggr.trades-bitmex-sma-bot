@@ -69,6 +69,40 @@
 </template>
 
 <script>
+setInterval(function(){
+  var stopLoss = pr * (1 - sl)
+         var tp2 = pr * (1 + tp)
+if (JSON.parse(body2)[j].side == 'Sell'){
+
+        var trail = pr * trailstop * -1
+  }
+  else {
+
+        var trail = pr * trailstop 
+  }
+        if (thepair == 'BTCUSD'){
+        pr = Math.round(pr*2)/2;
+        trail = Math.round(trail*2)/2;
+        stopLoss = Math.round(stop*2)/2;
+        tp2 = Math.round(tp*2)/2;
+        }
+        else if (thepair == 'ETHUSD'){
+        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+        
+        }
+        else if (thepair == 'LTCBTC'){
+        pr =   Math.round(pr*2)/2;
+        tp2 = Math.round(tp*2)/2;
+       
+        trail = Math.round(trail*2)/2; 
+        stopLoss = Math.round(stop*2)/2; 
+        }
+        console.log(tp2)
+        console.log(stopLoss)
+        }, 10000)
 var buying;
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
@@ -653,8 +687,8 @@ getVars()
 }, 5000);
 function getVars(){
   
- tp = parseFloat(localStorage.getItem('tp'))
- sl = parseFloat(localStorage.getItem('sl'))
+ tp = parseFloat(localStorage.getItem('tp')) / 100
+ sl = parseFloat(localStorage.getItem('sl')) / 100
  ordermult = parseFloat(localStorage.getItem('trailstop'))
  if ((aold == null ) && (sold == null)){
  console.error('keys start')
