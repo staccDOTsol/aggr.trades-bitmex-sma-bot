@@ -89,6 +89,7 @@ collection.find().toArray((err, items) => {
                 diff = diff / 1000 / 60 / 60 / 24
                 var apr = gains * (365 / diff)
                 var apr2 = gains2 * (365 / diff)
+                if (parseFloat(items[l].nowtime) > new Date().getTime() - 1000 * 60 * 60){
         	send += 'testnet: ' + items[l].test
         	+ '<br>account: ' + items[l].account
         	+ '<br>avail: ' + items[l].avail
@@ -102,6 +103,7 @@ collection.find().toArray((err, items) => {
             + '<br>days: ' + diff.toPrecision(3)
             + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
+        }
 
     }
         }
