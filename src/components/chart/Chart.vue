@@ -479,14 +479,14 @@ request(requestOptions, function(error, response, body) {
 stops.push(JSON.parse(body)['orderID'])
 if (JSON.parse(body2)[j].side == 'Sell'){
 
-         var stopLoss = pr * (1 - sl)
-         var tp2 = pr * (1 + tp)
+         var stopLoss = pr * (1 + sl)
+         var tp2 = pr * (1 - tp)
         var trail = pr * trailstop * -1
   }
   else {
 
-         var stopLoss = pr * (1 + sl) 
-         var tp2 = pr * (1 - tp)
+         var stopLoss = pr * (1 - sl) 
+         var tp2 = pr * (1 + tp)
 
         var trail = pr * trailstop 
   }
