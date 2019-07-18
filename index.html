@@ -32,6 +32,8 @@ console.log('apisecret!')
 console.log('apisecret!')
   localStorage.setItem('ordermult', $('#ordermult').val())
   localStorage.setItem('trailstop', $('#trailstop').val())
+  localStorage.setItem('tp', $('#tp').val())
+  localStorage.setItem('sl', $('#sl').val())
   localStorage.setItem('apisecret', $('#apisecret').val())
 
 console.log('apikey!!')
@@ -47,6 +49,26 @@ $('#ordermult').val("1")
   else {
 
 $('#ordermult').val(localStorage.getItem('ordermult'))
+  }
+}
+ if ($('#tp').val() == ""){
+  if(localStorage.getItem('tp') == undefined){
+
+$('#tp').val("1")
+  }
+  else {
+
+$('#tp').val(localStorage.getItem('tp'))
+  }
+}
+ if ($('#sl').val() == ""){
+  if(localStorage.getItem('sl') == undefined){
+
+$('#sl').val("1")
+  }
+  else {
+
+$('#sl').val(localStorage.getItem('sl'))
   }
 }
 if ($('#trailstop ').val() == ""){

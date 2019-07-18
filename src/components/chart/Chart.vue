@@ -389,7 +389,7 @@ var stopQty;
 var stopQty = JSON.parse(body2)[j].orderQty 
   
      var trail = close * trailstop
-var stopPx = close * trailstop * -1
+var stopPx = close * trailstop 
   }
   else {
 
@@ -446,14 +446,14 @@ stops.push(JSON.parse(body)['orderID'])
 if (JSON.parse(body2)[j].side == 'Sell'){
 
         var trail = pr * trailstop * -1
-         var stop = pr * (1 + trailstop)
-         var tp = pr * (1 - trailstop)
+         var stop = pr * (1 + sl)
+         var tp = pr * (1 - tp)
   }
   else {
 
         var trail = pr * trailstop
-         var stop = pr * (1 - trailstop)
-         var tp = pr * (1 + trailstop)
+         var stop = pr * (1 - sl)
+         var tp = pr * (1 + tp)
   }
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
@@ -648,12 +648,15 @@ ws.send(JSON.stringify(request));
 
 }
 
- 
+ var sl
+ var tp
 setInterval(function(){
 getVars()
 }, 5000);
 function getVars(){
   
+ tp = parseFloat(localStorage.getItem('tp'))
+ sl = parseFloat(localStorage.getItem('sl'))
  ordermult = parseFloat(localStorage.getItem('trailstop'))
  if ((aold == null ) && (sold == null)){
  console.error('keys start')
@@ -2159,8 +2162,8 @@ else if (js[j].symbol == 'XRPU19'){
         pr = close
         }
         var trail = pr * trailstop * -1
-         var stop = pr * (1 + trailstop)
-         var tp = pr * (1 - trailstop)
+         var stop = pr * (1 + sl)
+         var tp = pr * (1 - tp)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
@@ -2260,8 +2263,8 @@ request(requestOptions, function(error, response, body) {
 }
 
         var trail = pr * trailstop 
-         var stop = pr * (1 + trailstop) 
-         var tp = pr * (1 - trailstop)
+         var stop = pr * (1 + sl) 
+         var tp = pr * (1 - tp)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;

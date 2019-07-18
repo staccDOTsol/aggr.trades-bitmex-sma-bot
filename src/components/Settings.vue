@@ -66,10 +66,10 @@
         </div>
           <div class="form-group settings-pair mb8">
           <label
-            >Stop loss market out
+            >Trail Stop
             <span
               class="icon-info-circle"
-              title="The Stop Loss stop %"
+              title="The Trail Stop %"
               v-tippy
             ></span
           ></label>
@@ -80,6 +80,44 @@
             placeholder=""
             class="form-control"
             :value="trailstop"
+            @change=""
+          />
+        </div>
+
+        <div class="form-group settings-pair mb8">
+          <label
+            >Stop loss
+            <span
+              class="icon-info-circle"
+              title="The Stop loss %"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            id="sl"
+            onchange="apis();"
+            type="string"
+            placeholder=""
+            class="form-control"
+            :value="sl"
+            @change=""
+          />
+                    <div class="form-group settings-pair mb8">
+          <label
+            >Take Profit
+            <span
+              class="icon-info-circle"
+              title="The Take Profit %"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            id="tp"
+            onchange="apis();"
+            type="string"
+            placeholder=""
+            class="form-control"
+            :value="tp"
             @change=""
           />
         </div>
@@ -840,6 +878,8 @@ export default {
       'apisecret',
       'ordermult',
       'pair',
+      'tp',
+      'sl',
       'maxRows',
       'decimalPrecision',
       'trailstop',
