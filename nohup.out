@@ -49808,3 +49808,90 @@ Example app listening on port 3000!
 1563483387130
 1563486695383
 1563483387130
+1563422846416
+1563483399433
+1563454211426
+1563483399433
+1563433047756
+1563483399433
+1563486996476
+1563483399433
+1563486989730
+1563483399433
+1563486996424
+1563483399433
+1563486695383
+1563483399433
+1563422846416
+1563483408128
+1563454211426
+1563483408128
+1563433047756
+1563483408128
+1563487001411
+1563483408128
+1563486989730
+1563483408128
+1563487006346
+1563483408129
+1563486695383
+1563483408129
+1563422846416
+1563483415088
+1563454211426
+1563483415088
+1563433047756
+1563483415090
+1563487011460
+1563483415090
+1563486989730
+1563483415090
+1563487011422
+1563483415090
+1563486695383
+1563483415090
+1563422846416
+1563483416083
+1563454211426
+1563483416083
+1563433047756
+1563483416083
+1563487011460
+1563483416083
+1563486989730
+1563483416083
+1563487011422
+1563483416083
+1563486695383
+1563483416083
+(node:4535) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Example app listening on port 3000!
+1563422846416
+1563483428200
+1563454211426
+1563483428200
+1563433047756
+1563483428202
+1563487026764
+1563483428203
+1563487025731
+1563483428203
+1563487026430
+1563483428203
+1563486695383
+1563483428203
+/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/utils.js:132
+      throw err;
+      ^
+
+TypeError: Cannot read property 'length' of undefined
+    at /home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/server.js:101:32
+    at /home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/utils.js:410:17
+    at executeCallback (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/utils.js:402:9)
+    at handleCallback (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/utils.js:128:55)
+    at /home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/operations/cursor_ops.js:224:62
+    at handleCallback (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/utils.js:128:55)
+    at completeClose (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/cursor.js:898:14)
+    at Cursor.close (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/cursor.js:917:10)
+    at /home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb/lib/operations/cursor_ops.js:224:23
+    at handleCallback (/home/jarettrsdunn/testnet-inter-exchange-volume-sma-crosses-trader-on-bitmex-/node_modules/mongodb-core/lib/cursor.js:204:5)

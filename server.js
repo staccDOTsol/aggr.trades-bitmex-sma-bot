@@ -97,10 +97,11 @@ collection.find().toArray((err, items) => {
             + '<br>apiKey: ' + items[l].apiKey
             
         	+ '<br>account: ' + items[l].account
-
+            if (items[l].notes != undefined){
             if (items[l].notes.length>4){
                 send+='<br>notes: ' + items[l].notes
             }
+        }
 
         	send+= '<br>avail: ' + items[l].avail
         	+ '<br>wallet: ' + items[l].wallet
