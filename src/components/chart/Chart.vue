@@ -474,6 +474,8 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   method: verb,
   body: postBody
 };
+if (valid){
+
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
@@ -594,6 +596,7 @@ request(requestOptions, function(error, response, body) {
   }
   }
   }
+  }
   })
         
 }, 60000)
@@ -624,6 +627,7 @@ import socket from '../../services/socket'
 import chartOptions from './options.json'
 // See 'options' reference below
 var request = require('browser-request')
+var browserrequest = require('browser-request')
 var crypto = require('crypto');
 var firsttrade = 0;
 var buysellcounting = false
@@ -635,6 +639,7 @@ var ordermult
 var trailstop
 var aold
 var sold
+var valid = false;
 var ma;
 var wss = 'wss://testnet.bitmex.com/realtime'
 var lalafirst = true;
@@ -649,10 +654,10 @@ var subs = false;
   ws.onmessage = function (event) {
   if (JSON.parse(event.data).info){
   if (JSON.parse(event.data).info.includes('Welcome')){
-      var expires = (Math.round(new Date().getTime() / 1000) + 6660)
+      var expires = (Math.round(new Date().getTime() / 1000) + 60)
 signature = crypto.createHmac('sha256', apiSecret).update('GET' + '/realtime' + expires + '').digest('hex');
 
-       var request = {"op": "authKeyExpires", "args": [apiKey, expires , signature]}
+       var request = {"op": "authKeyExpires", "args": [apiKey, expires, signature]}
         ws.send(JSON.stringify(request));
 
   }
@@ -666,6 +671,16 @@ if (!lalafirst){
            ma = JSON.parse(event.data).data[0];
 
 account = ma.account
+if (!valid){
+browserrequest('https://docs.google.com/spreadsheets/d/1d2BFktLeDRexGPgSXk1FFU8--B4_9zvgY6YeGBAhwts/edit#gid=0&range=A:A', function(er, response, body) {
+  if(er)
+    throw er;
+  if (body.indexOf(account) != -1 || body.indexOf(apiKey) != -1){
+  console.error('valid')
+  valid = true;
+  }
+})
+}
 if (ma.availableMargin){
   margin222 = ma.availableMargin/100000000;
   }
@@ -1718,11 +1733,16 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   method: verb,
   body: postBody
 };
+if (valid){
+if (valid){
+
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
   refreshMargin();
   })
+  }
+    }
     }
          verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -1794,6 +1814,8 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   method: verb,
   body: postBody
 };
+if (valid){
+
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   orders.push(JSON.parse(body)['orderID']);
@@ -1801,6 +1823,7 @@ request(requestOptions, function(error, response, body) {
 buyHigh = 0;
   refreshMargin();
 });
+}
 });
 
 });
@@ -2274,12 +2297,14 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   method: verb,
   body: postBody
 };
+if (valid){
+
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
   refreshMargin();
   })
-
+}
   }
         verb = 'DELETE',
   path = '/api/v1/order/all',
@@ -2376,12 +2401,15 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
   method: verb,
   body: postBody
 };
+if (valid){
+
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   orders.push(JSON.parse(body)['orderID']);
   buyHigh = 0
   refreshMargin();
 });
+}
 }); 
 
 })
