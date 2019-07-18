@@ -2192,7 +2192,7 @@ request(requestOptions, function(error, response, body) {
 }
 }
         }
-        }
+        
         var t = new Date().getTime() - 1000 * 420;
         var tt = [];
         for (var aa in trades){
