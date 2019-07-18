@@ -1348,7 +1348,7 @@ else if (js[j].symbol == 'XRPU19'&& thepair == "XRPBTC"){
         if (pr == 0){
         pr = close
         }
-         var stop = pr * 1 + trailstop
+         var stop = pr * (1 + trailstop)
                  var trail = pr * trailstop * -1
 
         if (thepair == 'BTCUSD'){
@@ -1445,7 +1445,7 @@ request(requestOptions, function(error, response, body) {
 
 }
         var trail = pr * trailstop * -1
-         var stop = pr * 1 - trailstop
+         var stop = pr * (1 - trailstop)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
@@ -1970,7 +1970,7 @@ else if (js[j].symbol == 'XRPU19'){
         pr = close
         }
         var trail = pr * trailstop * -1
-         var stop = pr * 1 - trailstop
+         var stop = pr * (1 - trailstop)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
@@ -2070,7 +2070,7 @@ request(requestOptions, function(error, response, body) {
 }
 
         var trail = pr * trailstop 
-         var stop = pr * 1 - trailstop * -1
+         var stop = pr * (1 - trailstop) * -1
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
