@@ -1246,7 +1246,7 @@ this.chart.series[7].data[a].remove();
         if (buying == undefined){
         buying = false;
         }
-        if (buyHigh >= -3 && !buysellcounting && !buying){
+        if (buyHigh >= -3 && !buysellcounting){
         buyHigh--;
         buysellcounting = true
         setTimeout(function(){
@@ -1797,7 +1797,7 @@ buyHigh = 0;
          if (buying == undefined){
         buying = true;
         }
-                if (buyHigh <= 3 && !buysellcounting && buying){
+                if (buyHigh <= 3 && !buysellcounting ){
         buyHigh++;
         buysellcounting = true
         setTimeout(function(){
