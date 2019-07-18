@@ -74,14 +74,6 @@ setInterval(function(){
   var pr = close;
   var stopLoss = pr * (1 - sl)
          var tp2 = pr * (1 + tp)
-if (JSON.parse(body2)[j].side == 'Sell'){
-
-        var trail = pr * trailstop * -1
-  }
-  else {
-
-        var trail = pr * trailstop 
-  }
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
