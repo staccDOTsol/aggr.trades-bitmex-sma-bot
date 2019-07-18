@@ -940,23 +940,21 @@ this.chart.series[7].data[a].remove();
         }
         if (this.chart.series[5].yData[num]<=  0.98 * this.chart.series[4].yData[num]){
         console.log('sells greater')
-        if (buyHigh <= 3 && !buysellcounting){
-        buyHigh++;
+        if (buyHigh >= -3 && !buysellcounting){
+        buyHigh--;
         buysellcounting = true
         setTimeout(function(){
           buysellcounting = false
         }, 10 * 1000)
         }
-        if (buyHigh >= 3 && !buysellcounting){
-        buyHigh++
+        if (buyHigh <= -3 && !buysellcounting){
+        buyHigh--
         buysellcounting = true
         setTimeout(function(){
           buysellcounting = false
         }, 10 * 1000)
-        if (firsttrade < 1){
 firsttrade++;
-        }
-        else if (firsttrade == 1){
+        if (firsttrade == 2){
         firsttrade++;
         qty = -1*(ordermult * ((marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2))
 if (thepair.indexOf('USD') == -1){
@@ -1569,13 +1567,26 @@ buyHigh = 0;
 });
 
         }
+        }
         } 
         else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
-        if (firsttrade <1 ){
-        firsttrade++;
+                if (buyHigh <= 3 && !buysellcounting){
+        buyHigh++;
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
         }
-        else if (firsttrade == 1){
+        if (buyHigh >= 3 && !buysellcounting){
+        buyHigh++
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
+        firsttrade++;
+        
+        if (firsttrade == 2){
         firsttrade++;
         qty = ordermult * ((marginperc*margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*2*5/2)
 if (thepair.indexOf('USD') == -1){
@@ -1753,19 +1764,7 @@ if (thepair.indexOf('USD') == -1){
         qty = Math.round(qty)
         
         console.log(qty)
-if (buyHigh >= -3 && !buysellcounting){
-        buyHigh--;
-        buysellcounting = true
-        setTimeout(function(){
-          buysellcounting = false
-        }, 10 * 1000)
-        }
-        if (buyHigh <= -3 && !buysellcounting){
-        buyHigh--
-        buysellcounting = true
-        setTimeout(function(){
-          buysellcounting = false
-        }, 10 * 1000)
+if (true){
         var pr = 0;
         verb = 'GET',
   path = '/api/v1/instrument/active',
@@ -2190,6 +2189,7 @@ request(requestOptions, function(error, response, body) {
 }); 
 
 })
+}
 }
         }
         }
