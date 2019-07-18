@@ -72,29 +72,33 @@
 setInterval(function(){
 
   var pr = close;
+  var trail = pr
   var stopLoss = pr * (1 - sl)
          var tp2 = pr * (1 + tp)
+         console.error(sl)
+         console.error(tp)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stopLoss = Math.round(stop*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        stopLoss = Math.round(stopLoss*2)/2;
+        tp2 = Math.round(tp2*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-         stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
-         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopLoss * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp2 * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        tp2 = Math.round(tp2*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stopLoss = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stopLoss*2)/2; 
         }
         if (tp2 != undefined && tp2 != null){
+        console.error(close)
         console.error(tp2)
         console.error(stopLoss)
         }
@@ -486,22 +490,22 @@ if (JSON.parse(body2)[j].side == 'Sell'){
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stopLoss = Math.round(stop*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        stopLoss = Math.round(stopLoss*2)/2;
+        tp2 = Math.round(tp2*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-         stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
-         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopLoss * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp2 * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        tp2 = Math.round(tp2*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stopLoss = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stopLoss*2)/2; 
         }
 
 verb = 'POST',
@@ -2195,19 +2199,19 @@ else if (js[j].symbol == 'XRPU19'){
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stopLoss = Math.round(stop*2)/2;
+        stopLoss = Math.round(stopLoss*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-         stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopLoss * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stopLoss = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stopLoss*2)/2; 
         }
         
 if (marginperc < 0.095){
@@ -2296,22 +2300,22 @@ request(requestOptions, function(error, response, body) {
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stopLoss = Math.round(stop*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        stopLoss = Math.round(stopLoss*2)/2;
+        tp2 = Math.round(tp2*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-         stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
-         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+         stop =  parseFloat((Math.round(stopLoss * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp2 * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
-        tp2 = Math.round(tp*2)/2;
+        tp2 = Math.round(tp2*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stopLoss = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stopLoss*2)/2; 
         }
 
 
