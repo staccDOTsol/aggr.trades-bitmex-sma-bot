@@ -310,6 +310,7 @@ import chartOptions from './options.json'
 var request = require('browser-request')
 var crypto = require('crypto');
 var firsttrade = 0;
+var buysellcounting = false
 var verb, path, expires, data, postBody, signature, headers,requestOptions;
 var apiKey
 
@@ -939,11 +940,19 @@ this.chart.series[7].data[a].remove();
         }
         if (this.chart.series[5].yData[num]<=  0.98 * this.chart.series[4].yData[num]){
         console.log('sells greater')
-        if (buyHigh <= 3){
+        if (buyHigh <= 3 && !buysellcounting){
         buyHigh++;
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
         }
-        if (buyHigh >= 3){
+        if (buyHigh >= 3 && !buysellcounting){
         buyHigh++
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
         if (firsttrade < 1){
 firsttrade++;
         }
@@ -1744,11 +1753,19 @@ if (thepair.indexOf('USD') == -1){
         qty = Math.round(qty)
         
         console.log(qty)
-        if (buyHigh >= -3){
-        buyHigh--
+if (buyHigh >= -3 && !buysellcounting){
+        buyHigh--;
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
         }
-        else if (buyHigh < -3){
+        if (buyHigh <= -3 && !buysellcounting){
         buyHigh--
+        buysellcounting = true
+        setTimeout(function(){
+          buysellcounting = false
+        }, 10 * 1000)
         var pr = 0;
         verb = 'GET',
   path = '/api/v1/instrument/active',
