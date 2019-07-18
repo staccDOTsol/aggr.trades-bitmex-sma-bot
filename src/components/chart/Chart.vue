@@ -512,10 +512,6 @@ if (JSON.parse(body2)[j].side == 'Sell'){
         trail = Math.round(trail*2)/2; 
         stopLoss = Math.round(stopLoss*2)/2; 
         }
-
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
   if (stopQty < 0){
   data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"MarketIfTouched",stopPx: stopLoss};
 
@@ -524,6 +520,10 @@ verb = 'POST',
     data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"MarketIfTouched",stopPx: tp2};
 
   }
+verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -549,17 +549,17 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   markets.push(JSON.parse(body)['orderID']);
-
-verb = 'POST',
-  path = '/api/v1/order',
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  if (stopQty > 0){
+if (stopQty > 0){
 data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"Stop", stopPx: stopLoss};
 }
 else {
   data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"Stop", stopPx: tp2};
 
 }
+verb = 'POST',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
