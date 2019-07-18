@@ -443,17 +443,15 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 stops.push(JSON.parse(body)['orderID'])
+         var stop = pr * (1 - sl)
+         var tp = pr * (1 + tp)
 if (JSON.parse(body2)[j].side == 'Sell'){
 
         var trail = pr * trailstop * -1
-         var stop = pr * (1 - sl)
-         var tp = pr * (1 + tp)
   }
   else {
 
-        var trail = pr * trailstop
-         var stop = pr * (1 - sl)
-         var tp = pr * (1 + tp)
+        var trail = pr * trailstop 
   }
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
