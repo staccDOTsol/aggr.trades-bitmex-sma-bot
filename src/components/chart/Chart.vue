@@ -222,7 +222,7 @@ stopQty += JSON.parse(body)[j].orderQty
   }
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (realStops.includes(JSON.parse(body)[j]['orderID'])){
-                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos <= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos >= 0)) {
+                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos <= 0)) {
 stopQty = stopQty - JSON.parse(body)[j].orderQty 
   }
   else {
@@ -306,7 +306,7 @@ stopQty += JSON.parse(body)[j].orderQty
   }
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (markets.includes(JSON.parse(body)[j]['orderID'])){
-                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos <= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos >= 0)) {
+                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos <= 0)) {
 stopQty = stopQty - JSON.parse(body)[j].orderQty 
   }
   else {
@@ -377,7 +377,7 @@ requestOptions = {
 };
 request(requestOptions, function(error, response, body2) {
   if (error) { console.log(error); }
-  for (var j in JSON.parse(body)){
+  for (var j in JSON.parse(body2)){
   if (JSON.parse(body2)[j]['ordStatus'] == 'Filled'){
   for (var o in orders){
   if (orders[o] == JSON.parse(body2)[j]['orderID']){
