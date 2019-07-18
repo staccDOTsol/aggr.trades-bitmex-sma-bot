@@ -443,8 +443,8 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 stops.push(JSON.parse(body)['orderID'])
-         var stop = pr * (1 - sl)
-         var tp = pr * (1 + tp)
+         var stopLoss = pr * (1 - sl)
+         var tp2 = pr * (1 + tp)
 if (JSON.parse(body2)[j].side == 'Sell'){
 
         var trail = pr * trailstop * -1
@@ -456,28 +456,28 @@ if (JSON.parse(body2)[j].side == 'Sell'){
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stop = Math.round(stop*2)/2;
-        tp = Math.round(tp*2)/2;
+        stopLoss = Math.round(stop*2)/2;
+        tp2 = Math.round(tp*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
          stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
-         tp =  parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
-        tp = Math.round(tp*2)/2;
+        tp2 = Math.round(tp*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stop = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stop*2)/2; 
         }
 
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"MarketIfTouched",stopPx: tp};
+  data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"MarketIfTouched",stopPx: tp2};
 
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
@@ -507,7 +507,7 @@ request(requestOptions, function(error, response, body) {
 verb = 'POST',
   path = '/api/v1/order',
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"Stop", stopPx: stop};
+data = {symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),orderQty:stopQty,ordType:"Stop", stopPx: stopLoss};
 // Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
 // and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
  postBody = JSON.stringify(data);
@@ -2160,12 +2160,12 @@ else if (js[j].symbol == 'XRPU19'){
         pr = close
         }
         var trail = pr * trailstop * -1
-         var stop = pr * (1 - sl)
-         var tp = pr * (1 + tp)
+         var stopLoss = pr * (1 - sl)
+         var tp2 = pr * (1 + tp)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stop = Math.round(stop*2)/2;
+        stopLoss = Math.round(stop*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
@@ -2177,7 +2177,7 @@ else if (js[j].symbol == 'XRPU19'){
         pr =   Math.round(pr*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stop = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stop*2)/2; 
         }
         
 if (marginperc < 0.095){
@@ -2261,27 +2261,27 @@ request(requestOptions, function(error, response, body) {
 }
 
         var trail = pr * trailstop 
-         var stop = pr * (1 - sl) 
-         var tp = pr * (1 + tp)
+         var stopLoss = pr * (1 - sl) 
+         var tp2 = pr * (1 + tp)
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
-        stop = Math.round(stop*2)/2;
-        tp = Math.round(tp*2)/2;
+        stopLoss = Math.round(stop*2)/2;
+        tp2 = Math.round(tp*2)/2;
         }
         else if (thepair == 'ETHUSD'){
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
          stop =  parseFloat((Math.round(stop * 4) / 4).toFixed(2));
-         tp =  parseFloat((Math.round(tp * 4) / 4).toFixed(2));
+         tp2 = parseFloat((Math.round(tp * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
-        tp = Math.round(tp*2)/2;
+        tp2 = Math.round(tp*2)/2;
        
         trail = Math.round(trail*2)/2; 
-        stop = Math.round(stop*2)/2; 
+        stopLoss = Math.round(stop*2)/2; 
         }
 
 
