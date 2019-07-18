@@ -89,6 +89,8 @@ collection.find().toArray((err, items) => {
                 diff = diff / 1000 / 60 / 60 / 24
                 var apr = gains * (365 / diff)
                 var apr2 = gains2 * (365 / diff)
+                console.log(parseFloat(items[l].nowtime))
+                console.log(new Date().getTime() - 1000 * 60 * 60)
                 if (parseFloat(items[l].nowtime) > new Date().getTime() - 1000 * 60 * 60){
         	send += 'testnet: ' + items[l].test
         	+ '<br>account: ' + items[l].account
