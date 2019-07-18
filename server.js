@@ -97,7 +97,12 @@ collection.find().toArray((err, items) => {
             + '<br>apiKey: ' + items[l].apiKey
             
         	+ '<br>account: ' + items[l].account
-        	+ '<br>avail: ' + items[l].avail
+
+            if (items[l].notes.length>4){
+                send+='<br>notes: ' + items[l].notes
+            }
+
+        	send+= '<br>avail: ' + items[l].avail
         	+ '<br>wallet: ' + items[l].wallet
         	+ '<br>margin: ' + items[l].margin // 1.00
         	+ '<br>beginBal: ' + beginBall //1.05
@@ -137,8 +142,16 @@ collection.findOne({account: account}, (err, item) => {
         var beginBal2;
         var nowtime = new Date().getTime()
         var starttime;
+        var notes = "";
         	if (item != null){
                 match = true
+                if (account == "228653"){
+                    notes="trail:3%,stoploss:3%,takeprofit:3%,ordermultiplier:3x"
+                } else if (apiKey == "BeEEo37ubiTkO3bY9vjIZbiF"){
+                    notes="trail:3%,stoploss:3%,takeprofit:6%,ordermultiplier:3x"
+                } else if (apiKey == "Y8v1yypGd66S229affRkkW1z"){
+                    notes="trail:3%,stoploss:6%,takeprofit:3%,ordermultiplier:3x"
+                }
                 beginBal2 = item.beginBal2
         		beginBal = item.beginBal
                 starttime = parseFloat(item.starttime)
@@ -149,7 +162,7 @@ collection.findOne({account: account}, (err, item) => {
             beginBal2 = wallet;
         }
     }
-collection.updateOne({'account': account}, {'$set': {'apiKey': apiKey, 'account':account,
+collection.updateOne({'account': account}, {'$set': {'notes':notes,'apiKey': apiKey, 'account':account,
     'test':test,
 'avail':avail,
  'wallet':wallet,
