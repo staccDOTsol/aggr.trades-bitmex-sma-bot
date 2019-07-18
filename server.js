@@ -118,7 +118,10 @@ collection.find().toArray((err, items) => {
 })
 app.get('/set', (req, res) => {
 var test = req.query.test;
-var api = req.query.apiKey;
+var apiKey=""
+if (req.query.apiKey){
+apiKey = req.query.apiKey;
+}
 var account = req.query.account;
 var avail = req.query.avail;
 var wallet = req.query.wallet;
