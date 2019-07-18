@@ -69,6 +69,7 @@
 </template>
 
 <script>
+var buying;
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
     while (L && this.length) {
@@ -940,14 +941,18 @@ this.chart.series[7].data[a].remove();
         }
         if (this.chart.series[5].yData[num]<=  0.98 * this.chart.series[4].yData[num]){
         console.log('sells greater')
-        if (buyHigh >= -3 && !buysellcounting){
+        if (buying == undefined){
+        buying = false;
+        }
+        if (buyHigh >= -3 && !buysellcounting && !buying){
         buyHigh--;
         buysellcounting = true
         setTimeout(function(){
           buysellcounting = false
         }, 10 * 1000)
         }
-        if (buyHigh <= -3 && !buysellcounting){
+        if (buyHigh <= -3 && !buysellcounting && !buying){
+        buying = true;
         buyHigh--
         buysellcounting = true
         setTimeout(function(){
@@ -1571,15 +1576,19 @@ buyHigh = 0;
         } 
         if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
-                if (buyHigh <= 3 && !buysellcounting){
+         if (buying == undefined){
+        buying = true;
+        }
+                if (buyHigh <= 3 && !buysellcounting && buying){
         buyHigh++;
         buysellcounting = true
         setTimeout(function(){
           buysellcounting = false
         }, 10 * 1000)
         }
-        if (buyHigh >= 3 && !buysellcounting){
+        if (buyHigh >= 3 && !buysellcounting && buying){
         buyHigh++
+        buying = false
         buysellcounting = true
         setTimeout(function(){
           buysellcounting = false
