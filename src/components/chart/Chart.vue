@@ -2070,7 +2070,7 @@ request(requestOptions, function(error, response, body) {
 }
 
         var trail = pr * trailstop 
-         var stop = pr * (1 - trailstop) * -1
+         var stop = pr * (1 - trailstop) 
         if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
         trail = Math.round(trail*2)/2;
