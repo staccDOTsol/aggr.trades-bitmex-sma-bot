@@ -69,40 +69,38 @@
 </template>
 
 <script>
+var testingtesting123 = false;
 setInterval(function(){
+
 
   var pr = close;
   var trail = pr
   var stopLoss = pr * (1 - sl)
          var tp2 = pr * (1 + tp)
-         console.error(sl)
-         console.error(tp)
-        if (thepair == 'BTCUSD'){
-        pr = Math.round(pr*2)/2;
-        trail = Math.round(trail*2)/2;
-        stopLoss = Math.round(stopLoss*2)/2;
-        tp2 = Math.round(tp2*2)/2;
-        }
-        else if (thepair == 'ETHUSD'){
-        pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
-         trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
-         stop =  parseFloat((Math.round(stopLoss * 4) / 4).toFixed(2));
-         tp2 = parseFloat((Math.round(tp2 * 4) / 4).toFixed(2));
-        
-        }
-        else if (thepair == 'LTCBTC'){
-        pr =   Math.round(pr*2)/2;
-        tp2 = Math.round(tp2*2)/2;
-       
-        trail = Math.round(trail*2)/2; 
-        stopLoss = Math.round(stopLoss*2)/2; 
-        }
-        if (tp2 != undefined && tp2 != null){
-        console.error(close)
-        console.error(tp2)
-        console.error(stopLoss)
-        }
-        }, 10000)
+        console.error(trailstop)
+      var trail;
+
+         var trail = close * trailstop
+         console.error(trail)
+         var trail = close * trailstop * -1
+         console.error(trail)
+      var pr = close;
+              if (thepair == 'BTCUSD'){
+            pr = Math.round(pr*2)/2;
+            trail = Math.round(trail*2)/2;
+            }
+            else if (thepair == 'ETHUSD'){
+            pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
+             trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
+            
+            }
+            else if (thepair == 'LTCBTC'){
+            pr =   Math.round(pr*2)/2;
+           
+            trail = Math.round(trail*2)/2; 
+            }
+
+            }, 10000)
 var buying;
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
@@ -434,15 +432,18 @@ var stopQty = JSON.parse(body2)[j].orderQty * -1
   var pr = close;
           if (thepair == 'BTCUSD'){
         pr = Math.round(pr*2)/2;
+        stopPx  = Math.round(stopPx*2)/2;
         trail = Math.round(trail*2)/2;
         }
         else if (thepair == 'ETHUSD'){
+        stopPx =  parseFloat((Math.round(stopPx * 4) / 4).toFixed(2));
         pr =  parseFloat((Math.round(pr * 4) / 4).toFixed(2));
          trail =  parseFloat((Math.round(trail * 4) / 4).toFixed(2));
         
         }
         else if (thepair == 'LTCBTC'){
         pr =   Math.round(pr*2)/2;
+        stopPx  = Math.round(stopPx*2)/2;
        
         trail = Math.round(trail*2)/2; 
         }
@@ -477,6 +478,7 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 stops.push(JSON.parse(body)['orderID'])
+
 if (JSON.parse(body2)[j].side == 'Sell'){
 
          var stopLoss = pr * (1 - sl)
@@ -806,7 +808,7 @@ var account;
 var wallet;
 function marginDo(){
   var requestOptions = {
-  url:'http://35.239.130.201:3000/set?test=true&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
+  url:'http://35.239.130.201:3000/set?test=test&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
   method: 'GET'
 };
 console.log(requestOptions)
@@ -1797,7 +1799,7 @@ buyHigh = 0;
          if (buying == undefined){
         buying = true;
         }
-                if (buyHigh <= 3 && !buysellcounting ){
+                if (buyHigh <= 3 && !buysellcounting){
         buyHigh++;
         buysellcounting = true
         setTimeout(function(){
@@ -2078,12 +2080,18 @@ else if (js[j].symbol == 'XRPU19'){
         stop////qty = positionXbt * -1
         if (qty <= 0){
         pr = btcask
+        if (testingtesting123){
+        pr = btcbid
+        }
         if (marginperc < 0.15){
         pr = btcbid
         }
         }
         else {
         pr = btcbid
+        if (testingtesting123){
+        pr = btcask
+        }
         if (marginperc < 0.15){
         pr = btcask
         }
@@ -2092,12 +2100,18 @@ else if (js[j].symbol == 'XRPU19'){
         stop////qty = positionEth * -1
         if (qty < 0){
         pr = ethask
+        if (testingtesting123){
+        pr = ethbid
+        }
         if (marginperc < 0.15){
         pr = ethbid
         }
         }
         else {
         pr = ethbid
+        if (testingtesting123){
+        pr = ethask
+        }
         if (marginperc < 0.15){
         pr = ethask
         }
