@@ -1569,7 +1569,7 @@ buyHigh = 0;
         }
         }
         } 
-        else if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
+        if (this.chart.series[5].yData[num]>=  1.02 * this.chart.series[4].yData[num]){
         console.log('buys greater')
                 if (buyHigh <= 3 && !buysellcounting){
         buyHigh++;
