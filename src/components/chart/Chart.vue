@@ -1269,7 +1269,7 @@ this.chart.series[7].data[a].remove();
           buysellcounting = false
         }, 10 * 1000)
         }
-        if (buyHigh <= -3 && !buysellcounting && !buying){
+        if ((buyHigh <= -3 && !buysellcounting && !buying) || (testingtesting123&& !buysellcounting && !buying)){
         buying = true;
         buyHigh--
         buysellcounting = true
@@ -1820,7 +1820,7 @@ buyHigh = 0;
           buysellcounting = false
         }, 10 * 1000)
         }
-        if (buyHigh >= 3 && !buysellcounting && buying){
+        if ((buyHigh >= 3 && !buysellcounting && buying) || (testingtesting123&& !buysellcounting && buying)){
         buyHigh++
         buying = false
         buysellcounting = true
