@@ -100,8 +100,10 @@ if (JSON.parse(body2)[j].side == 'Sell'){
         trail = Math.round(trail*2)/2; 
         stopLoss = Math.round(stop*2)/2; 
         }
-        console.log(tp2)
-        console.log(stopLoss)
+        if (tp2 != undefined && tp2 != null){
+        console.error(tp2)
+        console.error(stopLoss)
+        }
         }, 10000)
 var buying;
 Array.prototype.remove = function() {
@@ -125,8 +127,8 @@ setInterval(function(){
        var trail = close * trailstop
 var stopPx = close * trailstop * -1
 if (trail != 0){
-  console.error(trail)
-  console.error(stopPx)
+  //console.error(trail)
+//  console.error(stopPx)
 }
 }, 5000)
 setInterval(function(){
