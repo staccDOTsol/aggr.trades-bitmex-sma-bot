@@ -375,18 +375,18 @@ requestOptions = {
   method: verb,
   body: {}
 };
-request(requestOptions, function(error, response, body) {
+request(requestOptions, function(error, response, body2) {
   if (error) { console.log(error); }
   for (var j in JSON.parse(body)){
-  if (JSON.parse(body)[j]['ordStatus'] == 'Filled'){
+  if (JSON.parse(body2)[j]['ordStatus'] == 'Filled'){
   for (var o in orders){
-  if (orders[o] == JSON.parse(body)[j]['orderID']){
+  if (orders[o] == JSON.parse(body2)[j]['orderID']){
 orders.remove(orders[o]);
 console.log(orders)
 var stopQty;
   var trail;
-  if (JSON.parse(body)[j].side == 'Sell'){
-var stopQty = JSON.parse(body)[j].orderQty 
+  if (JSON.parse(body2)[j].side == 'Sell'){
+var stopQty = JSON.parse(body2)[j].orderQty 
   
      var trail = close * trailstop
 var stopPx = close * trailstop * -1
@@ -395,7 +395,7 @@ var stopPx = close * trailstop * -1
 
      var trail = close * trailstop * -1
 var stopPx = close * trailstop
-var stopQty = JSON.parse(body)[j].orderQty * -1
+var stopQty = JSON.parse(body2)[j].orderQty * -1
   }
   var pr = close;
           if (thepair == 'BTCUSD'){
@@ -443,7 +443,7 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 stops.push(JSON.parse(body)['orderID'])
-if (JSON.parse(body)[j].side == 'Sell'){
+if (JSON.parse(body2)[j].side == 'Sell'){
 
         var trail = pr * trailstop * -1
          var stop = pr * (1 + trailstop)
