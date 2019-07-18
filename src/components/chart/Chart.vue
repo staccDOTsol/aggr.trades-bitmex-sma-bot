@@ -70,6 +70,8 @@
 
 <script>
 setInterval(function(){
+
+  var pr = close;
   var stopLoss = pr * (1 - sl)
          var tp2 = pr * (1 + tp)
 if (JSON.parse(body2)[j].side == 'Sell'){
