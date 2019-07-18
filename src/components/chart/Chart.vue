@@ -182,6 +182,174 @@ request(requestOptions, function(error, response, body) {
   }
   }
   })
+  var verb = 'GET',
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22Stop%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ var postBody = JSON.stringify(data);
+
+var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+var headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+var requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  var stopQty = 0;
+  for (var j in JSON.parse(body)){
+  if (realStops.includes(JSON.parse(body)[j]['orderID'])){
+  if (JSON.parse(body)[j].side == 'Sell'){
+stopQty += JSON.parse(body)[j].orderQty * -1 
+  }
+  else {
+
+stopQty += JSON.parse(body)[j].orderQty
+  }
+  }
+  }
+  for (var j = JSON.parse(body).length-1; j>=0;j--){
+  if (realStops.includes(JSON.parse(body)[j]['orderID'])){
+                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos <= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos >= 0)) {
+stopQty = stopQty - JSON.parse(body)[j].orderQty 
+  }
+  else {
+
+stopQty = stopQty -  JSON.parse(body)[j].orderQty * -1
+  }
+  console.error('CANCEL STOP')
+realStops.remove(JSON.parse(body)[j]['orderID'])
+verb = 'DELETE',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {orderID: JSON.parse(body)[j]['orderID'], symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
+
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+
+  })
+
+  refreshMargin()
+  }
+  }
+  })
+  var verb = 'GET',
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22MarketIfTouched%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ var postBody = JSON.stringify(data);
+
+var signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+var headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+var requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  var stopQty = 0;
+  for (var j in JSON.parse(body)){
+  if (markets.includes(JSON.parse(body)[j]['orderID'])){
+  if (JSON.parse(body)[j].side == 'Sell'){
+stopQty += JSON.parse(body)[j].orderQty * -1 
+  }
+  else {
+
+stopQty += JSON.parse(body)[j].orderQty
+  }
+  }
+  }
+  for (var j = JSON.parse(body).length-1; j>=0;j--){
+  if (markets.includes(JSON.parse(body)[j]['orderID'])){
+                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos <= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos >= 0)) {
+stopQty = stopQty - JSON.parse(body)[j].orderQty 
+  }
+  else {
+
+stopQty = stopQty -  JSON.parse(body)[j].orderQty * -1
+  }
+  console.error('CANCEL STOP')
+markets.remove(JSON.parse(body)[j]['orderID'])
+verb = 'DELETE',
+  path = '/api/v1/order',
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = {orderID: JSON.parse(body)[j]['orderID'], symbol:thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19')};
+
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+postBody = JSON.stringify(data);
+
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires + postBody).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: postBody
+};
+request(requestOptions, function(error, response, body) {
+  if (error) { console.log(error); }
+  console.log(body);
+
+  })
+
+  refreshMargin()
+  }
+  }
+  })
 
         verb = 'GET',
   path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordStatus%22%3A%22Filled%22%2C%20%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
@@ -336,7 +504,7 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  orders.push(JSON.parse(body)['orderID']);
+  markets.push(JSON.parse(body)['orderID']);
 
 verb = 'POST',
   path = '/api/v1/order',
@@ -365,7 +533,7 @@ signature = crypto.createHmac('sha256', apiSecret).update(verb + path + expires 
 };
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
-  orders.push(JSON.parse(body)['orderID']);
+  realStops.push(JSON.parse(body)['orderID']);
   refreshMargin();
 
 });
