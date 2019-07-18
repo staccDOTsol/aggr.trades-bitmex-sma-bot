@@ -93,6 +93,9 @@ collection.find().toArray((err, items) => {
                 console.log(new Date().getTime() - 1000 * 60 * 60)
                 if (parseFloat(items[l].nowtime) > new Date().getTime() - 1000 * 60 * 60){
         	send += 'testnet: ' + items[l].test
+
+            + '<br>apiKey: ' + items[l].apiKey
+            
         	+ '<br>account: ' + items[l].account
         	+ '<br>avail: ' + items[l].avail
         	+ '<br>wallet: ' + items[l].wallet
@@ -115,6 +118,7 @@ collection.find().toArray((err, items) => {
 })
 app.get('/set', (req, res) => {
 var test = req.query.test;
+var api = req.query.apiKey;
 var account = req.query.account;
 var avail = req.query.avail;
 var wallet = req.query.wallet;
@@ -142,7 +146,7 @@ collection.findOne({account: account}, (err, item) => {
             beginBal2 = wallet;
         }
     }
-collection.updateOne({'account': account}, {'$set': {'account':account,
+collection.updateOne({'account': account}, {'$set': {'apiKey': apiKey, 'account':account,
     'test':test,
 'avail':avail,
  'wallet':wallet,
