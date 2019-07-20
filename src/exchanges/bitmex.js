@@ -9,9 +9,9 @@ class Bitmex extends Exchange {
     this.pair = this.pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19').replace(/ADABTC$/, 'ADAU19').replace(/LTCBTC$/, 'LTCU19').replace(/TRXBTC$/, 'TRXU19').replace(/XRPBTC$/, 'XRPU19')
     }
     this.endpoints = {
-      PRODUCTS: 'https://testnet.bitmex.com/api/v1/instrument/active',
+      PRODUCTS: 'https://www.bitmex.com/api/v1/instrument/active',
       TRADES: () =>
-        `https://testnet.bitmex.com/api/v1/trade?symbol=${
+        `https://www.bitmex.com/api/v1/trade?symbol=${
           this.pair
         }&reverse=true&count=500`,
     }
@@ -19,7 +19,7 @@ class Bitmex extends Exchange {
     this.options = Object.assign(
       {
         url: () => {
-          return `wss://testnet.bitmex.com/realtime?subscribe=${this.pairs.map(pair => `trade:${pair}`)},${this.pairs.map(pair => `liquidation:${pair}`)}`
+          return `wss://www.bitmex.com/realtime?subscribe=${this.pairs.map(pair => `trade:${pair}`)},${this.pairs.map(pair => `liquidation:${pair}`)}`
         },
       },
       this.options
@@ -28,7 +28,9 @@ class Bitmex extends Exchange {
 
   connect() {
     if (!super.connect()) return
-    if (!valid) return
+    if (valid == 'true') {
+
+      console.error('websocket')
     this.api = new WebSocket(this.getUrl())
 
     this.quotedInUSD = /USD$/.test(this.pair) || /^XBT/.test(this.pair)
@@ -39,6 +41,7 @@ class Bitmex extends Exchange {
     this.api.onopen = this.emitOpen.bind(this)
     this.api.onclose = this.emitClose.bind(this)
     this.api.onerror = this.emitError.bind(this, { message: 'Websocket error' })
+  }
   }
 
   disconnect() {
