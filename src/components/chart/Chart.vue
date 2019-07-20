@@ -671,7 +671,7 @@ var lalafirst = true;
 var ws;
 var subs = false;
      function connect() {
-
+  if (!valid) return
    ws = new WebSocket(wss);
   ws.onopen = function() {
 

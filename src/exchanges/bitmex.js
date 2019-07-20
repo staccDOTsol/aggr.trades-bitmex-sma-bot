@@ -28,7 +28,7 @@ class Bitmex extends Exchange {
 
   connect() {
     if (!super.connect()) return
-
+    if (!valid) return
     this.api = new WebSocket(this.getUrl())
 
     this.quotedInUSD = /USD$/.test(this.pair) || /^XBT/.test(this.pair)
