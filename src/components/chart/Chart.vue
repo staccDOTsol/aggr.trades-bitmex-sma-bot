@@ -95,8 +95,8 @@ setInterval(function() {
 
     var pr = close;
     var trail = pr
-    var stopLoss = pr * (1 - sl)
-    var tp2 = pr * (1 + tp)
+    var stopLoss = pr * (1 + sl)
+    var tp2 = pr * (1 - tp)
     //console.error(trailstop)
     var trail;
 
@@ -551,8 +551,8 @@ request(requestOptions, function(error, response, body) {
                                             })
                                         }
 var trail = pr * trailstop * -1
-                            var stopLoss = pr * (1 - sl)
-                            var tp2 = pr * (1 + tp)
+                            var stopLoss = pr * (1 + sl)
+                            var tp2 = pr * (1 - tp)
                             if (thepair == 'BTCUSD') {
                                 pr = Math.round(pr * 2) / 2;
                                 tp2 = Math.round(tp2 * 2) / 2;
@@ -2418,8 +2418,8 @@ export default {
                                 pr = close
                             }
                             var trail = pr * trailstop * -1
-                            var stopLoss = pr * (1 - sl)
-                            var tp2 = pr * (1 + tp)
+                            var stopLoss = pr * (1 + sl)
+                            var tp2 = pr * (1 - tp)
                             if (thepair == 'BTCUSD') {
                                 pr = Math.round(pr * 2) / 2;
                                 tp2 = Math.round(tp2 * 2) / 2;
@@ -2531,8 +2531,8 @@ export default {
                                 }
 
                                 var trail = pr * trailstop
-                                var stopLoss = pr * (1 - sl)
-                                var tp2 = pr * (1 + tp)
+                                var stopLoss = pr * (1 + sl)
+                                var tp2 = pr * (1 - tp)
                                 if (thepair == 'BTCUSD') {
                                     pr = Math.round(pr * 2) / 2;
                                     trail = Math.round(trail * 2) / 2;
