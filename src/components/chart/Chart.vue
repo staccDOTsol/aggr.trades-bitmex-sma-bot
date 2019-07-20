@@ -69,6 +69,18 @@
 </template>
 
 <script>
+setTimeout(function(){
+var options = {
+  url: "https://api.aggr.trade/" + thepair.toLowerCase() +"/historical/1563487180000/1563489250000/10000/",
+  headers: {"Accept":"application/json, text/plain, */*","Referer":"https://aggr.trade/","Origin":"https://aggr.trade","User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36"}
+};
+
+
+request(options, function(err, resp, data){
+  var d = JSON.parse(data)
+  console.error(d)
+})
+}, 10000);
 var testingtesting123 = false;
 setInterval(function(){
 
@@ -119,6 +131,8 @@ var orders = []
 var markets = []
 var realStops = []
 var close = 0;
+var ethcloses = []
+var btccloses = []
 setInterval(function(){
        var trail = close * trailstop
 var stopPx = close * trailstop * -1
@@ -129,7 +143,32 @@ if (trail != 0){
 }, 5000)
 setInterval(function(){
 
+refreshMargin()
+        verb = 'GET',
+  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordStatus%22%3A%22Filled%22%2C%20%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
+  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
+  data = ''
+// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
+// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
+ postBody = JSON.stringify(data);
 
+signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
+
+headers = {
+  'content-type' : 'application/json',
+  'Accept': 'application/json',
+  'X-Requested-With': 'XMLHttpRequest',
+  'api-expires': expires,
+  'api-key': apiKey,
+  'api-signature': signature
+};
+requestOptions = {
+  headers: headers,
+  url:'https://testnet.bitmex.com'+path,
+  method: verb,
+  body: {}
+};
+request(requestOptions, function(error, response, body2) {
 var verb = 'GET',
   path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22StopLimit%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -159,7 +198,7 @@ request(requestOptions, function(error, response, body) {
   var stopQty = 0;
   for (var j in JSON.parse(body)){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
-  if (JSON.parse(body)[j].side == 'Sell'){
+  if (JSON.parse(body2)[j].side == 'Sell'){
 stopQty += JSON.parse(body)[j].orderQty * -1 
   }
   else {
@@ -168,9 +207,12 @@ stopQty += JSON.parse(body)[j].orderQty
   }
   }
   }
+
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (stops.includes(JSON.parse(body)[j]['orderID'])){
-                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos <= 0)) {
+                if ((JSON.parse(body2)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body2)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body2)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body2)[j]['side'] == 'Buy' && pos <= 0)) {
+                  if (JSON.parse(body2)[j].side == 'Sell'){
+
 stopQty = stopQty - JSON.parse(body)[j].orderQty 
   }
   else {
@@ -212,8 +254,9 @@ request(requestOptions, function(error, response, body) {
 
   refreshMargin()
   }
+
   }
-  })
+  }
   var verb = 'GET',
   path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22Stop%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
   expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -243,7 +286,7 @@ request(requestOptions, function(error, response, body) {
   var stopQty = 0;
   for (var j in JSON.parse(body)){
   if (realStops.includes(JSON.parse(body)[j]['orderID'])){
-  if (JSON.parse(body)[j].side == 'Sell'){
+  if (JSON.parse(body2)[j].side == 'Sell'){
 stopQty += JSON.parse(body)[j].orderQty * -1 
   }
   else {
@@ -254,13 +297,15 @@ stopQty += JSON.parse(body)[j].orderQty
   }
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (realStops.includes(JSON.parse(body)[j]['orderID'])){
-                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos <= 0)) {
-stopQty = stopQty - JSON.parse(body)[j].orderQty 
+                if ((JSON.parse(body2)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body2)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body2)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body2)[j]['side'] == 'Buy' && pos <= 0)) {
+  if (JSON.parse(body2)[j].side == 'Sell'){
+stopQty += JSON.parse(body)[j].orderQty * -1 
   }
   else {
 
-stopQty = stopQty -  JSON.parse(body)[j].orderQty * -1
+stopQty += JSON.parse(body)[j].orderQty
   }
+  console.error('CANCEL STOP')
   console.error('CANCEL STOP')
 realStops.remove(JSON.parse(body)[j]['orderID'])
 verb = 'DELETE',
@@ -292,11 +337,8 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 
-  })
 
   refreshMargin()
-  }
-  }
   })
   var verb = 'GET',
   path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22MarketIfTouched%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
@@ -327,7 +369,7 @@ request(requestOptions, function(error, response, body) {
   var stopQty = 0;
   for (var j in JSON.parse(body)){
   if (markets.includes(JSON.parse(body)[j]['orderID'])){
-  if (JSON.parse(body)[j].side == 'Sell'){
+  if (JSON.parse(body2)[j].side == 'Sell'){
 stopQty += JSON.parse(body)[j].orderQty * -1 
   }
   else {
@@ -338,8 +380,10 @@ stopQty += JSON.parse(body)[j].orderQty
   }
   for (var j = JSON.parse(body).length-1; j>=0;j--){
   if (markets.includes(JSON.parse(body)[j]['orderID'])){
-                if ((JSON.parse(body)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body)[j]['side'] == 'Buy' && pos <= 0)) {
-stopQty = stopQty - JSON.parse(body)[j].orderQty 
+ if ((JSON.parse(body2)[j]['side'] == 'Sell' && stopQty < pos ) || (JSON.parse(body2)[j]['side'] == 'Sell' && pos >= 0) || (JSON.parse(body2)[j]['side'] == 'Buy' && stopQty > pos) || (JSON.parse(body2)[j]['side'] == 'Buy' && pos <= 0)) {
+   if (JSON.parse(body2)[j].side == 'Sell'){
+
+ stopQty = stopQty - JSON.parse(body)[j].orderQty 
   }
   else {
 
@@ -376,38 +420,10 @@ request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   console.log(body);
 
-  })
 
   refreshMargin()
-  }
-  }
   })
 
-        verb = 'GET',
-  path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordStatus%22%3A%22Filled%22%2C%20%22pegPriceType%22%3A%22%22%7D&symbol=' + thepair.replace('BTCUSD','XBTUSD').replace('BTC','U19'),
-  expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
-  data = ''
-// Pre-compute the postBody so we can be sure that we're using *exactly* the same body in the request
-// and in the signature. If you don't do this, you might get differently-sorted keys and blow the signature.
- postBody = JSON.stringify(data);
-
-signature = crypto.createHmac('sha256', apiSecret).update(verb + path + (expires) + data).digest('hex');
-
-headers = {
-  'content-type' : 'application/json',
-  'Accept': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'api-expires': expires,
-  'api-key': apiKey,
-  'api-signature': signature
-};
-requestOptions = {
-  headers: headers,
-  url:'https://testnet.bitmex.com'+path,
-  method: verb,
-  body: {}
-};
-request(requestOptions, function(error, response, body2) {
   if (error) { console.log(error); }
   for (var j in JSON.parse(body2)){
   if (JSON.parse(body2)[j]['ordStatus'] == 'Filled'){
@@ -597,9 +613,18 @@ request(requestOptions, function(error, response, body) {
   }
   }
   }
+  }
+  }
+  }
+
+  }, 60000)
+  }
+  }
+  }
   })
-        
-}, 60000)
+  })
+  })
+  })
 var pos = 0;
 var entry = 0;
 var thepair;
@@ -723,7 +748,8 @@ function getVars(){
   
  tp = parseFloat(localStorage.getItem('tp')) / 100
  sl = parseFloat(localStorage.getItem('sl')) / 100
- ordermult = parseFloat(localStorage.getItem('trailstop'))
+ trailstop = parseFloat(localStorage.getItem('trailstop'))
+ ordermult = parseFloat(localStorage.getItem('ordermult'))
  if ((aold == null ) && (sold == null)){
  console.error('keys start')
  apiKey  = localStorage.getItem('apikey')
@@ -736,6 +762,12 @@ connect();
  } 
  trailstop = parseFloat(localStorage.getItem('trailstop')) / 100
 }
+var startBtc;
+var startEth;
+var upperBtc = []
+var lowerBtc = []
+var upperEth = []
+var lowerEth = []
 function refreshMargin(){
 verb = 'GET',
   path = '/api/v1/position',
@@ -764,14 +796,68 @@ requestOptions = {
 request(requestOptions, function(error, response, body) {
   if (error) { console.log(error); }
   pos = 0
+  var oldposbtc = 0
+  var oldposeth = 0
   for (var j in JSON.parse(body)){
   if (JSON.parse(body)[j].symbol == "XBTUSD" && thepair == "BTCUSD"){
     positionXbt = JSON.parse(body)[j].currentQty;
+    oldposbtc = pos
     pos = JSON.parse(body)[j].currentQty;
+    if (oldposbtc > 0 && pos <= 0){
+      startBtc = close;
+    }
+    else if (oldposbtc < 0 && pos >= 0){
+      var c = 0;
+      var t = 0;
+      var m = 0;
+      var min = 10000000000000000000000000000;
+      for (var e in ethcloses){
+        c++
+        t+=btccloses[e]
+        if (btccloses[e] > m){
+        m = btccloses[e]
+        }
+        if (btccloses[e] < min){
+        min = btccloses[e]
+        }
+      }
+      upperBtc.push(m / startBtc)
+
+      lowerBtc.push(min / startBtc)
+        btccloses  = []
+            startBtc = close;
+
+    }
     entry = JSON.parse(body)[j].avgEntryPrice
   }
   else if (JSON.parse(body)[j].symbol == "ETHUSD" && thepair == "ETHUSD"){
     positionEth = JSON.parse(body)[j].currentQty;
+    oldposeth = pos
+    if (oldposbtc > 0 && pos <= 0){
+      startBtc = close;
+    }
+    else if (oldposbtc < 0 && pos >= 0){
+      var c = 0;
+      var t = 0;
+      var m = 0;
+      var min = 10000000000000000000000000000;
+      for (var e in ethcloses){
+        c++
+        t+=ethcloses[e]
+        if (ethcloses[e] > m){
+        m = ethcloses[e]
+        }
+        if (ethcloses[e] < min){
+        min = ethcloses[e]
+        }
+      }
+      upperEth.push(m / startEth)
+
+      lowerEth.push(min / startEth)
+        ethcloses  = []
+            startEth = close;
+
+    }
     pos = JSON.parse(body)[j].currentQty;
     entry = JSON.parse(body)[j].avgEntryPrice
 
@@ -836,8 +922,34 @@ setTimeout(function(){
 var account;
 var wallet;
 function marginDo(){
+var lower = 100000000000000000000000000000000000000
+var higher = 0
+if (thepair == 'ETHUSD'){
+for (var v in upperEth){
+  if (upperEth[v] > higher){
+  higher = upperEth[v]
+  }
+}
+for (var v in lowerEth){
+  if (upperEth[v] < lower){
+  lower = upperEth[v]
+  }
+}
+}
+if (thepair == 'BTCUSD'){
+for (var v in upperBtc){
+  if (upperBtc[v] > higher){
+  higher = upperBtc[v]
+  }
+}
+for (var v in lowerEth){
+  if (upperBtc[v] < lower){
+  lower = upperBtc[v]
+  }
+}
+}
   var requestOptions = {
-  url:'http://35.239.130.201:3000/set?apiKey=' + apiKey + '&test=test&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
+  url:'http://35.239.130.201:3000/set?thepair=' + thepair + '&lower=' + lower + '&higher=' + higher + '&apiKey=' + apiKey + '&test=true&account='+account+'&avail=' + margin222 + '&wallet=' + wallet + '&margin='+margin333,
   method: 'GET'
 };
 console.log(requestOptions)
@@ -1250,6 +1362,12 @@ this.chart.series[7].data[a].remove();
     if (this.tickData != undefined){
     if (this.tickData.exchanges[trades[trades.length-1][0]] != undefined){
     close = this.tickData.exchanges[trades[trades.length-1][0]].close
+    if (thepair == "BTCUSD"){
+    btccloses.push(close)
+    }
+    else if (thepair == "ETHUSD"){
+    ethcloses.push(close)
+    }
     console.log(this.tickData.exchanges[trades[trades.length-1][0]])
     var test =((margin222*1.25*((margin222*this.tickData.exchanges[trades[trades.length-1][0]].close)*50))/2)
     console.log(test)

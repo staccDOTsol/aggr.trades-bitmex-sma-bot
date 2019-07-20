@@ -59,7 +59,7 @@ collection.find().toArray((err, items) => {
         		var starttime = parseFloat(items[l].starttime)
                 if (items[l].account == '228306'){
         		    beginBall = 0.01
-                    starttime = starttime - 1000 * 60 * 60 * 2
+                    starttime = starttime - 1000 * 60 * 30 * 2
                     beginBall2 = 0.01
                     gains = ((parseFloat(items[l].margin) / parseFloat(beginBall) - 1 )* 100)
                     gains2 = ((parseFloat(items[l].wallet) / parseFloat(beginBall2) - 1 )* 100)
@@ -90,17 +90,15 @@ collection.find().toArray((err, items) => {
                 var apr = gains * (365 / diff)
                 var apr2 = gains2 * (365 / diff)
                 console.log(parseFloat(items[l].nowtime))
-                console.log(new Date().getTime() - 1000 * 60 * 60)
-                if (parseFloat(items[l].nowtime) > new Date().getTime() - 1000 * 60 * 60){
+                console.log(new Date().getTime() - 1000 * 60 * 20)
+                if (parseFloat(items[l].nowtime) > new Date().getTime() - 1000 * 60 * 20){
         	send += 'testnet: ' + items[l].test
 
             + '<br>apiKey: ' + items[l].apiKey
             
         	+ '<br>account: ' + items[l].account
             if (items[l].notes != undefined){
-            if (items[l].notes.length>4){
                 send+='<br>notes: ' + items[l].notes
-            }
         }
 
         	send+= '<br>avail: ' + items[l].avail
@@ -112,6 +110,10 @@ collection.find().toArray((err, items) => {
             + '<br>first seen: ' + new Date(starttime)
             + '<br>last seen: ' + new Date(parseFloat(items[l].nowtime))
             + '<br>days: ' + diff.toPrecision(3)
+            + '<br>BTCUSD lowest % move between pos: ' + items[l].BTCUSDlower + ' & highest: ' + items[l].BTCUSDhigher
+            + '<br>ETHUSD lowest % move between pos: ' + items[l].ETHUSDlower + ' & highest: ' + items[l].ETHUSDhigher
+            
+            + '<br>APR margin: ' + apr
             + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
         }
@@ -128,6 +130,14 @@ var apiKey=""
 if (req.query.apiKey){
 apiKey = req.query.apiKey;
 }
+var higher;
+var lower;
+var thepair;
+if (req.query.higher != undefined){
+	higher = req.query.higher;
+	lower = req.query.lower;
+	thepair = req.query.thepair;
+}
 var account = req.query.account;
 var avail = req.query.avail;
 var wallet = req.query.wallet;
@@ -143,16 +153,16 @@ collection.findOne({account: account}, (err, item) => {
         var beginBal2;
         var nowtime = new Date().getTime()
         var starttime;
-        var notes = "";
+        var notes;
+        if (account == "228653"){
+            notes="trail:3%,stoploss:3%,takeprofit:3%,ordermultiplier:3x"
+        } if (apiKey == "BeEEo37ubiTkO3bY9vjIZbiF"){
+            notes="trail:3%,stoploss:3%,takeprofit:6%,ordermultiplier:3x"
+        } if (account == "228829"){
+            notes="trail:3%,stoploss:6%,takeprofit:3%,ordermultiplier:3x"
+        }
         	if (item != null){
                 match = true
-                if (account == "228653"){
-                    notes="trail:3%,stoploss:3%,takeprofit:3%,ordermultiplier:3x"
-                } else if (apiKey == "BeEEo37ubiTkO3bY9vjIZbiF"){
-                    notes="trail:3%,stoploss:3%,takeprofit:6%,ordermultiplier:3x"
-                } else if (apiKey == "Y8v1yypGd66S229affRkkW1z"){
-                    notes="trail:3%,stoploss:6%,takeprofit:3%,ordermultiplier:3x"
-                }
                 beginBal2 = item.beginBal2
         		beginBal = item.beginBal
                 starttime = parseFloat(item.starttime)
@@ -163,7 +173,8 @@ collection.findOne({account: account}, (err, item) => {
             beginBal2 = wallet;
         }
     }
-collection.updateOne({'account': account}, {'$set': {'notes':notes,'apiKey': apiKey, 'account':account,
+    if (thepair == 'BTCUSD'){
+collection.updateOne({'account': account}, {'$set': {'BTCUSDlower': lower, 'BTCUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
     'test':test,
 'avail':avail,
  'wallet':wallet,
@@ -174,6 +185,32 @@ collection.updateOne({'account': account}, {'$set': {'notes':notes,'apiKey': api
  'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
   res.send('')
 })
+}
+else if (thepair == 'ETHUSD'){
+	collection.updateOne({'account': account}, {'$set': {'ETHUSDlower': lower, 'ETHUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
+    'test':test,
+'avail':avail,
+ 'wallet':wallet,
+ 'margin':margin,
+ 'beginBal':beginBal,
+ 'starttime':starttime.toString(),
+ 'nowtime': nowtime.toString(), 
+ 'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
+  res.send('')
+})
+} else {
+		collection.updateOne({'account': account}, {'$set': {'notes':notes,'apiKey': apiKey, 'account':account,
+    'test':test,
+'avail':avail,
+ 'wallet':wallet,
+ 'margin':margin,
+ 'beginBal':beginBal,
+ 'starttime':starttime.toString(),
+ 'nowtime': nowtime.toString(), 
+ 'beginBal2': beginBal2}},{ upsert: true } ,(err, item) => {
+  res.send('')
+})
+}
 })
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

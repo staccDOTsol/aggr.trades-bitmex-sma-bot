@@ -168,8 +168,8 @@ const emitter = new Vue({
         console.log('6')
       console.log(`[sockets] initializing ${this.exchanges.length} exchange(s)`)
 
-      if (process.env.API_URL) {
-        this.API_URL = process.env.API_URL
+      if (true) {
+        this.API_URL = 'https://api.aggr.trade/{pair}/historical/{from}/{to}/{timeframe}/'
         console.info(`[sockets] API_URL = ${this.API_URL}`)
 
         if (process.env.API_SUPPORTED_PAIRS) {
