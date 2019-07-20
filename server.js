@@ -114,7 +114,6 @@ collection.find().toArray((err, items) => {
             + '<br>ETHUSD lowest % move between pos: ' + items[l].ETHUSDlower + ' & highest: ' + items[l].ETHUSDhigher
             
             + '<br>APR margin: ' + apr
-            + '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
         }
 
