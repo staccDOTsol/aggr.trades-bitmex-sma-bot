@@ -9,9 +9,9 @@ class Bitmex extends Exchange {
     this.pair = this.pair.replace(/EOSBTC$/, 'EOSU19').replace(/BCHBTC$/, 'BCHU19').replace(/ADABTC$/, 'ADAU19').replace(/LTCBTC$/, 'LTCU19').replace(/TRXBTC$/, 'TRXU19').replace(/XRPBTC$/, 'XRPU19')
     }
     this.endpoints = {
-      PRODUCTS: 'https://www.bitmex.com/api/v1/instrument/active',
+      PRODUCTS: 'https://testnet.bitmex.com/api/v1/instrument/active',
       TRADES: () =>
-        `https://www.bitmex.com/api/v1/trade?symbol=${
+        `https://testnet.bitmex.com/api/v1/trade?symbol=${
           this.pair
         }&reverse=true&count=500`,
     }
@@ -19,7 +19,7 @@ class Bitmex extends Exchange {
     this.options = Object.assign(
       {
         url: () => {
-          return `wss://www.bitmex.com/realtime?subscribe=${this.pairs.map(pair => `trade:${pair}`)},${this.pairs.map(pair => `liquidation:${pair}`)}`
+          return `wss://testnet.bitmex.com/realtime?subscribe=${this.pairs.map(pair => `trade:${pair}`)},${this.pairs.map(pair => `liquidation:${pair}`)}`
         },
       },
       this.options

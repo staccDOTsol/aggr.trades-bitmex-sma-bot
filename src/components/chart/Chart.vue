@@ -172,7 +172,7 @@ setInterval(function() {
     };
     requestOptions = {
         headers: headers,
-        url: 'https://www.bitmex.com' + path,
+        url: 'https://testnet.bitmex.com' + path,
         method: verb,
         body: {}
     };
@@ -197,7 +197,7 @@ setInterval(function() {
             };
             var requestOptions = {
                 headers: headers,
-                url: 'https://www.bitmex.com' + path,
+                url: 'https://testnet.bitmex.com' + path,
                 method: verb,
                 body: {}
             };
@@ -253,7 +253,7 @@ setInterval(function() {
                             };
                             requestOptions = {
                                 headers: headers,
-                                url: 'https://www.bitmex.com' + path,
+                                url: 'https://testnet.bitmex.com' + path,
                                 method: verb,
                                 body: postBody
                             };
@@ -290,7 +290,7 @@ setInterval(function() {
                 };
                 var requestOptions = {
                     headers: headers,
-                    url: 'https://www.bitmex.com' + path,
+                    url: 'https://testnet.bitmex.com' + path,
                     method: verb,
                     body: {}
                 };
@@ -345,7 +345,7 @@ setInterval(function() {
                                 };
                                 requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: postBody
                                 };
@@ -378,7 +378,7 @@ setInterval(function() {
                                 };
                                 var requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: {}
                                 };
@@ -433,7 +433,7 @@ setInterval(function() {
                                                 };
                                                 requestOptions = {
                                                     headers: headers,
-                                                    url: 'https://www.bitmex.com' + path,
+                                                    url: 'https://testnet.bitmex.com' + path,
                                                     method: verb,
                                                     body: postBody
                                                 };
@@ -516,7 +516,7 @@ setInterval(function() {
 
                                                                 requestOptions = {
                                                                     headers: headers,
-                                                                    url: 'https://www.bitmex.com' + path,
+                                                                    url: 'https://testnet.bitmex.com' + path,
                                                                     method: verb,
                                                                     body: postBody
                                                                 };
@@ -598,7 +598,7 @@ setInterval(function() {
 
                                                                         requestOptions = {
                                                                             headers: headers,
-                                                                            url: 'https://www.bitmex.com' + path,
+                                                                            url: 'https://testnet.bitmex.com' + path,
                                                                             method: verb,
                                                                             body: postBody
                                                                         };
@@ -645,7 +645,7 @@ setInterval(function() {
 
                                                                             requestOptions = {
                                                                                 headers: headers,
-                                                                                url: 'https://www.bitmex.com' + path,
+                                                                                url: 'https://testnet.bitmex.com' + path,
                                                                                 method: verb,
                                                                                 body: postBody
                                                                             };
@@ -729,7 +729,7 @@ if (valid == 'true'){
   valid = true;
 }
 var ma;
-var wss = 'wss://www.bitmex.com/realtime'
+var wss = 'wss://testnet.bitmex.com/realtime'
 var lalafirst = true;
 var ws;
 var subs = false;
@@ -863,7 +863,7 @@ function refreshMargin() {
     };
     requestOptions = {
         headers: headers,
-        url: 'https://www.bitmex.com' + path,
+        url: 'https://testnet.bitmex.com' + path,
         method: verb,
         body: {}
     };
@@ -1026,7 +1026,7 @@ function marginDo() {
         }
     }
     var requestOptions = {
-        url: 'http://35.239.130.201:3000/set?thepair=' + thepair + '&lower=' + lower + '&higher=' + higher + '&apiKey=' + apiKey + '&test=LIVENET&account=' + account + '&avail=' + margin222 + '&wallet=' + wallet + '&margin=' + margin333,
+        url: 'http://35.239.130.201:3000/set?thepair=' + thepair + '&lower=' + lower + '&higher=' + higher + '&apiKey=' + apiKey + '&test=true&account=' + account + '&avail=' + margin222 + '&wallet=' + wallet + '&margin=' + margin333,
         method: 'GET'
     };
     console.log(requestOptions)
@@ -1685,7 +1685,7 @@ export default {
                         };
                         requestOptions = {
                             headers: headers,
-                            url: 'https://www.bitmex.com' + path,
+                            url: 'https://testnet.bitmex.com' + path,
                             method: verb,
                             body: {}
                         };
@@ -1903,7 +1903,7 @@ export default {
 
                                 requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: postBody
                                 };
@@ -1946,7 +1946,7 @@ export default {
                             };
                             requestOptions = {
                                 headers: headers,
-                                url: 'https://www.bitmex.com' + path,
+                                url: 'https://testnet.bitmex.com' + path,
                                 method: verb,
                                 body: postBody
                             };
@@ -1997,7 +1997,7 @@ export default {
 
                                 requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: postBody
                                 };
@@ -2223,7 +2223,7 @@ export default {
                         };
                         requestOptions = {
                             headers: headers,
-                            url: 'https://www.bitmex.com' + path,
+                            url: 'https://testnet.bitmex.com' + path,
                             method: verb,
                             body: {}
                         };
@@ -2447,7 +2447,7 @@ export default {
 
                                 requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: postBody
                                 };
@@ -2488,7 +2488,7 @@ export default {
                             };
                             requestOptions = {
                                 headers: headers,
-                                url: 'https://www.bitmex.com' + path,
+                                url: 'https://testnet.bitmex.com' + path,
                                 method: verb,
                                 body: postBody
                             };
@@ -2562,7 +2562,7 @@ export default {
 
                                 requestOptions = {
                                     headers: headers,
-                                    url: 'https://www.bitmex.com' + path,
+                                    url: 'https://testnet.bitmex.com' + path,
                                     method: verb,
                                     body: postBody
                                 };
