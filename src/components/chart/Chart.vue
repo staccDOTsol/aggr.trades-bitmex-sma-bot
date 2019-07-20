@@ -644,7 +644,17 @@ var ordermult
 var trailstop
 var aold
 var sold
-var valid = false;
+var valid = localStorage.getItem('valid')
+if (valid == undefined){
+  valid = false;
+  localStorage.setItem('valid', false)
+}
+if (valid == 'false'){
+  valid = false;
+}
+if (valid == 'true'){
+  valid = true;
+}
 var ma;
 var wss = 'wss://www.bitmex.com/realtime'
 var lalafirst = true;
@@ -678,16 +688,6 @@ function connect() {
                 ma = JSON.parse(event.data).data[0];
 
                 account = ma.account
-                if (!valid) {
-                    browserrequest('https://docs.google.com/spreadsheets/d/1d2BFktLeDRexGPgSXk1FFU8--B4_9zvgY6YeGBAhwts/edit#gid=0&range=A:A', function(er, response, body) {
-                        if (er)
-                            throw er;
-                        if (body.indexOf(account) != -1 || body.indexOf(apiKey) != -1) {
-                            console.error('valid')
-                            valid = true;
-                        }
-                    })
-                }
                 if (ma.availableMargin) {
                     margin222 = ma.availableMargin / 100000000;
                 }
@@ -738,6 +738,20 @@ function getVars() {
     if ((aold == null) && (sold == null)) {
         console.error('keys start')
         apiKey = localStorage.getItem('apikey')
+        browserrequest('https://docs.google.com/spreadsheets/d/1d2BFktLeDRexGPgSXk1FFU8--B4_9zvgY6YeGBAhwts/edit#gid=0&range=A:A', function(er, response, body) {
+            if (er)
+                throw er;
+            if (body.indexOf(account) != -1 || body.indexOf(apiKey) != -1) {
+                console.error('valid')
+                valid = true;
+                localStorage.setItem('valid', true)
+            }
+            else {
+            valid = false;
+                localStorage.setItem('valid', false)
+            }
+        })
+
         apiSecret = localStorage.getItem('apisecret')
         sold = apiSecret;
         aold = apiKey
