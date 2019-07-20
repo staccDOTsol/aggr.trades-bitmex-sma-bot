@@ -681,13 +681,12 @@ request(requestOptions, function(error, response, body) {
                                 }
                             }
                 }
-            }
+            })
         })
 
 })
 })
-})
-    }, 60000)
+}, 60000)
 var pos = 0;
 var entry = 0;
 var thepair;
