@@ -89,7 +89,7 @@ setTimeout(function() {
         //console.error(d)
     })
 }, 10000);
-var testingtesting123 = true;
+var testingtesting123 = false;
 setInterval(function() {
 
 
@@ -207,6 +207,8 @@ request(requestOptions, function(error, response, body) {
         if (error) {
             console.log(error);
         }
+
+        for (var j2 in JSON.parse(body2)) {
         var stopQty = 0;
         for (var j in JSON.parse(body)) {
             if (stops.includes(JSON.parse(body)[j]['orderID'])) {
@@ -273,6 +275,7 @@ request(requestOptions, function(error, response, body) {
 
             }
         }
+        }
         var verb = 'GET',
             path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22Stop%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD', 'XBTUSD').replace('BTC', 'U19'),
             expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -301,6 +304,8 @@ request(requestOptions, function(error, response, body) {
                 if (error) {
                     console.log(error);
                 }
+
+                        for (var j2 in JSON.parse(body2)) {
                 var stopQty = 0;
                 for (var j in JSON.parse(body)) {
                     if (realStops.includes(JSON.parse(body)[j]['orderID'])) {
@@ -366,6 +371,7 @@ request(requestOptions, function(error, response, body) {
 
                     }
                 }
+                }
                 var verb = 'GET',
                     path = '/api/v1/order?count=100&reverse=true&filter=%7B%22ordType%22%3A%22MarketIfTouched%22%2C%22ordStatus%22%3A%22New%22%7D&symbol=' + thepair.replace('BTCUSD', 'XBTUSD').replace('BTC', 'U19'),
                     expires = Math.round(new Date().getTime() / 1000) + 6660, // 1 min in the future
@@ -394,6 +400,7 @@ request(requestOptions, function(error, response, body) {
                         if (error) {
                             console.log(error);
                         }
+                        
                         console.error('pre-enter stops')
                         for (var j2 in JSON.parse(body2)) {
                             var stopQty = 0;
