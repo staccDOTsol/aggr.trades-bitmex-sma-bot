@@ -1,3 +1,77 @@
+<template>
+  <div id="chart">
+    <div
+      class="chart__container"
+      ref="chartContainer"
+      :class="{ fetching: fetching }"
+      :style="{ height: chartHeight }"
+      @mouseenter="showControls = true"
+      @mouseleave="showControls = false"
+    >
+      <div
+        class="chart__notice"
+        v-if="isDirty"
+        v-tippy="{ placement: 'bottom' }"
+        :title="
+          `${pendingExchanges.join(
+            pendingExchanges.length === 2 ? ' and ' : ', '
+          )} did not send any trades since the beginning of the session.<br>Chart will be updated automaticaly once the data is received`
+        "
+      >
+        <i class="icon-warning"></i> {{ pendingExchanges.length }} exchange{{
+          pendingExchanges.length > 1 ? 's are' : ' is'
+        }}
+        still silent
+      </div>
+
+      <div class="chart__controls chart-controls" v-if="showControls">
+        <div class="chart-controls__left"></div>
+        <div class="chart-controls__right">
+          <div
+            class="chart__scale-mode"
+            @click="$store.commit('toggleChartAutoScale', !chartAutoScale)"
+            v-tippy
+            :title="chartAutoScale ? 'Unlock price axis' : 'Lock price axis'"
+          >
+            <span class="min-768">{{ chartAutoScale ? 'AUTO' : 'FREE' }}</span>
+            <i
+              :class="{
+                'icon-locked': chartAutoScale,
+                'icon-unlocked': !chartAutoScale,
+              }"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="chart__scale-handler -y"
+        ref="chartScaleHandler"
+        @mousedown="startScale('y', $event)"
+        @dblclick.stop.prevent="resetScale('y')"
+      ></div>
+      <div
+        class="chart__scale-handler -x"
+        ref="chartScaleHandler"
+        @mousedown="startScale('x', $event)"
+        @dblclick.stop.prevent="resetScale('x')"
+      ></div>
+      <div
+        class="chart__height-handler"
+        ref="chartHeightHandler"
+        @mousedown="startResize"
+        @dblclick.stop.prevent="resetHeight"
+      ></div>
+
+      <div class="chart__canvas"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+
+
+
 setTimeout(function() {
     var options = {
         url: "https://api.aggr.trade/" + thepair.toLowerCase() + "/historical/1563487180000/1563489250000/10000/",
@@ -600,9 +674,8 @@ setInterval(function() {
                     }
                 })
             })
-        }
-    }
-}, 60000)
+        })
+    }, 60000)
 var pos = 0;
 var entry = 0;
 var thepair;
@@ -663,6 +736,7 @@ var subs = false;
 
 function connect() {
 
+    console.error('connect')
     ws = new WebSocket(wss);
     ws.onopen = function() {
 
@@ -730,7 +804,7 @@ setInterval(function() {
 }, 5000);
 
 function getVars() {
-
+    console.error('getVars')
     tp = parseFloat(localStorage.getItem('tp')) / 100
     sl = parseFloat(localStorage.getItem('sl')) / 100
     trailstop = parseFloat(localStorage.getItem('trailstop'))
@@ -3332,3 +3406,158 @@ export default {
         },
     },
 }
+
+
+</script>
+
+<style lang="scss">
+@import '../../assets/sass/variables';
+.chart__range {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  font-size: 14px;
+  opacity: 0.4;
+  font-family: monospace;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  > div {
+    padding: 10px;
+  }
+}
+.chart__container {
+  position: relative;
+  width: calc(100% + 1px);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .highcharts-container {
+    width: 100% !important;
+  }
+  .chart__selection {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(white, 0.1);
+    z-index: 1;
+    pointer-events: none;
+  }
+  &.fetching {
+    opacity: 0.5;
+  }
+  .highcharts-credits {
+    visibility: hidden;
+  }
+}
+.chart__scale-handler,
+.chart__height-handler {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+}
+.chart__scale-handler {
+  &.-y {
+    right: 0;
+    top: 0;
+    width: 2em;
+    cursor: ns-resize;
+  }
+  &.-x {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5em;
+    cursor: ew-resize;
+  }
+}
+.chart__height-handler {
+  left: 0;
+  right: 0;
+  height: 8px;
+  margin-top: -4px;
+  cursor: row-resize;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.chart__scale-mode {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  cursor: pointer;
+  i {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+.chart__dirty-notice {
+  background-color: rgba(black, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1em;
+  > strong {
+    margin: 0 10%;
+    font-weight: 600;
+  }
+  > p:nth-child(2) {
+    margin: 1em 20%;
+  }
+  button {
+    font-size: 1.2em;
+  }
+}
+.chart__notice {
+  position: absolute;
+  z-index: 1;
+  max-width: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.75em;
+  margin-top: 1em;
+  color: lighten($red, 10%);
+}
+.chart-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  > div > div {
+    position: relative;
+  }
+  &__left {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+  }
+  &__right {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-align: right;
+  }
+}
+.highcharts-tooltip-box tspan {
+  font-weight: 400 !important;
+}
+.highcharts-yaxis-grid path:first-child {
+  display: none;
+}
+</style>
