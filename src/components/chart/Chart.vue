@@ -3094,10 +3094,10 @@ if (this.chart.series[5].yData[num] >=  (1+ crossconfirm)* this.chart.series[4].
 if(ichimokuValue != undefined){
 console.error(ichimokuValue)
 if (ichimokuValue.conversion > 0 && ichimokuValue.base > 0){
- if  (ichimokuValue.conversion > ichimokuValue.base * (1 + crossconfirm)){
+ if  (ichimokuValue.conversion > ichimokuValue.base * (1 + crossconfirm / 100)){
  buyingsignal++
  }
- else  if(ichimokuValue.conversion < ichimokuValue.base * (1 - crossconfirm)){
+ else  if(ichimokuValue.conversion < ichimokuValue.base * (1 - crossconfirm / 100)){
  sellingsignal++
  }
 }
