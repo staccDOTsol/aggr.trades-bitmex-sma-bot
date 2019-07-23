@@ -37,6 +37,7 @@ console.error(valid )
 console.log('apisecret!')
 console.log('apisecret!')
   localStorage.setItem('ordermult', $('#ordermult').val())
+  localStorage.setItem('crossconfirm', $('#crossconfirm').val())
   localStorage.setItem('trailstop', $('#trailstop').val())
   localStorage.setItem('tp', $('#tp').val())
   localStorage.setItem('sl', $('#sl').val())
@@ -47,6 +48,17 @@ localStorage.setItem('apikey', $('#apikey').val())
 }
 $( document ).ready(function() {
 setInterval(function(){
+
+    if ($('#crossconfirm').val() == ""){
+  if(localStorage.getItem('crossconfirm') == undefined){
+
+$('#crossconfirm').val("5")
+  }
+  else {
+
+$('#crossconfirm').val(localStorage.getItem('crossconfirm'))
+  }
+}
     if ($('#ordermult').val() == ""){
   if(localStorage.getItem('ordermult') == undefined){
 

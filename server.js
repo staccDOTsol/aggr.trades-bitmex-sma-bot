@@ -110,11 +110,20 @@ collection.find().toArray((err, items) => {
             + '<br>first seen: ' + new Date(starttime)
             + '<br>last seen: ' + new Date(parseFloat(items[l].nowtime))
             + '<br>days: ' + diff.toPrecision(3)
-            + '<br>BTCUSD lowest % move between pos: ' + items[l].BTCUSDlower + ' & highest: ' + items[l].BTCUSDhigher
-            + '<br>ETHUSD lowest % move between pos: ' + items[l].ETHUSDlower + ' & highest: ' + items[l].ETHUSDhigher
-            
-            
-            + '<br>APR margin: ' + apr
+           	if (items[l].statsBTC != undefined){
+           		console.log(items[l].statsBTC)
+            if ((items[l].statsBTC).length > 1){
+            	var pair = ''
+            	send+='<br>winStreak ' + pair + ':' + items[l].statsBTC[0]
+            	send+='<br>lossStreak  ' + pair + ': ' + items[l].statsBTC[1]
+            	send+='<br>avgLoss  ' + pair + ': ' + items[l].statsBTC[2]
+            	send+='<br>avgProfit  ' + pair + ': ' + items[l].statsBTC[3]
+            	send+='<br>biggestWin  ' + pair + ': ' + items[l].statsBTC[4]
+            	send+='<br>worstLoss  ' + pair + ': ' + items[l].statsBTC[5]
+            	send+='<br>returnsRet  ' + pair + ': ' + items[l].statsBTC[7]
+            }
+}
+           send+= '<br>APR margin: ' + apr
         	+ ' %<br>APR wallet: ' +  apr2 + ' %<br><br>'
         }
 
@@ -142,6 +151,18 @@ var account = req.query.account;
 var avail = req.query.avail;
 var wallet = req.query.wallet;
 var margin = req.query.margin;
+var stats = {}
+if (req.query.winStreak != undefined){
+stats[thepair] = [req.query.winStreak,
+	req.query.lossStreak,
+	req.query.avgLoss,
+req.query.avgProfit,
+	req.query.biggestWin,
+	req.query.worstLoss,
+	 req.query.marketRet,
+req.query.returnsRet]
+}
+
 collection.findOne({account: account}, (err, item) => {
 
 
@@ -174,7 +195,7 @@ collection.findOne({account: account}, (err, item) => {
         }
     }
     if (thepair == 'BTCUSD'){
-collection.updateOne({'account': account}, {'$set': {'BTCUSDlower': lower, 'BTCUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
+collection.updateOne({'account': account}, {'$set': {'statsBTC': stats[thepair], 'BTCUSDlower': lower, 'BTCUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
     'test':test,
 'avail':avail,
  'wallet':wallet,
@@ -187,7 +208,7 @@ collection.updateOne({'account': account}, {'$set': {'BTCUSDlower': lower, 'BTCU
 })
 }
 else if (thepair == 'ETHUSD'){
-	collection.updateOne({'account': account}, {'$set': {'ETHUSDlower': lower, 'ETHUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
+	collection.updateOne({'account': account}, {'$set': {'statsETH': stats[thepair], 'ETHUSDlower': lower, 'ETHUSDhigher': higher,'notes':notes,'apiKey': apiKey, 'account':account,
     'test':test,
 'avail':avail,
  'wallet':wallet,
@@ -212,5 +233,6 @@ else if (thepair == 'ETHUSD'){
 })
 }
 })
-});
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

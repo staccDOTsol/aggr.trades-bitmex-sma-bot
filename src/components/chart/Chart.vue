@@ -69,8 +69,39 @@
 </template>
 
 <script>
-
-
+var oldMarg
+var firstRun = true;
+var firstRun2 = true;
+var returnsStart = 0;
+var returnsNow = 0;
+var marketStart = 0;
+var marketNow = 0;
+var avgProfit = 0;
+var avgLoss = 0;
+var profits = []
+var losses = []
+var maxDd = 0;
+var percWon = 0;
+var biggestWin = 0;
+var worstLoss = 0;  
+var winning;
+var winStreak = 0;
+var lossStreak = 0;
+var numlosses = 0;
+var numwins = 0;
+var buyingsignal = 0
+var sellingsignal = 0
+var Ichimoku = require('ichimoku')
+const ichimoku = new Ichimoku({
+    conversionPeriod : 9,
+    basePeriod       : 26,
+    spanPeriod       : 52,
+    displacement     : 26,
+    values           : []
+})
+var yDatas = []
+  var ichimokuValue = {}
+  var ichimokuValues = []
 
 setTimeout(function() {
     var options = {
@@ -723,6 +754,7 @@ var apiKey
 
 var apiSecret
 var ordermult
+var crossconfirm
 var trailstop
 var aold
 var sold
@@ -775,7 +807,80 @@ function connect() {
                     margin222 = ma.availableMargin / 100000000;
                 }
                 if (ma.marginBalance) {
+                    if (oldMarg != ma.marginBalance / 100000000 && oldMarg != undefined){
+                    if (oldMarg < (ma.marginBalance / 100000000) * 0.995){
+                    oldMarg = (ma.marginBalance / 100000000)
+                        if (winning == undefined){
+                        winning = true;
+                        }
+                        if (!winning){
+                            if (numlosses > lossStreak){
+                            lossStreak = numlosses;
+
+                            }
+                            numlosses = 0;
+                        }
+                        numwins++
+                        winning = true
+                        profits.push((ma.marginBalance / 100000000)/ margin333)
+                        console.error(profits)
+                        var t = 0;
+                        var c = 0;
+                        var max = 0;
+                        for (var l in profits){
+                        if (parseFloat(profits[l]) > 0){
+                          if (profits[l] > max){
+                          max = profits[l]
+                          }
+                          t+=profits[l]
+                          c++
+                        }
+                        avgProfit = t / c
+                        biggestWin = max
+                        }
+
+                    }
+                    else if (oldMarg > (ma.marginBalance / 100000000) * 1.005){
+                    oldMarg = (ma.marginBalance / 100000000)
+                    if (winning == undefined){
+                        winning = false;
+                        }
+                        if (winning){
+                          if (numwins > winStreak){
+                          winStreak = numwins;
+                          }
+                          numwins = 0;
+
+                        }
+                        numlosses++
+                        winning = false
+                        losses.push((ma.marginBalance / 100000000) / margin333)
+
+                        console.error(losses)
+                        var t = 0;
+                        var c = 0;
+                        var min = 1;
+                        for (var l in losses){
+                        if (parseFloat(losses[l]) > 0){
+                          if (losses[l] < min){
+                          min = losses[l]
+                          }
+                          t+=losses[l]
+                          c++
+                        }
+                        avgLoss = t / c
+                        worstLoss = min
+                        }
+                    }
+                    }
                     margin333 = ma.marginBalance / 100000000;
+                    if (firstRun2){
+                    firstRun2 = false;
+                      returnsStart = margin333;
+                      oldMarg = margin333;
+                    }
+
+                    returnsNow = margin333;
                 }
                 marginperc = margin222 / margin333
                 if (ma.walletBalance) {
@@ -816,6 +921,8 @@ function getVars() {
     //console.error('getVars')
     tp = parseFloat(localStorage.getItem('tp')) / 100
     sl = parseFloat(localStorage.getItem('sl')) / 100
+
+    crossconfirm = parseFloat(localStorage.getItem('crossconfirm')) / 100
     trailstop = parseFloat(localStorage.getItem('trailstop'))
     ordermult = parseFloat(localStorage.getItem('ordermult'))
     if ((aold == null) && (sold == null)) {
@@ -1034,8 +1141,11 @@ function marginDo() {
             }
         }
     }
+    // 1.05 / 1 
+    var marketRet = marketNow / marketStart
+    var returnsRet = returnsStart / returnsNow
     var requestOptions = {
-        url: 'http://35.239.130.201:3000/set?thepair=' + thepair + '&lower=' + lower + '&higher=' + higher + '&apiKey=' + apiKey + '&test=true&account=' + account + '&avail=' + margin222 + '&wallet=' + wallet + '&margin=' + margin333,
+        url: 'http://35.239.130.201:3000/set?thepair=' + thepair + '&lower=' + lower + '&higher=' + higher + '&apiKey=' + apiKey + '&test=true&winStreak='+winStreak+'&lossStreak='+lossStreak+'&avgLoss='+avgLoss+'&avgProfit='+avgProfit+'&biggestWin='+biggestWin+'&worstLoss='+worstLoss+'&marketRet='+marketRet+'&returnsRet='+returnsRet+'&account=' + account + '&avail=' + margin222 + '&wallet=' + wallet + '&margin=' + margin333,
         method: 'GET'
     };
     console.log(requestOptions)
@@ -1463,7 +1573,14 @@ export default {
             var qty = 0;
             if (this.tickData != undefined) {
                 if (this.tickData.exchanges[trades[trades.length - 1][0]] != undefined) {
+
                     close = this.tickData.exchanges[trades[trades.length - 1][0]].close
+                    if (firstRun == true){
+                    firstRun = false;
+
+                    marketStart = close
+                    }
+                    marketNow = close;
                     if (thepair == "BTCUSD") {
                         btccloses.push(close)
                     } else if (thepair == "ETHUSD") {
@@ -1487,24 +1604,23 @@ export default {
                 console.log(this.chart.series[5].yData[26])
             }
             if (this.chart.series[5].yData[0] != undefined && this.tickData.exchanges[trades[trades.length - 1][0]] != undefined) {
-                var num = this.chart.series[4].yData.length - 1
-                if (num == 27) {
-                    num = 26
-                }
-                if (this.chart.series[5].yData[num] <= 0.98 * this.chart.series[4].yData[num]) {
-                    console.log('sells greater')
+              console.error(sellingsignal)
+                if (sellingsignal > 1) {
+                    console.error('sells greater')
                     if (buying == undefined) {
                         buying = false;
                     }
-                    if (buyHigh >= -3 && !buysellcounting) {
-                        buyHigh--;
-                                        console.error(buyHigh)
-                        buysellcounting = true
-                        setTimeout(function() {
+                    if (!buysellcounting) {
+                        
+
+                    setTimeout(function(){
+                    buysellcounting = true
+                    }, 500)
+                                            setTimeout(function() {
                             buysellcounting = false
                         }, 10 * 1000)
                     }
-                    if ((buyHigh <= -3 && !buysellcounting && !buying) || (testingtesting123 && !buysellcounting && !buying)) {
+                    if (buysellcounting && !buying) {
                         buying = true;
 
                         buyHigh--
@@ -2034,23 +2150,21 @@ export default {
                     }
                 }
             }
-            if (this.chart.series[5].yData[num] >= 1.02 * this.chart.series[4].yData[num]) {
-                console.log('buys greater')
+            console.error(buyingsignal)
+            if (buyingsignal > 1) {
+                console.error('buys greater')
                 if (buying == undefined) {
                     buying = true;
                 }
-                if (buyHigh <= 3 && !buysellcounting) {
-                    buyHigh++;
-
-                                        console.error(buyHigh)
+                if (!buysellcounting) {
+                    setTimeout(function(){
                     buysellcounting = true
+                    }, 500)
                     setTimeout(function() {
                         buysellcounting = false
                     }, 10 * 1000)
                 }
-                if ((buyHigh >= 3 && !buysellcounting && buying) || (testingtesting123 && !buysellcounting && buying)) {
-                    buyHigh++
-                                        console.error(buyHigh)
+                if (!buysellcounting && buying) {
                     buying = false
                     buyHigh = 0
                     buysellcounting = true
@@ -2943,6 +3057,54 @@ export default {
                     this.chart.series[serieIndex].addPoint(tick[serieIndex], false)
                 }
             }
+            yDatas.push(tick[0])
+            console.error(yDatas)
+            if (yDatas.length > 5){
+            for (var y in yDatas){
+            if (yDatas[y] != undefined){
+            if (yDatas[y].length > 3){
+      ichimokuValues.push(
+        ichimoku.nextValue({
+        high  : yDatas[y][2].toString(),
+        low   : yDatas[y][3].toString(),
+        close : yDatas[y][4].toString()
+        })
+
+      )
+      }
+      yDatas = yDatas.slice(-10)
+
+    ichimokuValue = ichimokuValues.slice(-1).pop()
+    ichimokuValues = ichimokuValues.slice(-10)
+      }
+      }
+
+                var num = this.chart.series[4].yData.length - 1
+                if (num == 27) {
+                    num = 26
+                }
+                buyingsignal = 0
+                sellingsignal = 0
+if (this.chart.series[5].yData[num] <= (1-crossconfirm) * this.chart.series[4].yData[num]){
+  sellingsignal += 1
+}
+if (this.chart.series[5].yData[num] >=  (1+ crossconfirm)* this.chart.series[4].yData[num]){
+ buyingsignal += 1
+}
+if(ichimokuValue != undefined){
+console.error(ichimokuValue)
+if (ichimokuValue.conversion > 0 && ichimokuValue.base > 0){
+ if  (ichimokuValue.conversion > ichimokuValue.base * (1 + crossconfirm)){
+ buyingsignal++
+ }
+ else  if(ichimokuValue.conversion < ichimokuValue.base * (1 - crossconfirm)){
+ sellingsignal++
+ }
+}
+}
+
+
+}
 
             if (snap && this.isSnaped) {
                 this.snapRight(live)

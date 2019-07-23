@@ -25,6 +25,7 @@
     "fs": "0.0.1-security",
     "google-spreadsheet": "^2.0.7",
     "highcharts": "^7.0.3",
+    "ichimoku": "^1.0.4",
     "mathjs": "^6.0.3",
     "mongodb": "^3.2.7",
     "net": "^1.0.2",

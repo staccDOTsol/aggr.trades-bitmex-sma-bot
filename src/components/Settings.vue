@@ -141,6 +141,26 @@
             @change=""
           />
         </div>
+
+          <div class="form-group settings-pair mb8">
+          <label
+            >Min Cross %
+            <span
+              class="icon-info-circle"
+              title="% +/- to confirm crosses"
+              v-tippy
+            ></span
+          ></label>
+          <input
+            id="crossconfirm"
+            onchange="apis();"
+            type="string"
+            placeholder="1"
+            class="form-control"
+            :value="crossconfirm"
+            @change=""
+          />
+        </div>
         <div class="form-group settings-pair mb8">
           <label
             >Pair
@@ -878,6 +898,7 @@ export default {
       'apisecret',
       'ordermult',
       'pair',
+      'crossconfirm',
       'tp',
       'sl',
       'maxRows',
