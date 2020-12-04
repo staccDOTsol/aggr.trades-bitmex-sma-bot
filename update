@@ -1,4 +1,0 @@
-#!/bin/sh
-echo look at me I am the post-commit script
-git pull
-npm run build
